@@ -13,10 +13,9 @@ import { styled } from "@mui/system";
 import { Fade } from "@mui/material";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import FAQ from "../components/faq/FAQ";
 
-const FAQ = dynamic(() => import("../components/faq/Faq"), {
-  ssr: false,
-});
+
 
 const HeroSection = styled(Box)(({ theme }) => ({
   backgroundColor: "#001e60",
@@ -241,7 +240,7 @@ const About = () => {
           </CardContent>
         </Card>
 
-        <FAQ />
+        <FAQ/>
       </Container>
     </div>
   );

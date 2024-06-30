@@ -9,9 +9,8 @@ import {
   Button,
   Box,
   Link,
-  makeStyles
 } from "@mui/material";
-
+import { makeStyles } from "@mui/styles";
 import Image from "next/image";
 import theme from "../theme";
 
