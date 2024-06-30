@@ -25,7 +25,7 @@ import SearchAppBar from "./SearchAppBar";
 import AdministrationMessages from "./AdministrationMessages";
 const drawerWidth = 340;
 const navItemsUp = [
-  {name:"Academic Staff",link:"/accadmic-staff"},
+  {name:"Licenses & Certifications",link:"/licenses-certifications"},
   {name:"Alumni", link:"/alumni"},
   {name:"Community & Partners",link:"/community&partners"},
   

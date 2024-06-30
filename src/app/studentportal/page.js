@@ -33,6 +33,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import axios from "axios";
 import countries from "../utils/countriesList.json"; // Import countries from the JSON file
+import SuccessModal from "../components/SuccessModal";
 async function postRequest(param,data) {
   try {
     const response = await axios.post(param, data);
@@ -53,7 +54,7 @@ const validationSchema = [
     profilePhoto: Yup.mixed().required("Profile photo is required"),
     fullName: Yup.string().required("Full name is required"),
     gender: Yup.string().required("Gender is required"),
-    religion: Yup.string().required("Religion is required"),
+    
 
     dob: Yup.date().required("Date of birth is required").nullable(),
     email: Yup.string()
@@ -119,7 +120,12 @@ const validationSchema = [
 
 const Apply = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const [open, setOpen] = useState(false);
 
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  
   const initialValues = {
     profilePhoto: null,
     fullName: "",
@@ -196,12 +202,12 @@ const Apply = () => {
     formData.append('hscCertificate', values.hscCertificate);
     formData.append('otherFiles', values.otherFiles);
     formData.append('remarks', values.remarks);
+    handleOpen();
+    // const data = await postRequest("/api/application", formData);
 
-    const data = await postRequest("/api/application", formData);
-
-          if (data.status == 200) {
-            console.log("Form Submitted:", values);
-          } else console.log("not submited:", data);
+    //       if (data.status == 200) {
+    //         console.log("Form Submitted:", values);
+    //       } else console.log("not submited:", data);
     // Submit form data
   };
 
@@ -416,43 +422,8 @@ const Apply = () => {
                           style={{ color: "red" }}
                         />
                       </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <Field
-                          name="religion"
-                          as={TextField}
-                          select
-                          label="Religion"
-                          fullWidth
-                          variant="outlined"
-                        >
-                          <MenuItem value="Islam">Islam</MenuItem>
-                          <MenuItem value="Christianity">Christianity</MenuItem>
-                          <MenuItem value="Hinduism">Hinduism</MenuItem>
-                          <MenuItem value="Judaism">Judaism</MenuItem>
-                          <MenuItem value="Buddhism">Buddhism</MenuItem>
-                          <MenuItem value="Others">Others</MenuItem>
-                        </Field>
-                        <ErrorMessage
-                          name="religion"
-                          component="div"
-                          style={{ color: "red" }}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <Field
-                          as={TextField}
-                          label="Father's Name"
-                          variant="outlined"
-                          fullWidth
-                          name="fatherName"
-                          required
-                        />
-                        <ErrorMessage
-                          name="fatherName"
-                          component="div"
-                          style={{ color: "red" }}
-                        />
-                      </Grid>
+                      
+                    
                       <Grid item xs={12} sm={6}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                           <DatePicker
@@ -1010,6 +981,7 @@ const Apply = () => {
           </Formik>
         </Box>
       </Paper>
+      <SuccessModal open={open} handleClose={handleClose} />
     </Container>
   );
 };

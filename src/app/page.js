@@ -207,7 +207,7 @@ export default function Home() {
         </Container>
 
         <PartnerComponet />
-        
+
         <Box
           sx={{
             backgroundColor: "#E6EFF8",
@@ -242,13 +242,16 @@ export default function Home() {
                     Our Mission
                   </Typography>
                   <Typography paragraph>
-                    Our mission is to provide high-quality education and
-                    research opportunities to our students. We strive to foster
-                    a community of excellence and innovation...
+                    The mission of the EI HPE IMU "Avicenna": Training of modern
+                    medical personnel through the scientific and educational
+                    process through the formation of students prectice-oriented
+                    professional medical knowledge and skill that meet
+                    international standards aiming to improve the provision of
+                    medical sevices to the population of Central and South Asia,
+                    as well as the requirements of the labour market focused on
+                    the needs of the individual, society and the state.{" "}
                   </Typography>
-                  <Button variant="contained" color="primary">
-                    Learn More
-                  </Button>
+                  
                 </Fade>
               </Grid>
             </Grid>
@@ -274,9 +277,7 @@ export default function Home() {
                     education, research, and healthcare services. We aim to make
                     significant contributions to the field of medicine...
                   </Typography>
-                  <Button variant="contained" color="primary">
-                    Learn More
-                  </Button>
+                  
                 </Fade>
               </Grid>
               <Grid item xs={12} md={6}>
@@ -292,47 +293,51 @@ export default function Home() {
           </Container>
         </Box>
         <Typography
-            variant="h3"
-            component="h2"
-            gutterBottom
+          variant="h3"
+          component="h2"
+          gutterBottom
+          sx={{
+            fontWeight: 800,
+            paddingLeft: "8px",
+            borderRadius: "15px",
+            color: "#593e7e",
+            marginTop: "90px",
+            textAlign: "center",
+            marginBottom: "40px",
+          }}
+        >
+          Latest News
+        </Typography>
+        <NewsListHome />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+          }}
+        >
+          <Button
+            fullWidth
+            size="large"
+            type="submit"
+            variant="contained"
+            color="primary"
+            component={Link}
+            href="news"
             sx={{
-              fontWeight: 800,
-              paddingLeft: "8px",
-              borderRadius: "15px",
-              color: "#593e7e",
-              marginTop: "90px",
-              textAlign: "center",
-              marginBottom: "40px",
+              borderRadius: "30px",
+              maxHeight: "40px",
+              marginTop: "5px",
+              marginBottom: "20px",
+              fontWeight: 700,
+              width: "150px",
+              background:
+                "linear-gradient(to right, #441e87 0%, #4b91f1 20%, #4b91f1 50%, #441e87 100%)",
             }}
           >
-            Latest News
-          </Typography>
-        <NewsListHome />
-        <Box sx={{display:"flex", flexDirection:"row", justifyContent:"center"}}>
-        <Button
-              fullWidth
-              size="large"
-              type="submit"
-              variant="contained"
-              color="primary"
-              component={Link}
-                href="news"
-              sx={{
-                borderRadius: "30px",
-                maxHeight: "40px",
-                marginTop:"5px",
-                marginBottom: "20px",
-                fontWeight: 700,
-                width: "150px",
-                background: "linear-gradient(to right, #441e87 0%, #4b91f1 20%, #4b91f1 50%, #441e87 100%)",
-                
-                
-              }}
-            >
-              View More
-            </Button>
+            View More
+          </Button>
         </Box>
-        
       </Box>
     </Box>
   );

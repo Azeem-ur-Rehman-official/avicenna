@@ -14,8 +14,7 @@ import { Fade } from "@mui/material";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import FAQ from "../components/faq/FAQ";
-
-
+import AffiliatedHospitals from "../components/AffiliatedHospitals";
 
 const HeroSection = styled(Box)(({ theme }) => ({
   backgroundColor: "#001e60",
@@ -44,7 +43,7 @@ const About = () => {
   }, []);
 
   return (
-    <div>
+    <Box sx={{ backgroundColor: "#fff" }}>
       <HeroSection>
         <Typography variant="h2" gutterBottom>
           About Us
@@ -53,7 +52,7 @@ const About = () => {
           Welcome to Avicenna International Medical University
         </Typography>
       </HeroSection>
-      <Container>
+      <Container sx={{paddingBottom:"100px",}}>
         <HistorySection>
           <Fade in={checked} timeout={1000}>
             <Grid container spacing={4}>
@@ -68,10 +67,23 @@ const About = () => {
                 <Card>
                   <CardContent>
                     <Typography variant="h5" gutterBottom>
-                      Our Campus
+                      Our Institute
                     </Typography>
 
-                    <Typography variant="body1">
+                    <Typography variant="body1" textAlign="justify" >
+                      Avicenna International Medical University was established
+                      in 2019 and registered with the Ministry of Justice of the
+                      Kyrgyz Republic at the address: Kant city 58, Gagarin
+                      Street. S.Avicenna International Medical University is
+                      listed in World Health Organization Directory (W.H.O),
+                      Avicenna Directory, and FAIMER. Such students holding
+                      medical qualifications are eligible for the screening
+                      tests in any country of the world and subsequent
+                      recognition of their degree. Asmi has received a
+                      certificate of accreditation from independent agencies
+                      such as “EdNet”, “AAOPO”. Institute has applied for
+                      international accreditation from IAAR in April 2021.
+                      <br></br>
                       The campus of Avicenna International Medical University is
                       extended over an area of 3 acres (approx.) of land
                       situated in the beautiful, calm and quiet, and well
@@ -89,7 +101,7 @@ const About = () => {
                       High Quality Education
                     </Typography>
 
-                    <Typography variant="body1">
+                    <Typography variant="body1" textAlign="justify">
                       Faculty is enriched with highly qualified, experienced and
                       dedicated teachers with academic, clinical and research
                       expertise. This College has been established with a view
@@ -108,29 +120,41 @@ const About = () => {
                       eminent scholars from both home and abroad.
                     </Typography>
                   </CardContent>
-                  <CardContent>
-                    <Typography variant="h5" gutterBottom>
-                      Affordable tuition Fee
-                    </Typography>
-
-                    <Typography variant="body1">
-                      Tuition Fees of MBBS course both Local as well as foreign
-                      students are lower than any other Medical Universities in
-                      the country and abroad.{" "}
-                    </Typography>
-                  </CardContent>
                 </Card>
               </Grid>
             </Grid>
           </Fade>
         </HistorySection>
+        <Typography sx={{color: "#000"}} textAlign="justify">
+          The higher institution is meant for training qualified specialists in
+          the medical sphere both for the Kyrgyz Republic and other countries of
+          the world including Pakistan, India, Nepal, Nigeria, America, Turkey,
+          Egypt, Somalia, Russia, and CIS countries (Kazakhstan, Uzbekistan,
+          Tajikistan, etc.). Students are studying from 15 countries. More than
+          8 batches have graduated and are currently working in their home
+          countries such as Kyrgyzstan, Kazakhstan, Russia, Pakistan, India,
+          Nepal, Tajikistan, Nigeria, Afghanistan, after clearing their
+          respective licensing exams (NEB/NLE, MCI/NEXT, MDCN, USMLE, PLAB,
+          etc.)
+          <br></br>
+          There are doctors & candidates of medical science participating in the
+          training process. The combination of utilization of modern training
+          programs, technical material base, new training technologies, and
+          qualified teachers promotes the improvement of training quality.
+          Students will be taught not only on a clinical basis in Kant but also
+          in Bishkek, the capital city. Many republican medical institutions and
+          scientific centers are the clinical bases of the Asian Medical
+          Institute. Institute’s departments will be working out both the
+          fundamental and applied research problems on medicine priority
+          direction.
+        </Typography>
         <MissionVisionSection className="svg1">
           <Fade in={checked} timeout={1000}>
             <Box sx={{ padding: "20px", color: "#ffffff" }}>
               <Typography variant="h4" gutterBottom>
                 Multicultural Environment
               </Typography>
-              <Typography variant="body1" paragraph>
+              <Typography variant="body1" textAlign="justify" paragraph>
                 Near about 50% of the students in AIMU are foreigners from
                 different countries like Pakistan, Bangladesh, India, Russia,
                 USA, Australia, Ukraine and Nepal. So Admission in AIMU
@@ -141,7 +165,7 @@ const About = () => {
               <Typography variant="h4" gutterBottom>
                 Administrative Structure
               </Typography>
-              <Typography variant="body1">
+              <Typography variant="body1" textAlign="justify">
                 Efficient administration of Avicenna International Medical
                 University is capable of solving problems quickly and
                 effectively. The Board of Directors, Governing Body, Academic
@@ -159,7 +183,7 @@ const About = () => {
               Exposure to Patients
             </Typography>
 
-            <Typography variant="body1">
+            <Typography variant="body1" textAlign="justify">
               Students are exposing to patients in indoor, outdoor and emergency
               department as a part of their regular clinical teaching and
               learning process. This allows students an opportunity to practice
@@ -173,7 +197,7 @@ const About = () => {
               Mentoring
             </Typography>
 
-            <Typography variant="body1">
+            <Typography variant="body1" textAlign="justify">
               Every students from the first year are assigned to a particular
               teacher for mentoring. The mentor monitors the selected student up
               to final year and help him/her to overcome the academic or others
@@ -187,7 +211,7 @@ const About = () => {
               <Typography variant="h4" gutterBottom>
                 Excelent Accommodation
               </Typography>
-              <Typography variant="body1" paragraph>
+              <Typography variant="body1" textAlign="justify" paragraph>
                 Avicenna International Medical University has excellent hostel
                 facilities for foreign students. AIMU hostels offer clean, safe
                 and furnished accommodation for its students. The hostels are
@@ -197,7 +221,7 @@ const About = () => {
               <Typography variant="h4" gutterBottom>
                 Provision of Foreign Student Coordinator
               </Typography>
-              <Typography variant="body1">
+              <Typography variant="body1" textAlign="justify">
                 AIMU has a separate office and foreign student coordinator to
                 provide essential services as adequately to the future and
                 present foreign students. Major services are: make available
@@ -219,7 +243,7 @@ const About = () => {
               Special counseling for weaker students
             </Typography>
 
-            <Typography variant="body1">
+            <Typography variant="body1" textAlign="justify">
               If it is identified that few students are not getting marks up to
               satisfactory level, AIMU faculty members support them, especially
               to improve their performance giving them extra counseling hours.
@@ -230,7 +254,7 @@ const About = () => {
               Mentoring
             </Typography>
 
-            <Typography variant="body1">
+            <Typography variant="body1" textAlign="justify">
               Avicenna International Medical University observes all religious
               programs and arranges various religious events (iftar party,
               Miladunnabi, Sarwaswati puja, X-mass, for example) in the campus.
@@ -239,10 +263,13 @@ const About = () => {
             </Typography>
           </CardContent>
         </Card>
-
-        <FAQ/>
+<Box sx={{marginBottom:"150px"}}>
+<FAQ />
+</Box>
+<AffiliatedHospitals/>
+        
       </Container>
-    </div>
+    </Box>
   );
 };
 
