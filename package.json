@@ -14,7 +14,7 @@
     "@mui/icons-material": "^5.15.15",
     "@mui/lab": "^5.0.0-alpha.170",
     "@mui/material": "^5.15.15",
-    "@mui/styles": "^5.15.18",
+    "@mui/styles": "^5.15.21",
     "@mui/x-date-pickers": "^7.6.2",
     "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",

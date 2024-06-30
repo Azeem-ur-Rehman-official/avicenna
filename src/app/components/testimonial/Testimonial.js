@@ -20,7 +20,8 @@ import theme from "@/app/theme";
 const useStyles = makeStyles(() => ({
   section: {
     padding: theme.spacing(8, 0),
-    background: "linear-gradient(90deg, rgba(36,0,22,1) 0%, rgba(121,9,60,1) 35%, rgba(255,0,121,1) 100%)",
+    background:
+      "linear-gradient(90deg, rgba(36,0,22,1) 0%, rgba(121,9,60,1) 35%, rgba(255,0,121,1) 100%)",
   },
   heading: {
     textAlign: "center",
@@ -36,9 +37,9 @@ const useStyles = makeStyles(() => ({
   },
   card: {
     minWidth: "300px",
-    display:"flex",
-    flexDirection:"column",
-    justifyContent:"space-around",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
     margin: theme.spacing(2),
     padding: theme.spacing(2),
 
@@ -155,8 +156,10 @@ const TestimonialSection = () => {
       <Container>
         <Box className={classes.heading}>
           <Fade>
-            <Typography variant="h3" sx={{fontWeight:800,color:"#fff"}}>What Our Clients Say</Typography>
-            <Typography variant="body1" sx={{color:"#fff"}}>
+            <Typography variant="h3" sx={{ fontWeight: 800, color: "#fff" }}>
+              What Our Clients Say
+            </Typography>
+            <Typography variant="body1" sx={{ color: "#fff" }}>
               We value our clients' feedback and continuously strive to improve
               our services.
             </Typography>
