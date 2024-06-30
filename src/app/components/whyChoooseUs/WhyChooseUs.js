@@ -89,7 +89,7 @@ const WhyChooseUs = () => {
           <Grid item xs={12} md={6}>
           <Grid container spacing={4}>
             {reasons.map((reason, index) => (
-                <Grid item xs={12} md={6}>
+                <Grid key={index} item xs={12} md={6}>
               <Fade right key={index}>
                 <Card className={classes.card}>
                   <Box className={classes.cardIcon}>{reason.icon}</Box>

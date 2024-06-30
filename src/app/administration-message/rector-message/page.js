@@ -63,7 +63,7 @@ export default function RectorMessage() {
               component="h1"
               className={classes.heroText}
             >
-              Rector's Message
+              Rector Message
             </Typography>
           </Fade>
         </Container>
