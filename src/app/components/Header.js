@@ -135,7 +135,8 @@ function Header(props) {
       <List>
       {navItemsUp.map((item) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "left" }}>
+            <ListItemButton component={Link}
+                href={item.link} sx={{ textAlign: "left" }}>
               <ListItemText primary={item.name} />
             </ListItemButton>
           </ListItem>
