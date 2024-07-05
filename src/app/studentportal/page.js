@@ -1,7 +1,6 @@
 // pages/apply.js
 "use client";
 // pages/apply.js
-import Base64Downloader from "common-base64-downloader-react";
 import React, { useEffect, useState } from "react";
 import {
   Box,
@@ -33,7 +32,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import axios from "axios";
 import countries from "../utils/countriesList.json"; // Import countries from the JSON file
-import SuccessModal from "../components/SuccessModal";
+
 async function postRequest(param, data) {
   try {
     const response = await axios.post(param, data);
@@ -409,12 +408,7 @@ const Apply = () => {
                           style={{ color: "red" }}
                         />
                       </Grid>
-                      <Base64Downloader
-                        base64={image}
-                        downloadName="1x1_red_pixel"
-                      >
-                        Click to download
-                      </Base64Downloader>
+                     
                       <Grid item xs={12}>
                         <Field
                           name="fullName"
@@ -958,12 +952,7 @@ const Apply = () => {
                           style={{ color: "red" }}
                         />
                       </Grid>
-                      <Base64Downloader
-                        base64={pdf}
-                        downloadName="pdf"
-                      >
-                        Click to download
-                      </Base64Downloader>
+                     
                       <Grid item xs={12}>
                         <Field
                           name="remarks"
@@ -1014,7 +1003,7 @@ const Apply = () => {
           </Formik>
         </Box>
       </Paper>
-      <SuccessModal open={open} handleClose={handleClose} />
+      {/* <SuccessModal open={open} handleClose={handleClose} /> */}
     </Container>
   );
 };
