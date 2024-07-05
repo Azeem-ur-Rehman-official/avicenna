@@ -1,8 +1,8 @@
 // pages/apply.js
 "use client";
 // pages/apply.js
-
-import React, { useState } from "react";
+import Base64Downloader from "common-base64-downloader-react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -34,7 +34,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import axios from "axios";
 import countries from "../utils/countriesList.json"; // Import countries from the JSON file
 import SuccessModal from "../components/SuccessModal";
-async function postRequest(param,data) {
+async function postRequest(param, data) {
   try {
     const response = await axios.post(param, data);
 
@@ -54,7 +54,6 @@ const validationSchema = [
     profilePhoto: Yup.mixed().required("Profile photo is required"),
     fullName: Yup.string().required("Full name is required"),
     gender: Yup.string().required("Gender is required"),
-    
 
     dob: Yup.date().required("Date of birth is required").nullable(),
     email: Yup.string()
@@ -120,12 +119,14 @@ const validationSchema = [
 
 const Apply = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const [image, setImage] = useState(null);
+  const [pdf, setPdf] = useState(null);
   const [open, setOpen] = useState(false);
-
+  console.log("image", image);
+  console.log("pdf", pdf);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  
   const initialValues = {
     profilePhoto: null,
     fullName: "",
@@ -161,6 +162,14 @@ const Apply = () => {
     disclaimer: false,
     remarks: "",
   };
+  const handleFileChange = (e, setFile) => {
+    const file = e;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFile(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -170,45 +179,51 @@ const Apply = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleSubmit = async(values) => {
-    const formData = new FormData();
-    formData.append('fullName', values.fullName );
-    formData.append('profilePhoto', values.profilePhoto );
-    formData.append('gender', values.gender);
-    formData.append('religion', values.religion);
-    formData.append('email', values.email);
-    formData.append('phone', values.phone);
-    formData.append('country', values.country);
-    formData.append('city', values.city);
-    formData.append('currentAddress', values.currentAddress);
-    formData.append('fatherName', values.fatherName);
-    formData.append('fatherOccupation', values.fatherOccupation);
-    formData.append('fatherMobileNumber', values.fatherMobileNumber);
-    formData.append('motherName', values.motherName);
-    formData.append('motherOccupation', values.motherOccupation);
-    formData.append('motherMobileNumber', values.motherMobileNumber);
-    formData.append('matricDegree', values.matricDegree);
-    formData.append('matricInstitute', values.matricInstitute);
-    formData.append('matricYearPassed', values.matricYearPassed);
-    formData.append('matricGpa', values.matricGpa);
-    formData.append('fscDegree', values.fscDegree);
-    formData.append('fscInstitute', values.fscInstitute);
-    formData.append('fscYearPassed', values.fscYearPassed);
-    formData.append('fscGpa', values.fscGpa);
-    formData.append('program', values.program);
-    formData.append('session', values.session);
-    formData.append('passportCopy', values.passportCopy);
-    formData.append('sscCertificate', values.sscCertificate);
-    formData.append('hscCertificate', values.hscCertificate);
-    formData.append('otherFiles', values.otherFiles);
-    formData.append('remarks', values.remarks);
-    handleOpen();
-    // const data = await postRequest("/api/application", formData);
+  const handleSubmit = async (values) => {
+    try {
+      const formData = new FormData();
+      formData.append("fullName", values.fullName);
+      formData.append("profilePhoto", image);
+      formData.append("gender", values.gender);
+      formData.append("religion", values.religion);
+      formData.append("email", values.email);
+      formData.append("phone", values.phone);
+      formData.append("country", values.country);
+      formData.append("city", values.city);
+      formData.append("currentAddress", values.currentAddress);
+      formData.append("fatherName", values.fatherName);
+      formData.append("fatherOccupation", values.fatherOccupation);
+      formData.append("fatherMobileNumber", values.fatherMobileNumber);
+      formData.append("motherName", values.motherName);
+      formData.append("motherOccupation", values.motherOccupation);
+      formData.append("motherMobileNumber", values.motherMobileNumber);
+      formData.append("matricDegree", values.matricDegree);
+      formData.append("matricInstitute", values.matricInstitute);
+      formData.append("matricYearPassed", values.matricYearPassed);
+      formData.append("matricGpa", values.matricGpa);
+      formData.append("fscDegree", values.fscDegree);
+      formData.append("fscInstitute", values.fscInstitute);
+      formData.append("fscYearPassed", values.fscYearPassed);
+      formData.append("fscGpa", values.fscGpa);
+      formData.append("program", values.program);
+      formData.append("session", values.session);
+      formData.append("passportCopy", values.passportCopy);
+      formData.append("sscCertificate", pdf);
+      formData.append("hscCertificate", values.hscCertificate);
+      formData.append("otherFiles", values.otherFiles);
+      formData.append("remarks", values.remarks);
 
-    //       if (data.status == 200) {
-    //         console.log("Form Submitted:", values);
-    //       } else console.log("not submited:", data);
-    // Submit form data
+      const data = await postRequest("/api/application", formData);
+
+      if (data.status == 200) {
+        console.log("Form Submitted:", values);
+      } else console.log("not submited:", data);
+      console.log("img", img);
+      handleOpen();
+      // Submit form data
+    } catch (err) {
+      console.log("err", err);
+    }
   };
 
   const Preview = ({ values }) => (
@@ -373,6 +388,10 @@ const Apply = () => {
                               "profilePhoto",
                               event.currentTarget.files[0]
                             );
+                            handleFileChange(
+                              event.currentTarget.files[0],
+                              setImage
+                            );
                           }}
                         />
                         <label htmlFor="profilePhoto">
@@ -390,6 +409,12 @@ const Apply = () => {
                           style={{ color: "red" }}
                         />
                       </Grid>
+                      <Base64Downloader
+                        base64={image}
+                        downloadName="1x1_red_pixel"
+                      >
+                        Click to download
+                      </Base64Downloader>
                       <Grid item xs={12}>
                         <Field
                           name="fullName"
@@ -422,8 +447,7 @@ const Apply = () => {
                           style={{ color: "red" }}
                         />
                       </Grid>
-                      
-                    
+
                       <Grid item xs={12} sm={6}>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                           <DatePicker
@@ -846,6 +870,10 @@ const Apply = () => {
                               "sscCertificate",
                               event.currentTarget.files[0]
                             );
+                            handleFileChange(
+                              event.currentTarget.files[0],
+                              setPdf
+                            );
                           }}
                         />
                         <label htmlFor="sscCertificate">
@@ -930,7 +958,12 @@ const Apply = () => {
                           style={{ color: "red" }}
                         />
                       </Grid>
-
+                      <Base64Downloader
+                        base64={pdf}
+                        downloadName="pdf"
+                      >
+                        Click to download
+                      </Base64Downloader>
                       <Grid item xs={12}>
                         <Field
                           name="remarks"

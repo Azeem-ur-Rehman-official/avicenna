@@ -32,14 +32,10 @@ const ApplicationFormSchema = new mongoose.Schema({
   session: { type: String, required: true },
   profilePhoto: { url: String,
     public_id: String, },
-  passportScanCopy: { url: String,
-    public_id: String, },
-  sscCertificate: { url: String,
-    public_id: String, },
-  hscCertificate: { url: String,
-    public_id: String, },
-  otherFiles: { url: String,
-    public_id: String, },
+  passportScanCopy: { type: String,  },
+  sscCertificate: { type: String, required: true },
+  hscCertificate: { type: String, required: true },
+  otherFiles: { type: String,  },
   remarks: { type: String },
  
 }, { timestamps: true });

@@ -67,7 +67,7 @@ function Header(props) {
                 variant="contained"
                 color="primary"
                 component={Link}
-                href="/login"
+                href="studentportal"
                 sx={{
                  marginLeft:"5px",
                   borderRadius: "30px",
@@ -85,32 +85,46 @@ function Header(props) {
               </Button>
         
           <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "left" }}>
+          
+            <ListItemButton  component={Link}
+                href='/' sx={{ textAlign: "left" }}>
               <ListItemText primary="Home" />
             </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "left" }}>
-              <ListItemText primary="Institute" />
+            <ListItemButton  component={Link}
+                href='/about' sx={{ textAlign: "left" }}>
+              <ListItemText primary="about" />
             </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "left" }}>
-              <ListItemText primary="Student Life" />
-            </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "left" }}>
-              <ListItemText primary="About us" />
-            </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "left" }}>
+            <ListItemButton component={Link}
+                href='/news' sx={{ textAlign: "left" }}>
               <ListItemText primary="News" />
             </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-            <ListItemButton sx={{ textAlign: "left" }}>
+            <ListItemButton component={Link}
+                href='/administration-message/rector-message' sx={{ textAlign: "left" }}>
+              <ListItemText primary="Rector Message" />
+            </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+            <ListItemButton component={Link}
+                href='/administration-message/vice-rector-message' sx={{ textAlign: "left" }}>
+              <ListItemText primary="Vice-Rector Message" />
+            </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+            <ListItemButton component={Link}
+                href='/administration-message/deans-message' sx={{ textAlign: "left" }}>
+              <ListItemText primary="Deans Message" />
+            </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+            
+            <ListItemButton component={Link}
+                href='/contact' sx={{ textAlign: "left" }}>
               <ListItemText primary="Contact us" />
             </ListItemButton>
           </ListItem>

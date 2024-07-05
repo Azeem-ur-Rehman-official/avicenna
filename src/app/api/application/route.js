@@ -1,38 +1,25 @@
 // pages/api/application/index.js
-import multer from 'multer';
+
 import connect from "@/lib/mongodb";
 import ApplicationFormSchema from "@/lib/models/ApplicationFormSchema";
 import { NextResponse } from "next/server";
-import cloudinary from '@/lib/cloudinary';
-const upload = multer({ dest: '/tmp' });
-// cloudinary.config({
-//   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-//   api_key: process.env.CLOUDINARY_API_KEY,
-//   api_secret: process.env.CLOUDINARY_API_SECRET,
-// });
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };
-// const uploadToCloudinary = async (filePath, folder) => {
-//   return new Promise((resolve, reject) => {
-//     cloudinary.uploader.upload(filePath, { folder }, (error, result) => {
-//       if (error) {
-//         console.log("not ok");
-//         reject(error);
-//       } else {
-//         console.log("ok");
-//         resolve({ url: result.secure_url, public_id: result.public_id });
-//       }
-//     });
-//   });
-// };
+import { v2 as cloudinary } from 'cloudinary';
+cloudinary.config({
+  cloud_name: 'dlbwn1vnu',
+  api_key: '282398165396233',
+  api_secret: 'Gi2_J4XLQeULCubkXx57LJ4v2aE',
+ });
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 export async function POST(req,res) {
  
   if(req.method=="POST"){
     
-   
+ 
     try {
       console.log("payload");
     const formData = await req.formData();
@@ -48,18 +35,29 @@ export async function POST(req,res) {
     const passportCopyPath = formData.get('passportCopy');
     const otherFilesPath = formData.get('otherFiles');
     console.log("ok1");
-    const profilePicUpload = await cloudinary.uploader.upload(profilePhoto, { folder: 'profile_pics' });
-    console.log("ok2");
-    upload.fields([
-        { name: 'profilePhoto', maxCount: 1 },
-       
-      ])
+    
+  
+    // const profileResult = await cloudinary.uploader.upload(profilePhoto, {
+    //   asset_folder: 'profileImage',
+    //   resource_type: 'image'})
+    //   console.log("result",result);
+    const fileResult = await cloudinary.uploader.upload(profilePhoto, {
+      asset_folder: 'documents',
+      resource_type: 'auto',
+     });
+     console.log("result",fileResult);
+  
+   
+    // const result = await cloudinary.uploader.upload(profilePhoto, {
+    //   resource_type: profilePhoto.type.includes('pdf') ? 'raw' : 'image',
+    // });
+    // console.log("data",uploadResponse);
     // const profilePhoto = await uploadToCloudinary(profilePhotoPath, 'profile_photos');
     // const sscCertificate = await uploadToCloudinary(sscCertificatePath, 'ssc_certificates');
     // const hscCertificate = await uploadToCloudinary(hscCertificatePath, 'hsc_certificates');
     // const passportCopy =passportCopyPath? await uploadToCloudinary(passportCopyPath, 'passport_files'):null;
     // const otherFiles =otherFilesPath? await uploadToCloudinary(otherFilesPath, 'Other_files'):null;
-    console.log(profilePicUpload);
+    
     // formDataObj.profilePhoto=profilePhoto;
     // formDataObj.sscCertificate=sscCertificate;
     // formDataObj.hscCertificate=hscCertificate;
@@ -74,6 +72,7 @@ export async function POST(req,res) {
       return NextResponse.json({ success: true, message: "Form created Successfully", });
     } catch (error) {
       console.log("fail")
+      console.log("error.message",error.message)
       return NextResponse.json({ success: false, error: error.message });
     }
   }

@@ -52,12 +52,14 @@ const ContactForm = () => {
           setSubmitting(true);
           resetForm();
 
-          const data = await postRequest("/api/contact", values);
-
-          if (data.status == 200) {
-            setLoading(false);
+          // const data = await postRequest("/api/contact", values);
+          setLoading(false);
             setSuccess(true);
-          } else setLoading(false);
+
+          // if (data.status == 200) {
+          //   setLoading(false);
+          //   setSuccess(true);
+          // } else setLoading(false);
         } catch (err) {
           console.error(err);
           setStatus({ success: false });
