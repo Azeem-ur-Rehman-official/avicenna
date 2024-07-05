@@ -9,11 +9,11 @@ cloudinary.config({
   api_key: '282398165396233',
   api_secret: 'Gi2_J4XLQeULCubkXx57LJ4v2aE',
  });
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+// export const config = {
+//   api: {
+//     bodyParser: false,
+//   },
+// };
 
 export async function POST(req,res) {
  
