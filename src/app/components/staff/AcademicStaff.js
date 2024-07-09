@@ -43,11 +43,16 @@ const staffData = [
 
 const AcademicStaff = () => {
   return (
-    <Container maxWidth="lg" sx={{ py: 6 }}>
+    <Container maxWidth="lg" sx={{ py: 2 }}>
+    <Box sx={{background: "linear-gradient(90deg, rgba(36,0,22,1) 0%, rgba(121,9,60,1) 35%, rgba(255,0,121,1) 100%)",padding:3,borderTopLeftRadius:5,borderTopRightRadius:5}}>
+        <Typography variant="h5" color="white">
+        Accademic Staff
+        </Typography>
+        </Box>
       <Grid container spacing={4}>
         {staffData.map((staff, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card>
+            <Card sx={{minHeight:"400px"}}>
               <CardMedia
                 component="img"
                 height="200"

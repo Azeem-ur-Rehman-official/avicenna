@@ -1,6 +1,6 @@
 // src/components/BlogForm.js
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -15,11 +15,15 @@ import {
   Chip,
   OutlinedInput,
   Container,
+  Avatar,
+  IconButton,
+  Grid,
 } from '@mui/material';
-
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import MarkdownEditor from 'react-markdown-editor-lite';
 import ReactMarkdown from "react-markdown";
 import 'react-markdown-editor-lite/lib/index.css';
+import Image from 'next/image';
 
 const validationSchema = Yup.object({
   title: Yup.string().required('Title is required'),
@@ -31,8 +35,11 @@ const validationSchema = Yup.object({
 });
 
 const BlogForm = ({ onSubmit }) => {
+  const [image, setImage] = useState(null);
+  const [imageView, setImageView] = useState(null);
   const formik = useFormik({
     initialValues: {
+      bannerPhoto:null,
       title: '',
       slug: '',
       description: '',
@@ -40,11 +47,21 @@ const BlogForm = ({ onSubmit }) => {
       tags: [],
       status: 'draft',
       content: '',
+      html: '',
     },
     validationSchema,
     onSubmit,
   });
-
+  console.log("v2",formik.initialValues.content);
+ 
+  const handleFileChange = (e, setFile) => {
+    const file = e;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFile(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
  
 
   return (
@@ -54,6 +71,20 @@ const BlogForm = ({ onSubmit }) => {
           Create a New Blog
         </Typography>
         <form onSubmit={formik.handleSubmit}>
+     
+                      <Box>
+          <label>Upload banner :</label>
+          <input type="file" onChange={(event) => {
+                            setImageView(
+                             
+                              event.currentTarget.files[0]
+                            );
+                            handleFileChange(
+                              event.currentTarget.files[0],
+                              setImage
+                            );
+                          }} accept="image/*"  />
+        </Box>
           <TextField
             fullWidth
             id="title"
@@ -119,28 +150,20 @@ const BlogForm = ({ onSubmit }) => {
               }}>
 {text}
               </ReactMarkdown>)}
-              onChange={({ html, text }) => formik.setFieldValue('content', text)}
+              onChange={({ html, text }) => {formik.setFieldValue('content', text);
+                formik.setFieldValue('html', html)
+              }}
               value={formik.values.content}
             />
             {formik.touched.content && Boolean(formik.errors.content) && (
               <Typography color="error">{formik.errors.content}</Typography>
             )}
           </Box>
-          <TextField
-            fullWidth
-            id="blogCategory"
-            name="blogCategory"
-            label="Blog Category"
-            margin="normal"
-            value={formik.values.blogCategory}
-            onChange={formik.handleChange}
-            error={formik.touched.blogCategory && Boolean(formik.errors.blogCategory)}
-            helperText={formik.touched.blogCategory && formik.errors.blogCategory}
-          />
+         
           <FormControl fullWidth margin="normal">
             <InputLabel id="tags-label">Tags</InputLabel>
             <Select
-              labelId="tags-label"
+              labelId="Blog Category"
               id="tags"
               name="tags"
               multiple

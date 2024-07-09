@@ -29,19 +29,20 @@ export default function Dashboard() {
 
   const handleSubmit = async (values) => {
     try {
-      const response = await fetch('/api/blogs', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
+      console.log("valoo",values);
+      // const response = await fetch('/api/blogs', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(values),
+      // });
 
-      if (response.ok) {
-        window.alert('/blogs');
-      } else {
-        console.error('Failed to create the blog');
-      }
+      // if (response.ok) {
+      //   window.alert('/blogs');
+      // } else {
+      //   console.error('Failed to create the blog');
+      // }
     } catch (error) {
       console.error('An unexpected error occurred:', error);
     }

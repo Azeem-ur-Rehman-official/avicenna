@@ -33,10 +33,11 @@ const useStyles = makeStyles(() => ({
   },
   testimonialSlide: {
     display: "flex",
+    justifyContent:"center",
     transition: "transform 0.5s ease-in-out",
   },
   card: {
-    minWidth: "300px",
+    width: "90%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",
@@ -129,27 +130,21 @@ const testimonials = [
 const TestimonialSection = () => {
   const classes = useStyles();
   const [currentSlide, setCurrentSlide] = useState(0);
-
+console.log(testimonials.length,"-----",currentSlide);
   const handlePrevSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === 0 ? testimonials.length - 2 : prev - 1
-    );
+    if(currentSlide!=0)
+      setCurrentSlide(currentSlide-1)
+    else setCurrentSlide(6)
+    
   };
 
   const handleNextSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === testimonials.length - 2 ? 0 : prev + 1
-    );
+    if(currentSlide!=testimonials.length-1)
+      setCurrentSlide(currentSlide+1)
+    else setCurrentSlide(0)
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) =>
-        prev === testimonials.length - 2 ? 0 : prev + 1
-      );
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+
 
   return (
     <Box className={classes.section}>
@@ -168,11 +163,9 @@ const TestimonialSection = () => {
         <Box className={classes.testimonialContainer}>
           <Box
             className={classes.testimonialSlide}
-            style={{
-              transform: `translateX(-${currentSlide * 50}%)`,
-            }}
+           
           >
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((testimonial, index) => (currentSlide==index &&
               <Card className={classes.card} key={index}>
                 <TestimonialIcon className={classes.icon} fontSize="large" />
                 <CardContent className={classes.cardContent}>

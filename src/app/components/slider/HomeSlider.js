@@ -8,20 +8,13 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import theme from "@/app/theme";
 import Link from "next/link";
+import Image from "next/image";
 const useStyles = makeStyles(() => ({
   sliderContainer: {
     position: "relative",
     overflow: "hidden",
-    height: "100vh",
-    [theme.breakpoints.down('md')]: {
-        height: "800px",
-      },
-      [theme.breakpoints.down('sm')]: {
-        height: "100vh",
-      },
-      [theme.breakpoints.down('xs')]: {
-        height: "100vh",
-      },
+    height:"100vh",
+  
     width: "100%",
   },
   slide: {
@@ -29,12 +22,12 @@ const useStyles = makeStyles(() => ({
     top: 0,
     left: 0,
     width: "100%",
-    height: "100%",
+    height: "100vh",
     transition: "transform 0.5s ease-in-out",
   },
   slideImage: {
     width: "100%",
-    height: "100%",
+    height: "100vh",
     objectFit: "cover",
   },
   blueOverlay: {
@@ -42,7 +35,7 @@ const useStyles = makeStyles(() => ({
     top: 0,
     left: 0,
     width: "100%",
-    height: "100%",
+    height: "100vh",
     backgroundColor: "rgba(0, 0, 0, 0.3)", // Blue color with 0.3 opacity
     zIndex: 1,
   },
@@ -125,7 +118,16 @@ const HomepageSlider = () => {
             transform: `translateX(${(index - currentSlide) * 100}%)`,
           }}
         >
-          <img src={slide.image} alt={`Slide ${index + 1}`} className={classes.slideImage} />
+       <Image
+      src={slide.image} alt={`Slide ${index + 1}`} 
+      quality={100} fill sizes="100vw" style={{
+          width: '100%',
+          objectFit: 'cover',
+
+         
+        }} className={classes.slideImage}
+    />
+          {/* <img src={slide.image} alt={`Slide ${index + 1}`} className={classes.slideImage} /> */}
           <Box className={classes.blueOverlay}></Box>
           <Box className={classes.slideContent}>
             <Zoom>

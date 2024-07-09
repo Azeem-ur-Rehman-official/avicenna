@@ -27,7 +27,7 @@ const drawerWidth = 340;
 const navItemsUp = [
   {name:"Licenses & Certifications",link:"/licenses-certifications"},
   {name:"Alumni", link:"/alumni"},
-  {name:"Community & Partners",link:"/community&partners"},
+  {name:"Administration",link:"/administration"},
   
 ];
 const navItems = [
@@ -95,6 +95,12 @@ function Header(props) {
             <ListItemButton  component={Link}
                 href='/about' sx={{ textAlign: "left" }}>
               <ListItemText primary="about" />
+            </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+            <ListItemButton  component={Link}
+                href='/university-photos' sx={{ textAlign: "left" }}>
+              <ListItemText primary="Gallary" />
             </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
@@ -196,7 +202,7 @@ function Header(props) {
                   Home
                 </Button>
                 {/* <InstituteHandler /> */}
-                <AdministrationMessages/>
+                {/* <AdministrationMessages/> */}
                
                 <Button
                 component={Link}
@@ -210,6 +216,19 @@ function Header(props) {
                   }}
                 >
                   About
+                </Button>
+                <Button
+                component={Link}
+                href="/university-photos"
+                  sx={{
+                    color: "#000000",
+                    ...(pathname == "/news" && {
+                      color: "#213b75",
+                      fontWeight: 800,
+                    }),
+                  }}
+                >
+                  Gallary
                 </Button>
                 <Button
                 component={Link}

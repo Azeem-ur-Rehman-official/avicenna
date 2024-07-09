@@ -55,28 +55,16 @@ export default function RectorMessage() {
 
   return (
     <>
-      <Box className={classes.heroSection}>
-        <Container>
-          <Fade top>
-            <Typography
-              variant="h3"
-              component="h1"
-              className={classes.heroText}
-            >
-              Rector Message
-            </Typography>
-          </Fade>
-        </Container>
-      </Box>
+     
       <Container className={classes.cardContainer}>
         <Fade bottom>
+        <Box sx={{background: "linear-gradient(90deg, rgba(36,0,22,1) 0%, rgba(121,9,60,1) 35%, rgba(255,0,121,1) 100%)",padding:3,borderTopLeftRadius:5,borderTopRightRadius:5}}>
+        <Typography variant="h5" color="white">
+        Rector Message
+        </Typography>
+        </Box>
           <Card className={classes.card}>
-            <CardMedia
-              component="img"
-              className={classes.cardMedia}
-              image="/assets/staf/t1.jpg"
-              alt="Rector"
-            />
+           
             <CardContent className={classes.cardContent}>
               <Typography
                 variant="h5"
@@ -121,6 +109,12 @@ export default function RectorMessage() {
                 Tulekovich
               </Typography>
             </CardContent>
+            <CardMedia
+              component="img"
+              className={classes.cardMedia}
+              image="/assets/staf/t1.jpg"
+              alt="Rector"
+            />
           </Card>
         </Fade>
       </Container>

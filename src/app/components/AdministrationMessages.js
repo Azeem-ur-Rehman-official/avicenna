@@ -78,7 +78,7 @@ const AdministrationMessages = () => {
        
         sx={{ color: "#000000",...(location=="intitute"&&{color:"#213b75",fontWeight:800}) }}
       >
-        Administration messages
+        Alumni
       </Button>
       <StyledMenu
         id="demo-customized-menu"
