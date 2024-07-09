@@ -33,10 +33,24 @@ const useStyles = makeStyles(() => ({
       color: theme.palette.common.white,
     },
   },
+  listItem2: {
+    marginBottom: theme.spacing(2),
+  
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.common.white,
+   
+  },
   listItemIcon: {
     color: theme.palette.primary.main,
     "&:hover": {
       color: theme.palette.common.white,
+    },
+  },
+  listItemIcon2: {
+      color: theme.palette.common.white,
+    
+    "&:hover": {
+      color: theme.palette.primary.main,
     },
   },
 }));
@@ -92,6 +106,14 @@ const AffiliatedHospitals = () => {
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <List className={classes.list}>
+            <Fade bottom >
+              <ListItem className={classes.listItem2}>
+                <ListItemIcon className={classes.listItemIcon2}>
+                  <HospitalIcon />
+                </ListItemIcon>
+                <ListItemText primary="Medical Clinic of the 'Avicenna' International Medical University 'Avicenna.kg' (Bishkek, Moscow Street, 136)" />
+              </ListItem>
+            </Fade>
               {hospitals
                 .slice(0, Math.ceil(hospitals.length / 2))
                 .map((hospital, index) => (
@@ -108,6 +130,15 @@ const AffiliatedHospitals = () => {
           </Grid>
           <Grid item xs={12} md={6}>
             <List className={classes.list}>
+           
+            <Fade bottom >
+              <ListItem className={classes.listItem2}>
+                <ListItemIcon className={classes.listItemIcon2}>
+                  <HospitalIcon />
+                </ListItemIcon>
+                <ListItemText primary="Medical Clinic of the 'Avicenna' International Medical University 'MEDI' (Bishkek, Suerkulova Street, 5/3)" />
+              </ListItem>
+            </Fade>
               {hospitals
                 .slice(Math.ceil(hospitals.length / 2))
                 .map((hospital, index) => (
