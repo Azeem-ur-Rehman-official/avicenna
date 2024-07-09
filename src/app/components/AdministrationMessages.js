@@ -78,7 +78,7 @@ const AdministrationMessages = () => {
        
         sx={{ color: "#000000",...(location=="intitute"&&{color:"#213b75",fontWeight:800}) }}
       >
-        Alumni
+        Contact Us
       </Button>
       <StyledMenu
         id="demo-customized-menu"
@@ -91,18 +91,18 @@ const AdministrationMessages = () => {
       >
         <MenuItem onClick={handleClose} disableRipple>
           
-          <Link href="/administration-message/rector-message">Rector's Message</Link>
+          <Link href="/contact">Contact Us</Link>
           
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
           
-          <Link href="/administration-message/vice-rector-message">Vice-Rector message</Link>
+          <Link href="/admission-offices">Admission Offices</Link>
           
         </MenuItem>
 
         <MenuItem onClick={handleClose} disableRipple>
           
-          <Link href="/administration-message/deans-message">Deans message</Link>
+          <Link href="/studentportal">Online Apply</Link>
           
         </MenuItem>
 

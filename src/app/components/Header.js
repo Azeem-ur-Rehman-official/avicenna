@@ -130,6 +130,13 @@ function Header(props) {
             <ListItem disablePadding>
             
             <ListItemButton component={Link}
+                href='/admission-offices' sx={{ textAlign: "left" }}>
+              <ListItemText primary="Admission Offices" />
+            </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+            
+            <ListItemButton component={Link}
                 href='/contact' sx={{ textAlign: "left" }}>
               <ListItemText primary="Contact us" />
             </ListItemButton>
@@ -202,7 +209,7 @@ function Header(props) {
                   Home
                 </Button>
                 {/* <InstituteHandler /> */}
-                {/* <AdministrationMessages/> */}
+                
                
                 <Button
                 component={Link}
@@ -222,7 +229,7 @@ function Header(props) {
                 href="/university-photos"
                   sx={{
                     color: "#000000",
-                    ...(pathname == "/news" && {
+                    ...(pathname == "/university-photos" && {
                       color: "#213b75",
                       fontWeight: 800,
                     }),
@@ -243,8 +250,8 @@ function Header(props) {
                 >
                   News
                 </Button>
-
-                <Button
+                <AdministrationMessages/>
+                {/* <Button
                 component={Link}
                 href="/contact"
                   sx={{
@@ -256,7 +263,7 @@ function Header(props) {
                   }}
                 >
                   Contact Us
-                </Button>
+                </Button> */}
               </Box>
               <Button
                 variant="contained"
@@ -275,7 +282,7 @@ function Header(props) {
                   },
                 }}
               >
-                Apply
+                Apply Now
               </Button>
             
             </Stack>

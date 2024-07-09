@@ -68,21 +68,17 @@ const validationSchema = [
     fatherMobileNumber: Yup.string().required(
       "Father mobile number is required"
     ),
-    motherName: Yup.string().required("Mother name is required"),
-    motherOccupation: Yup.string().required("Mother occupation is required"),
-    motherMobileNumber: Yup.string().required(
-      "Mother mobile number is required"
-    ),
+  
   }),
   Yup.object({
     matricDegree: Yup.string().required("Degree is required"),
     matricInstitute: Yup.string().required("Institute name is required"),
     matricYearPassed: Yup.string().required("Year passed is required"),
-    matricGpa: Yup.string().required("GPA is required"),
+    
     fscDegree: Yup.string().required("Degree is required"),
     fscInstitute: Yup.string().required("Institute name is required"),
     fscYearPassed: Yup.string().required("Year passed is required"),
-    fscGpa: Yup.string().required("GPA is required"),
+ 
     program: Yup.string().required("Program is required"),
     session: Yup.string().required("Session is required"),
   }),
@@ -140,17 +136,15 @@ const Apply = () => {
     fatherName: "",
     fatherOccupation: "",
     fatherMobileNumber: "",
-    motherName: "",
-    motherOccupation: "",
-    motherMobileNumber: "",
+   
     matricDegree: "",
     matricInstitute: "",
     matricYearPassed: "",
-    matricGpa: "",
+  
     fscDegree: "",
     fscInstitute: "",
     fscYearPassed: "",
-    fscGpa: "",
+ 
     program: "",
     session: "",
 
@@ -193,17 +187,15 @@ const Apply = () => {
       formData.append("fatherName", values.fatherName);
       formData.append("fatherOccupation", values.fatherOccupation);
       formData.append("fatherMobileNumber", values.fatherMobileNumber);
-      formData.append("motherName", values.motherName);
-      formData.append("motherOccupation", values.motherOccupation);
-      formData.append("motherMobileNumber", values.motherMobileNumber);
+     
       formData.append("matricDegree", values.matricDegree);
       formData.append("matricInstitute", values.matricInstitute);
       formData.append("matricYearPassed", values.matricYearPassed);
-      formData.append("matricGpa", values.matricGpa);
+
       formData.append("fscDegree", values.fscDegree);
       formData.append("fscInstitute", values.fscInstitute);
       formData.append("fscYearPassed", values.fscYearPassed);
-      formData.append("fscGpa", values.fscGpa);
+   
       formData.append("program", values.program);
       formData.append("session", values.session);
       formData.append("passportCopy", values.passportCopy);
@@ -591,48 +583,7 @@ const Apply = () => {
                           style={{ color: "red" }}
                         />
                       </Grid>
-                      <Grid item xs={12}>
-                        <Field
-                          name="motherName"
-                          as={TextField}
-                          label="Mother's Name"
-                          fullWidth
-                          variant="outlined"
-                        />
-                        <ErrorMessage
-                          name="motherName"
-                          component="div"
-                          style={{ color: "red" }}
-                        />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Field
-                          name="motherOccupation"
-                          as={TextField}
-                          label="Mother's Occupation"
-                          fullWidth
-                          variant="outlined"
-                        />
-                        <ErrorMessage
-                          name="motherOccupation"
-                          component="div"
-                          style={{ color: "red" }}
-                        />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Field
-                          name="motherMobileNumber"
-                          as={TextField}
-                          label="Mother's Mobile Number"
-                          fullWidth
-                          variant="outlined"
-                        />
-                        <ErrorMessage
-                          name="motherMobileNumber"
-                          component="div"
-                          style={{ color: "red" }}
-                        />
-                      </Grid>
+                     
                     </Grid>
                   </Box>
                 )}
@@ -649,6 +600,7 @@ const Apply = () => {
                             name="matricDegree"
                             as={Select}
                             label="Select Degree"
+                            value="matric"
                           >
                             <MenuItem value="matric">10th class/ SSC</MenuItem>
                           </Field>
@@ -687,20 +639,7 @@ const Apply = () => {
                           name="matricYearPassed"
                         />
                       </Grid>
-                      <Grid item xs={4}>
-                        <Field
-                          name="matricGpa"
-                          as={TextField}
-                          label="GPA Obtained"
-                          fullWidth
-                          variant="outlined"
-                        />
-                        <ErrorMessage
-                          component="div"
-                          style={{ color: "red" }}
-                          name="matricGpa"
-                        />
-                      </Grid>
+                     
                     </Grid>
                     <Grid container spacing={2}>
                       <Grid item xs={12} md={12} mt={5}>
@@ -710,6 +649,7 @@ const Apply = () => {
                             name="fscDegree"
                             as={Select}
                             label="Select Degree"
+                            value="fsc"
                           >
                             <MenuItem value="fsc">12th class/ HSC</MenuItem>
                           </Field>
@@ -748,20 +688,7 @@ const Apply = () => {
                           name="fscYearPassed"
                         />
                       </Grid>
-                      <Grid item xs={4}>
-                        <Field
-                          name="fscGpa"
-                          as={TextField}
-                          label="GPA Obtained"
-                          fullWidth
-                          variant="outlined"
-                        />
-                        <ErrorMessage
-                          component="div"
-                          style={{ color: "red" }}
-                          name="fscGpa"
-                        />
-                      </Grid>
+                      
                     </Grid>
                     <Box sx={{ mt: 4 }}>
                       <Typography variant="h6" gutterBottom>

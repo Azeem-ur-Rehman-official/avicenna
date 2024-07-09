@@ -106,6 +106,7 @@ const data = [
   { label: "Staff", value: "300+" },
   { label: "Graduates", value: "100+" },
   { label: "Campuses", value: "6" },
+  { label: "Batches Graduated", value: "4" },
 ];
 const data2 = [
   {
