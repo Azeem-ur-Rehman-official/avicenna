@@ -99,8 +99,8 @@ const AdmissionOffices = () => {
               Pakistan and UAE
             </Typography>
             {pakistanUAEOffices.map((office, index) => (
-                <Fade up>
-              <AdmissionOffice key={index} office={office} />
+                <Fade up key={index} >
+              <AdmissionOffice office={office} />
               </Fade>
             ))}
           </Grid>
@@ -117,8 +117,8 @@ const AdmissionOffices = () => {
               India, Nepal, and Bangladesh
             </Typography>
             {indiaNepalBangladeshOffices.map((office, index) => (
-                <Fade up>
-                <AdmissionOffice key={index} office={office} />
+                <Fade up key={index}>
+                <AdmissionOffice  office={office} />
                 </Fade>
               
             ))}
