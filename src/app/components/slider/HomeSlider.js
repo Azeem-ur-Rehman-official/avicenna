@@ -136,7 +136,7 @@ const HomepageSlider = () => {
               ml: "20px",
               fontWeight: 700,
               color: "white",
-              fontSize: { xs: "60px", md: "80px" },
+              fontSize: { xs: "40px", md: "80px" },
             }}>{slide.heading}</Typography>
             <Button
               fullWidth

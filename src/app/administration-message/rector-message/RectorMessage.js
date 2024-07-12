@@ -95,7 +95,7 @@ export default function RectorMessage() {
                 Viewed in this perspective, Medical colleges and Universities
                 have an important role to play, as the entire responsibility of
                 providing quality education cannot be shouldered by the Public
-                Sector alone. Asian Medical Institute has been established with
+                Sector alone. Avicenna medical university has been established with
                 the aim to live up to the standards of medical education and to
                 compete at National and International levels.
               </Typography>
@@ -105,8 +105,7 @@ export default function RectorMessage() {
                 mt={2}
                 sx={{ fontWeight: 700, lineHeight: "1.2em", color: "#382153" }}
               >
-                Doktor of medical sciences, professor Selpiev Toychubek
-                Tulekovich
+                Professor Asylbek T. Baigazakov
               </Typography>
             </CardContent>
             <CardMedia

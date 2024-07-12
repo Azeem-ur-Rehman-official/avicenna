@@ -3,41 +3,59 @@ import { Box, Container, Grid, Card, CardContent, CardMedia, Typography } from '
 
 const staffData = [
   {
-    name: 'Dr. John Doe',
+    name: 'Dr. Asylbek Topchubaevich',
     position: 'Professor of Anatomy',
-    image: '/assets/staf/t1.jpg',
+    image: 'https://thumb.cloud.mail.ru/weblink/thumb/xw1/ALFb/Bipfj9rvX/IMG_1877.jpg',
     bio: 'Dr. John Doe has been teaching Anatomy for over 20 years and is a leading researcher in the field.',
   },
   {
-    name: 'Dr. Jane ',
+    name: 'Dr. Amiraev Ruslan',
     position: 'Associate Professor of Physiology',
+    image: 'https://thumb.cloud.mail.ru/weblink/thumb/xw1/ALFb/Bipfj9rvX/IMG_1879.jpg',
+    bio: 'Dr. Jane Smith specializes in cardiovascular physiology and has published numerous papers on the subject.',
+  },
+  {
+    name: 'Dr. Temir Arapov',
+    position: 'Associate Professor of Physiology',
+    image: 'https://thumb.cloud.mail.ru/weblink/thumb/xw1/ALFb/Bipfj9rvX/IMG_1892.jpg',
+    bio: 'Dr. Jane Smith specializes in cardiovascular physiology and has published numerous papers on the subject.',
+  },
+  {
+  name: 'Nasirova Svetlana Akbarovna',
+    position: 'Associate Professor of Physiology',
+    image: 'https://thumb.cloud.mail.ru/weblink/thumb/xw1/ALFb/Bipfj9rvX/IMG_1883.jpg',
+    bio: 'Dr. Jane Smith specializes in cardiovascular physiology and has published numerous papers on the subject.',
+  },
+  {
+    name: 'Madina B. Berdibekova',
+    position: 'https://thumb.cloud.mail.ru/weblink/thumb/xw1/ALFb/Bipfj9rvX/IMG_1875.jpg',
     image: '/assets/staf/t2.jpg',
-    bio: 'Dr. Jane Smith specializes in cardiovascular physiology and has published numerous papers on the subject.',
-  },
-  {
-  name: 'Dr. Sidra',
-    position: 'Associate Professor of Physiology',
-    image: '/assets/staf/t3.jpg',
-    bio: 'Dr. Jane Smith specializes in cardiovascular physiology and has published numerous papers on the subject.',
-  },
-  {
-    name: 'Dr. Jasmin',
-    position: 'Professor of Anatomy',
-    image: '/assets/staf/t4.jpg',
     bio: 'Dr. John Doe has been teaching Anatomy for over 20 years and is a leading researcher in the field.',
   },
   {
-    name: 'Dr. Zin',
+    name: 'Asanova Aizada',
     position: 'Associate Professor of Physiology',
-    image: '/assets/staf/t5.jpg',
+    image: 'https://thumb.cloud.mail.ru/weblink/thumb/xw1/ALFb/Bipfj9rvX/IMG_1884.jpg',
     bio: 'Dr. Jane Smith specializes in cardiovascular physiology and has published numerous papers on the subject.',
   },
   {
-  name: 'Dr. Yima',
+  name: 'Nurzhan Osmonalieva',
     position: 'Associate Professor of Physiology',
-    image: '/assets/staf/t6.jpg',
+    image: 'https://thumb.cloud.mail.ru/weblink/thumb/xw1/ALFb/Bipfj9rvX/IMG_1893.jpg',
     bio: 'Dr. Jane Smith specializes in cardiovascular physiology and has published numerous papers on the subject.',
   },
+  {
+    name: 'Nazarbekova Elvira',
+      position: 'Associate Professor of Physiology',
+      image: 'https://thumb.cloud.mail.ru/weblink/thumb/xw1/ALFb/Bipfj9rvX/IMG_1906.jpg',
+      bio: 'Dr. Jane Smith specializes in cardiovascular physiology and has published numerous papers on the subject.',
+    },
+    {
+      name: 'Tarielova Bermet Tarielovna',
+        position: 'Associate Professor of Physiology',
+        image: 'https://thumb.cloud.mail.ru/weblink/thumb/xw1/ALFb/Bipfj9rvX/IMG_1896.jpg',
+        bio: 'Dr. Jane Smith specializes in cardiovascular physiology and has published numerous papers on the subject.',
+      },
   // Add more staff members as needed
 ];
 
@@ -55,7 +73,7 @@ const AcademicStaff = () => {
             <Card sx={{minHeight:"400px"}}>
               <CardMedia
                 component="img"
-                height="200"
+                height="450"
                 image={staff.image}
                 alt={staff.name}
               />
@@ -63,12 +81,7 @@ const AcademicStaff = () => {
                 <Typography variant="h6" component="div">
                   {staff.name}
                 </Typography>
-                <Typography variant="subtitle1" color="text.secondary">
-                  {staff.position}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {staff.bio}
-                </Typography>
+               
               </CardContent>
             </Card>
           </Grid>

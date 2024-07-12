@@ -24,6 +24,20 @@ const useStyles = makeStyles(() => ({
 }));
 
 const licensesCertifications = [
+  { src: "/certificate/certificate0006.jpg", alt: "Certification 2" },
+  { src: "/certificate/certificate0005.jpg", alt: "Certification 2" },
+  { src: "/certificate/certificate0007.jpg", alt: "Certification 2" },
+  { src: "/certificate/v1.jpg", alt: "Certification 2" },
+  { src: "/certificate/v2.jpg", alt: "Certification 2" },
+  { src: "/certificate/v3.jpg", alt: "Certification 2" },
+  { src: "/certificate/v4.jpg", alt: "Certification 2" },
+  { src: "/certificate/v5.jpg", alt: "Certification 2" },
+  { src: "/certificate/v6.jpg", alt: "Certification 2" },
+  { src: "/certificate/v7.jpg", alt: "Certification 2" },
+  { src: "/certificate/v8.jpg", alt: "Certification 2" },
+  { src: "/certificate/v9.jpg", alt: "Certification 2" },
+  { src: "/certificate/v10.jpg", alt: "Certification 2" },
+  { src: "/certificate/v11.jpg", alt: "Certification 2" },
   { src: "/certificate/aaopo_page-0001.jpg", alt: "License 1" },
   { src: "/certificate/aaopo_page-0002.jpg", alt: "License 2" },
   { src: "/certificate/aaopo_page-0003.jpg", alt: "Certification 1" },
@@ -33,9 +47,8 @@ const licensesCertifications = [
   { src: "/certificate/certificate0002.jpg", alt: "Certification 2" },
   { src: "/certificate/certificate0003.jpg", alt: "Certification 2" },
   { src: "/certificate/certificate0004.jpg", alt: "Certification 2" },
-  { src: "/certificate/certificate0005.jpg", alt: "Certification 2" },
-  { src: "/certificate/certificate0006.jpg", alt: "Certification 2" },
-  { src: "/certificate/certificate0007.jpg", alt: "Certification 2" },
+  
+  
   // Add more images as needed
 ];
 

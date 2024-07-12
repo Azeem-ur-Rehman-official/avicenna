@@ -1,12 +1,14 @@
 "use client"
 import React from 'react';
 
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { Box, Container, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import HeroSection from '../components/hero section/HeroSection';
 import AcademicStaff from '../components/staff/AcademicStaff';
 import DeansMessage from '../administration-message/deans-message/DeansMessage';
 import RectorMessage from '../administration-message/rector-message/RectorMessage';
 import ViceRectorMessage from '../administration-message/vice-rector-message/ViceRectorMessage';
+import Image from 'next/image';
+import ViseDean from '../administration-message/vise-dean-message/ViseDean';
 
 const theme = createTheme({
   palette: {
@@ -24,9 +26,10 @@ export default function StaffPage() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <HeroSection />
-      <DeansMessage/>
       <RectorMessage/>
       <ViceRectorMessage/>
+      <DeansMessage/>
+      <ViseDean/>
       <AcademicStaff />
     </ThemeProvider>
   );

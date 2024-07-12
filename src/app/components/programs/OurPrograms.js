@@ -43,17 +43,17 @@ const programs = [
   {
     title: "Nursing",
     image: "/assets/programs/nursing.jpg",
-    description: "Learn about our Nursing program.",
+    description: "Learn about our Nursing program English or Russian Medium.",
   },
   {
     title: "MBBS/MD",
     image: "/assets/programs/doctor.jpg",
-    description: "5 Year Course / 6 Year Course English Medium",
+    description: "5 Year Course / 6 Year Course English or Russian Medium",
   },
   {
     title: "BDS",
     image: "/assets/programs/BDS.jpg",
-    description: "5 Year Course English Medium",
+    description: "5 Year Course English or Russian Medium",
   },
   {
     title: "PG",
@@ -78,7 +78,7 @@ const OurPrograms = () => {
         </Typography>
         <Grid container spacing={4} justifyContent="center">
           {programs.map((program, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
+            <Grid item xs={12} sm={6} md={4} key={index}>
               <Zoom>
                 <Box className={classes.cardContainer}>
                   <Card className={classes.card}>

@@ -143,8 +143,7 @@ const About = () => {
           qualified teachers promotes the improvement of training quality.
           Students will be taught not only on a clinical basis in Kant but also
           in Bishkek, the capital city. Many republican medical institutions and
-          scientific centers are the clinical bases of the Asian Medical
-          Institute. Institute’s departments will be working out both the
+          scientific centers are the clinical bases of the Avicenna medical university. Institute’s departments will be working out both the
           fundamental and applied research problems on medicine priority
           direction.
         </Typography>

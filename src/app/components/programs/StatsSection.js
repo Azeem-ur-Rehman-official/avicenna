@@ -111,7 +111,7 @@ const data = [
 const data2 = [
   {
     title: "Modern Campuses",
-    image: "/assets/programs/nursing.jpg",
+    image: "/building.jpg",
     description: "Learn about our Nursing program.",
   },
   {
@@ -126,7 +126,7 @@ const data2 = [
   },
   {
     title: "4 Batches Graduated",
-    image: "/banner.jpg",
+    image: "/graduate.jpg",
     description: "5 Year Course English Medium",
   },
 ];

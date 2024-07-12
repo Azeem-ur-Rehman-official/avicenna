@@ -67,7 +67,7 @@ export default function ViceRectorMessage() {
             <CardMedia
               component="img"
               className={classes.cardMedia}
-              image="/assets/staf/t7.jpg"
+              image="/assets/staf/Ruslan.jpg"
               alt="Rector"
             />
             <CardContent className={classes.cardContent}>
@@ -84,7 +84,7 @@ export default function ViceRectorMessage() {
                 component="p"
                 mt={2}
               >
-                Entering ASIAN MEDICAL INSTITUTE is one of the most exciting and important phases in your life. It will bring you opportunities to extend your knowledge and skills, meet new intellectual challenges, and develop new friendships.
+                Entering Avicenna medical university is one of the most exciting and important phases in your life. It will bring you opportunities to extend your knowledge and skills, meet new intellectual challenges, and develop new friendships.
               </Typography>
               <Typography
                 variant="body1"
@@ -92,7 +92,7 @@ export default function ViceRectorMessage() {
                 component="p"
                 mt={2}
               >
-                It is our pleasure to welcome you to Asian Medical Institute, as the higher medical institute of Kyrgyzstan, while you study at our modern garden-like campus, you are provided with a stimulating and healthy physical and cultural environment and good services. Students are expected to acquire knowledge and skills to develop a moral, ethical and principled character that will be reflected in their personal and professional life. We will be greatly honored that you choose to pursue your education with AMI and realize your dream as a doctor in our Institute. We must and will always make maximum efforts to create a learning environment that is challenging, yet supportive of your personal interests and needs.
+                It is our pleasure to welcome you to Avicenna medical university, as the higher medical institute of Kyrgyzstan, while you study at our modern garden-like campus, you are provided with a stimulating and healthy physical and cultural environment and good services. Students are expected to acquire knowledge and skills to develop a moral, ethical and principled character that will be reflected in their personal and professional life. We will be greatly honored that you choose to pursue your education with AMI and realize your dream as a doctor in our Institute. We must and will always make maximum efforts to create a learning environment that is challenging, yet supportive of your personal interests and needs.
               <br></br>
               If you are interested in studying at AMI that can sustain a high quality of student life, our institute is an ideal choice. We look forward to your coming to this institute.
               </Typography>
@@ -109,8 +109,7 @@ export default function ViceRectorMessage() {
                 mt={2}
                 sx={{ fontWeight: 700, lineHeight: "1.2em", color: "#382153" }}
               >
-                Dr.Prashant Ranjan Mishra
-                M.S. (ORTHO)
+                Professor Amiraeve U. Ruslan
               </Typography>
             </CardContent>
           </Card>

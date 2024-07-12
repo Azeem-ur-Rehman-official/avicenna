@@ -152,7 +152,7 @@ console.log(testimonials.length,"-----",currentSlide);
         <Box className={classes.heading}>
           <Fade>
             <Typography variant="h3" sx={{ fontWeight: 800, color: "#fff" }}>
-              What Our Clients Say
+              What Our Students Say
             </Typography>
             <Typography variant="body1" sx={{ color: "#fff" }}>
               We value our clients' feedback and continuously strive to improve
