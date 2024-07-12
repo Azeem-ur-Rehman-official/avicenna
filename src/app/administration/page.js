@@ -3,7 +3,9 @@ import React from 'react';
 
 import { Box, Container, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import HeroSection from '../components/hero section/HeroSection';
-import AcademicStaff from '../components/staff/AcademicStaff';
+const AcademicStaff = dynamic(() => import('../components/staff/AcademicStaff'), {
+  ssr: false,
+});
 import DeansMessage from '../administration-message/deans-message/DeansMessage';
 import RectorMessage from '../administration-message/rector-message/RectorMessage';
 import ViceRectorMessage from '../administration-message/vice-rector-message/ViceRectorMessage';

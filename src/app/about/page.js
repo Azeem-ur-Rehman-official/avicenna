@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import FAQ from "../components/faq/FAQ";
 import AffiliatedHospitals from "../components/AffiliatedHospitals";
-
+import Curriculum from "../components/Curriculum";
 const HeroSection = styled(Box)(({ theme }) => ({
   backgroundColor: "#001e60",
   color: "#fff",
@@ -52,14 +52,14 @@ const About = () => {
           Welcome to Avicenna International Medical University
         </Typography>
       </HeroSection>
-      <Container sx={{paddingBottom:"100px",}}>
+      <Container sx={{ paddingBottom: "100px" }}>
         <HistorySection>
           <Fade in={checked} timeout={1000}>
             <Grid container spacing={4}>
               <Grid item xs={12} md={6}>
                 <CardMedia
                   component="img"
-                  image="/assets/aboutus.jpg" // Replace with your image path
+                  image="/building.jpg" // Replace with your image path
                   alt="University History"
                 />
               </Grid>
@@ -70,7 +70,7 @@ const About = () => {
                       Our Institute
                     </Typography>
 
-                    <Typography variant="body1" textAlign="justify" >
+                    <Typography variant="body1" textAlign="justify">
                       Avicenna International Medical University was established
                       in 2019 and registered with the Ministry of Justice of the
                       Kyrgyz Republic at the address: Kant city 58, Gagarin
@@ -125,7 +125,7 @@ const About = () => {
             </Grid>
           </Fade>
         </HistorySection>
-        <Typography sx={{color: "#000"}} textAlign="justify">
+        <Typography sx={{ color: "#000" }} textAlign="justify">
           The higher institution is meant for training qualified specialists in
           the medical sphere both for the Kyrgyz Republic and other countries of
           the world including Pakistan, India, Nepal, Nigeria, America, Turkey,
@@ -143,7 +143,8 @@ const About = () => {
           qualified teachers promotes the improvement of training quality.
           Students will be taught not only on a clinical basis in Kant but also
           in Bishkek, the capital city. Many republican medical institutions and
-          scientific centers are the clinical bases of the Avicenna medical university. Institute’s departments will be working out both the
+          scientific centers are the clinical bases of the Avicenna medical
+          university. Institute’s departments will be working out both the
           fundamental and applied research problems on medicine priority
           direction.
         </Typography>
@@ -262,11 +263,14 @@ const About = () => {
             </Typography>
           </CardContent>
         </Card>
-<Box sx={{marginBottom:"150px"}}>
-<FAQ />
-</Box>
-<AffiliatedHospitals/>
-        
+        <Box sx={{ marginBottom: "150px" }}>
+          <Curriculum/>
+          <Box mt={3}>
+          <FAQ />
+          </Box>
+          
+        </Box>
+        <AffiliatedHospitals />
       </Container>
     </Box>
   );
