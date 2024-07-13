@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-
+import dynamic from 'next/dynamic';
 import { Box, Container, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import HeroSection from '../components/hero section/HeroSection';
 const AcademicStaff = dynamic(() => import('../components/staff/AcademicStaff'), {
@@ -11,6 +11,7 @@ import RectorMessage from '../administration-message/rector-message/RectorMessag
 import ViceRectorMessage from '../administration-message/vice-rector-message/ViceRectorMessage';
 import Image from 'next/image';
 import ViseDean from '../administration-message/vise-dean-message/ViseDean';
+
 
 const theme = createTheme({
   palette: {
