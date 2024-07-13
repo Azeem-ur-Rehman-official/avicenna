@@ -6,8 +6,9 @@ import Fade from "react-reveal/Fade";
 import Zoom from "react-reveal/Zoom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import theme from "@/app/theme";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import Link from "next/link";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import Image from "next/image";
 const useStyles = makeStyles(() => ({
   sliderContainer: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles(() => ({
     transition: "transform 0.5s ease-in-out",
   },
   slideImage: {
-    width: "100%",
+    width: "100vw",
     height: "100vh",
     objectFit: "cover",
   },
@@ -118,15 +119,22 @@ const HomepageSlider = () => {
             transform: `translateX(${(index - currentSlide) * 100}%)`,
           }}
         >
-       <Image
-      src={slide.image} alt={`Slide ${index + 1}`} 
+        <LazyLoadImage
+          src={slide.image} 
+          alt={`Slide ${index + 1}`} 
+          effect="blur"
+         
+          className={classes.slideImage}
+        />
+       {/* <Image
+       src={slide.image} alt={`Slide ${index + 1}`} 
       quality={100} fill sizes="100vw" style={{
           width: '100%',
           objectFit: 'cover',
 
          
         }} className={classes.slideImage}
-    />
+    /> */}
           {/* <img src={slide.image} alt={`Slide ${index + 1}`} className={classes.slideImage} /> */}
           <Box className={classes.blueOverlay}></Box>
           <Box className={classes.slideContent}>

@@ -111,24 +111,17 @@ function Header(props) {
             </ListItem>
             <ListItem disablePadding>
             <ListItemButton component={Link}
-                href='/administration-message/rector-message' sx={{ textAlign: "left" }}>
-              <ListItemText primary="Rector Message" />
+                href='/administration' sx={{ textAlign: "left" }}>
+              <ListItemText primary="Administration" />
             </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
             <ListItemButton component={Link}
-                href='/administration-message/vice-rector-message' sx={{ textAlign: "left" }}>
-              <ListItemText primary="Vice-Rector Message" />
+                href='/alumni' sx={{ textAlign: "left" }}>
+              <ListItemText primary="Alumni" />
             </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
-            <ListItemButton component={Link}
-                href='/administration-message/deans-message' sx={{ textAlign: "left" }}>
-              <ListItemText primary="Deans Message" />
-            </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-            
             <ListItemButton component={Link}
                 href='/admission-offices' sx={{ textAlign: "left" }}>
               <ListItemText primary="Admission Offices" />

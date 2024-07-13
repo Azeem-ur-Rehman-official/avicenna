@@ -13,15 +13,16 @@ import {
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import theme from "./theme";
-import Image from "next/image";
+
+import dynamic from 'next/dynamic';
+const OurPrograms = dynamic(() => import('./components/programs/OurPrograms'), { ssr: false });
+const StatsSection = dynamic(() => import('./components/programs/StatsSection'), { ssr: false });
+const NewsListHome = dynamic(() => import('./components/news/NewsListHome'), { ssr: false });
+const WhyChooseUs = dynamic(() => import('./components/whyChoooseUs/WhyChooseUs'), { ssr: false });
 import PartnerComponet from "./community&partners/PartnerComponet";
 import HomeSlider from "./components/slider/HomeSlider";
-import OurPrograms from "./components/programs/OurPrograms";
-import StatsSection from "./components/programs/StatsSection";
-import WhyChooseUs from "./components/whyChoooseUs/WhyChooseUs";
 import TestimonialSection from "./components/testimonial/Testimonial";
 import Fade from "react-reveal/Fade";
-import NewsListHome from "./components/news/NewsListHome";
 import Link from "next/link";
 const useStyles = makeStyles({
   hero: {

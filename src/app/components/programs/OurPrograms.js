@@ -62,7 +62,7 @@ const programs = [
   },
   {
     title: "PHD",
-    image: "/assets/programs/pg.jpg",
+    image: "https://t3.ftcdn.net/jpg/02/94/40/64/360_F_294406436_q4Zkq5wmSMjuzxnBWEK0zkOr8wPsJpG0.jpg",
     description: "3 Year English or Russian Medium  ",
   },
 ];
