@@ -73,14 +73,14 @@ const About = () => {
                     <Typography variant="body1" textAlign="justify">
                       Avicenna International Medical University was established
                       in 2019 and registered with the Ministry of Justice of the
-                      Kyrgyz Republic at the address: Kant city 58, Gagarin
-                      Street. S.Avicenna International Medical University is
-                      listed in World Health Organization Directory (W.H.O),
-                      Avicenna Directory, and FAIMER. Such students holding
-                      medical qualifications are eligible for the screening
-                      tests in any country of the world and subsequent
-                      recognition of their degree. Asmi has received a
-                      certificate of accreditation from independent agencies
+                      Kyrgyz Republic at the address: Avenue shabdan batir 74
+                      Bishkek city Kyrgyz Republic. Avicenna International
+                      Medical University is listed in World Health Organization
+                      Directory (W.H.O), Avicenna Directory, and FAIMER. Such
+                      students holding medical qualifications are eligible for
+                      the screening tests in any country of the world and
+                      subsequent recognition of their degree. It has received
+                      a certificate of accreditation from independent agencies
                       such as “EdNet”, “AAOPO”. Institute has applied for
                       international accreditation from IAAR in April 2021.
                       <br></br>
@@ -264,11 +264,10 @@ const About = () => {
           </CardContent>
         </Card>
         <Box sx={{ marginBottom: "150px" }}>
-          <Curriculum/>
+          <Curriculum />
           <Box mt={3}>
-          <FAQ />
+            <FAQ />
           </Box>
-          
         </Box>
         <AffiliatedHospitals />
       </Container>

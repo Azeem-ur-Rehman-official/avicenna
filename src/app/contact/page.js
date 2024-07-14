@@ -146,11 +146,11 @@ const Contact = () => {
             <Box mt={2}>
               <Typography variant="h6">Contact Details</Typography>
               <Typography variant="body1">
-                Address: 123 Medical University Ave, City, Country
+                Address: Avenue shabdan batir 74 Bishkek city Kyrgyz Republic
               </Typography>
-              <Typography variant="body1">Phone: (123) 456-7890</Typography>
+             
               <Typography variant="body1">
-                Email: contact@medicaluniversity.com
+                Email: info@avicenna.edu.kg / avicennaedu@yahoo.com 
               </Typography>
             </Box>
           </Grid>
