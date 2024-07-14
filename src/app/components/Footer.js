@@ -55,7 +55,10 @@ export default function Footer() {
             textAlign: { sm: "center", md: "left" },
           }}
         >
-          <Box>
+          <Box sx={{display:"flex",flexDirection:"column",alignItems:"center",gap:2}}>
+          <Typography variant="h5">
+            Follow Us
+          </Typography>
             <SocialLinks />
           </Box>
           <Box
