@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 
-import { Box, Card, CardContent, CardMedia, Container, CssBaseline, List, ListItem, ListItemIcon, ListItemText, ThemeProvider, Typography, createTheme } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Container, CssBaseline, Grid, List, ListItem, ListItemIcon, ListItemText, ThemeProvider, Typography, createTheme } from '@mui/material';
 import Fade from "react-reveal/Fade";
 import theme from "@/app/theme";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -70,19 +70,22 @@ export default function StaffPage() {
         
       </Container>
     </Box>
-    <Container className={classes.cardContainer}>
+    
         <Fade bottom>
-       
-       
-          <Card className={classes.card}>
-            <CardMedia
-              component="img"
-              className={classes.cardMedia}
-              image="https://asmi.edu.kg/wp-content/uploads/2021/09/ALUMNI-AzMI-Logo-1024x1024.png"
+       <Container sx={{ position: "relative",
+      marginTop: "-80px",
+      marginBottom: "100px", backgroundColor:"#ffffff",borderRadius:"20px"}}>
+       <Grid container spacing={4} >
+          <Grid item xs={12} sm={6} md={6} sx={{display:"flex",flexDirection:"row",justifyContent:"center"}}>
+            <img
+              
+              width="80%"
+              src="/assets/alumni-logo.png"
               alt="Rector"
             />
-            <CardContent className={classes.cardContent}>
-            <List sx={{ bgcolor: 'background.paper', borderRadius: '8px', boxShadow: 1 }}>
+            </Grid>
+            <Grid item xs={12} sm={6} md={6} >
+            <List >
           {items.map((item, index) => (
             <ListItem key={index} sx={{ borderBottom: '1px solid #e0e0e0' }}>
               <ListItemIcon>
@@ -92,10 +95,13 @@ export default function StaffPage() {
             </ListItem>
           ))}
         </List>
-            </CardContent>
-          </Card>
+            </Grid>
+          
+          </Grid>
+       </Container>
+       
         </Fade>
-      </Container>
+      
      
     </>
   );

@@ -33,11 +33,39 @@ const HistorySection = styled(Box)(({ theme }) => ({
 const MissionVisionSection = styled(Box)(({ theme }) => ({
   backgroundColor: "#f5f5f5",
   padding: theme.spacing(10, 0),
+  borderRadius:"15px"
 }));
 
 const About = () => {
   const [checked, setChecked] = useState(false);
-
+  const staffData = [
+    {
+      name: "Dr. Temir Arapov",
+      image: "/b3.jpg",
+    },
+    {
+      name: "Builashev talaibek Sabralievich",
+      image: "/b9.jpg",
+    },
+    {
+      name: "Nasirova Svetlana Akbarovna",
+      image: "/b8.jpg",
+    },
+    {
+      name: "Kogaartbai Kyzy Akylai",
+      image: "/b13.jpg",
+    },
+    {
+      name: "Kogaartbai Kyzy Akylai",
+      image: "/b2.jpg",
+    },
+    {
+      name: "Kogaartbai Kyzy Akylai",
+      image: "/b14.jpg",
+    },
+   
+    // Add more staff members as needed
+  ];
   useEffect(() => {
     setChecked(true);
   }, []);
@@ -64,13 +92,13 @@ const About = () => {
                 />
               </Grid>
               <Grid item xs={12} md={6}>
-                <Card>
-                  <CardContent>
-                    <Typography variant="h5" gutterBottom>
+               
+               
+                    <Typography sx={{ color: "#000" }} variant="h5" gutterBottom>
                       Our Institute
                     </Typography>
 
-                    <Typography variant="body1" textAlign="justify">
+                    <Typography sx={{ color: "#000" }} variant="body1" textAlign="justify">
                       Avicenna International Medical University was established
                       in 2019 and registered with the Ministry of Justice of the
                       Kyrgyz Republic at the address: Avenue shabdan batir 74
@@ -84,6 +112,7 @@ const About = () => {
                       such as “EdNet”, “AAOPO”. Institute has applied for
                       international accreditation from IAAR in April 2021.
                       <br></br>
+                      <br></br>
                       The campus of Avicenna International Medical University is
                       extended over an area of 3 acres (approx.) of land
                       situated in the beautiful, calm and quiet, and well
@@ -95,13 +124,32 @@ const About = () => {
                       resourceful library with computer & internet facilities,
                       students’ common room and cafeteria.
                     </Typography>
-                  </CardContent>
-                  <CardContent>
-                    <Typography variant="h5" gutterBottom>
+                 
+                 
+              
+              </Grid>
+            </Grid>
+          </Fade>
+        </HistorySection>
+        <Typography variant="h5" gutterBottom sx={{ color: "#000", }}>
                       High Quality Education
                     </Typography>
-
-                    <Typography variant="body1" textAlign="justify">
+                    <Grid container spacing={4}>
+        {staffData.map((staff, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
+            <Card sx={{ minHeight: "350px" }}>
+              <CardMedia
+                component="img"
+                height="300"
+                image={staff.image}
+                alt={staff.name}
+              />
+             
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+                    <Typography variant="body1" textAlign="justify" sx={{ color: "#000",mb:5 }}>
                       Faculty is enriched with highly qualified, experienced and
                       dedicated teachers with academic, clinical and research
                       expertise. This College has been established with a view
@@ -110,6 +158,8 @@ const About = () => {
                       equipped with enough facilities and intended to be the
                       best one of its kind, AIMU aims at excellence, integrity,
                       transparency, and accountability.
+                      <br></br>
+                      
                       <br></br>In this age of globalization since a College is
                       better known for cultivation of knowledge and research
                       activities, AIMU has decided to make the research work
@@ -119,35 +169,7 @@ const About = () => {
                       participants include students, teachers and sometimes
                       eminent scholars from both home and abroad.
                     </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
-          </Fade>
-        </HistorySection>
-        <Typography sx={{ color: "#000" }} textAlign="justify">
-          The higher institution is meant for training qualified specialists in
-          the medical sphere both for the Kyrgyz Republic and other countries of
-          the world including Pakistan, India, Nepal, Nigeria, America, Turkey,
-          Egypt, Somalia, Russia, and CIS countries (Kazakhstan, Uzbekistan,
-          Tajikistan, etc.). Students are studying from 15 countries. More than
-          8 batches have graduated and are currently working in their home
-          countries such as Kyrgyzstan, Kazakhstan, Russia, Pakistan, India,
-          Nepal, Tajikistan, Nigeria, Afghanistan, after clearing their
-          respective licensing exams (NEB/NLE, MCI/NEXT, MDCN, USMLE, PLAB,
-          etc.)
-          <br></br>
-          There are doctors & candidates of medical science participating in the
-          training process. The combination of utilization of modern training
-          programs, technical material base, new training technologies, and
-          qualified teachers promotes the improvement of training quality.
-          Students will be taught not only on a clinical basis in Kant but also
-          in Bishkek, the capital city. Many republican medical institutions and
-          scientific centers are the clinical bases of the Avicenna medical
-          university. Institute’s departments will be working out both the
-          fundamental and applied research problems on medicine priority
-          direction.
-        </Typography>
+        
         <MissionVisionSection className="svg1">
           <Fade in={checked} timeout={1000}>
             <Box sx={{ padding: "20px", color: "#ffffff" }}>
@@ -177,99 +199,39 @@ const About = () => {
             </Box>
           </Fade>
         </MissionVisionSection>
-        <Card>
-          <CardContent>
-            <Typography variant="h5" gutterBottom>
-              Exposure to Patients
-            </Typography>
-
-            <Typography variant="body1" textAlign="justify">
-              Students are exposing to patients in indoor, outdoor and emergency
-              department as a part of their regular clinical teaching and
-              learning process. This allows students an opportunity to practice
-              communication, interviewing and data gathering skills, as well as
-              physical examination and patient assessment techniques in rural
-              and urban population.
-            </Typography>
-          </CardContent>
-          <CardContent>
-            <Typography variant="h5" gutterBottom>
-              Mentoring
-            </Typography>
-
-            <Typography variant="body1" textAlign="justify">
-              Every students from the first year are assigned to a particular
-              teacher for mentoring. The mentor monitors the selected student up
-              to final year and help him/her to overcome the academic or others
-              problems even some extent of personal also.
-            </Typography>
-          </CardContent>
-        </Card>
-        <MissionVisionSection className="svg1">
-          <Fade in={checked} timeout={1000}>
-            <Box sx={{ padding: "20px", color: "#ffffff" }}>
-              <Typography variant="h4" gutterBottom>
-                Excelent Accommodation
-              </Typography>
-              <Typography variant="body1" textAlign="justify" paragraph>
-                Avicenna International Medical University has excellent hostel
-                facilities for foreign students. AIMU hostels offer clean, safe
-                and furnished accommodation for its students. The hostels are
-                located adjacent to the University campus within walking
-                distance supervised by a hostel superintendent.{" "}
-              </Typography>
-              <Typography variant="h4" gutterBottom>
-                Provision of Foreign Student Coordinator
-              </Typography>
-              <Typography variant="body1" textAlign="justify">
-                AIMU has a separate office and foreign student coordinator to
-                provide essential services as adequately to the future and
-                present foreign students. Major services are: make available
-                sufficient information regarding admission process; to provide
-                pre-arrival information; reception of every new student by AIMU
-                official representative at the first entry point (Airport) in
-                Kyrgyzstan and provide all sorts of supports to settle in AIMU
-                campus especially regarding accommodation, orientation and
-                Immigration formalities. Foreign students’ office always ready
-                to provide all sorts of services needed by the foreign students
-                as and when required.
-              </Typography>
-            </Box>
-          </Fade>
-        </MissionVisionSection>
-        <Card>
-          <CardContent>
-            <Typography variant="h5" gutterBottom>
-              Special counseling for weaker students
-            </Typography>
-
-            <Typography variant="body1" textAlign="justify">
-              If it is identified that few students are not getting marks up to
-              satisfactory level, AIMU faculty members support them, especially
-              to improve their performance giving them extra counseling hours.
-            </Typography>
-          </CardContent>
-          <CardContent>
-            <Typography variant="h5" gutterBottom>
-              Mentoring
-            </Typography>
-
-            <Typography variant="body1" textAlign="justify">
-              Avicenna International Medical University observes all religious
-              programs and arranges various religious events (iftar party,
-              Miladunnabi, Sarwaswati puja, X-mass, for example) in the campus.
-              It develops a brotherhood among the students and teachers in the
-              campus and outside the campus as well.{" "}
-            </Typography>
-          </CardContent>
-        </Card>
-        <Box sx={{ marginBottom: "150px" }}>
+        <Typography sx={{ color: "#000",mt:5,mb:5 }} textAlign="justify">
+          The higher institution is meant for training qualified specialists in
+          the medical sphere both for the Kyrgyz Republic and other countries of
+          the world including Pakistan, India, Nepal, Nigeria, America, Turkey,
+          Egypt, Somalia, Russia, and CIS countries (Kazakhstan, Uzbekistan,
+          Tajikistan, etc.). Students are studying from 15 countries. More than
+          8 batches have graduated and are currently working in their home
+          countries such as Kyrgyzstan, Kazakhstan, Russia, Pakistan, India,
+          Nepal, Tajikistan, Nigeria, Afghanistan, after clearing their
+          respective licensing exams (NEB/NLE, MCI/NEXT, MDCN, USMLE, PLAB,
+          etc.)
+          <br></br>
+          <br></br>
+          There are doctors & candidates of medical science participating in the
+          training process. The combination of utilization of modern training
+          programs, technical material base, new training technologies, and
+          qualified teachers promotes the improvement of training quality.
+          Students will be taught not only on a clinical basis in Kant but also
+          in Bishkek, the capital city. Many republican medical institutions and
+          scientific centers are the clinical bases of the Avicenna medical
+          university. Institute’s departments will be working out both the
+          fundamental and applied research problems on medicine priority
+          direction.
+        </Typography>
+        <Box sx={{ marginBottom: "150px", }}>
           <Curriculum />
-          <Box mt={3}>
+          
+        </Box>
+        
+        <AffiliatedHospitals />
+        <Box mt={3}>
             <FAQ />
           </Box>
-        </Box>
-        <AffiliatedHospitals />
       </Container>
     </Box>
   );
