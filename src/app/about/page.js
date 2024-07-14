@@ -59,7 +59,7 @@ const About = () => {
               <Grid item xs={12} md={6}>
                 <CardMedia
                   component="img"
-                  image="/building.jpg" // Replace with your image path
+                  image="/building.JPG" // Replace with your image path
                   alt="University History"
                 />
               </Grid>

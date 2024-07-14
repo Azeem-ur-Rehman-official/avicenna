@@ -75,7 +75,10 @@ export default function Home() {
   const classes = useStyles();
   return (
     <Box>
-      <HomeSlider />
+    <Box sx={{maxHeight:"100vh"}}>
+    <HomeSlider />
+    </Box>
+     
 
       {/* <div className={classes.hero}>
         <Container className={classes.heroContent}>

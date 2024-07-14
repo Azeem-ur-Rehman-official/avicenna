@@ -111,7 +111,7 @@ const data = [
 const data2 = [
   {
     title: "Modern Campuses",
-    image: "/building.jpg",
+    image: "/building.JPG",
     description: "Learn about our Nursing program.",
   },
   {

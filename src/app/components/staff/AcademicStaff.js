@@ -12,39 +12,39 @@ import {
 const staffData = [
   {
     name: "Dr. Temir Arapov",
-    image: "/administration/a1.jpg",
+    image: "/administration/a1.JPG",
   },
   {
     name: "Builashev talaibek Sabralievich",
-    image: "/administration/a11.jpg",
+    image: "/administration/a11.JPG",
   },
   {
     name: "Nasirova Svetlana Akbarovna",
-    image: "/administration/a2.jpg",
+    image: "/administration/a2.JPG",
   },
   {
     name: "Kogaartbai Kyzy Akylai",
-    image: "/administration/a7.jpg",
+    image: "/administration/a7.JPG",
   },
   {
     name: "Erik Kyzy Aizat",
-    image: "/administration/a8.jpg",
+    image: "/administration/a8.JPG",
   },
   {
     name: "Asanova Aizada",
-    image: "/administration/a3.jpg",
+    image: "/administration/a3.JPG",
   },
   {
     name: "Nurzhan Osmonalieva",
-    image: "/administration/a4.jpg",
+    image: "/administration/a4.JPG",
   },
   {
     name: "Nazarbekova Elvira",
-    image: "/administration/a5.jpg",
+    image: "/administration/a5.JPG",
   },
   {
     name: "Tarielova Bermet Tarielovna",
-    image: "/administration/a6.jpg",
+    image: "/administration/a6.JPG",
   },
   // Add more staff members as needed
 ];
