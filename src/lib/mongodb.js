@@ -17,7 +17,7 @@ const connect = async()=>{
   try{
     mongoose.connect(mongodb_URI,{
       dbName:"avicenna",
-      bufferCommands:false,
+      bufferCommands:true,
     });
     console.log("connected");
   }

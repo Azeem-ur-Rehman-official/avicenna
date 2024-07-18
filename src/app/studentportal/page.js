@@ -68,17 +68,16 @@ const validationSchema = [
     fatherMobileNumber: Yup.string().required(
       "Father mobile number is required"
     ),
-  
   }),
   Yup.object({
     matricDegree: Yup.string().required("Degree is required"),
     matricInstitute: Yup.string().required("Institute name is required"),
     matricYearPassed: Yup.string().required("Year passed is required"),
-    
+
     fscDegree: Yup.string().required("Degree is required"),
     fscInstitute: Yup.string().required("Institute name is required"),
     fscYearPassed: Yup.string().required("Year passed is required"),
- 
+
     program: Yup.string().required("Program is required"),
     session: Yup.string().required("Session is required"),
   }),
@@ -136,15 +135,15 @@ const Apply = () => {
     fatherName: "",
     fatherOccupation: "",
     fatherMobileNumber: "",
-   
+
     matricDegree: "",
     matricInstitute: "",
     matricYearPassed: "",
-  
+
     fscDegree: "",
     fscInstitute: "",
     fscYearPassed: "",
- 
+
     program: "",
     session: "",
 
@@ -187,7 +186,7 @@ const Apply = () => {
       formData.append("fatherName", values.fatherName);
       formData.append("fatherOccupation", values.fatherOccupation);
       formData.append("fatherMobileNumber", values.fatherMobileNumber);
-     
+
       formData.append("matricDegree", values.matricDegree);
       formData.append("matricInstitute", values.matricInstitute);
       formData.append("matricYearPassed", values.matricYearPassed);
@@ -195,7 +194,7 @@ const Apply = () => {
       formData.append("fscDegree", values.fscDegree);
       formData.append("fscInstitute", values.fscInstitute);
       formData.append("fscYearPassed", values.fscYearPassed);
-   
+
       formData.append("program", values.program);
       formData.append("session", values.session);
       formData.append("passportCopy", values.passportCopy);
@@ -217,119 +216,7 @@ const Apply = () => {
     }
   };
 
-  const Preview = ({ values }) => (
-    <Box>
-      <Typography variant="h6" gutterBottom>
-        Review Your Details
-      </Typography>
-      <Grid container spacing={2}>
-        <Grid item xs={12} align="center">
-          <Avatar
-            src={
-              values.profilePhoto
-                ? URL.createObjectURL(values.profilePhoto)
-                : ""
-            }
-            sx={{ width: 100, height: 100, mb: 2 }}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="body1">
-            <strong>First Name:</strong> {values.fname}
-          </Typography>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="body1">
-            <strong>Last Name:</strong> {values.lname}
-          </Typography>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="body1">
-            <strong>Father's Name:</strong> {values.fatherName}
-          </Typography>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="body1">
-            <strong>Email:</strong> {values.email}
-          </Typography>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="body1">
-            <strong>Phone Number:</strong> {values.phone}
-          </Typography>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="body1">
-            <strong>Country:</strong> {values.country}
-          </Typography>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="body1">
-            <strong>City:</strong> {values.city}
-          </Typography>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Typography variant="body1">
-            <strong>Postal Code:</strong> {values.postalCode}
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="body1">
-            <strong>Current Address:</strong> {values.currentAddress}
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="body1">
-            <strong>Permanent Address:</strong> {values.permanentAddress}
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="body1">
-            <strong>Program Level:</strong> {values.level}
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="body1">
-            <strong>Program:</strong> {values.program}
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="body1">
-            <strong>Certificate:</strong>{" "}
-            {values.certificate ? values.certificate.name : ""}
-          </Typography>
-        </Grid>
-      </Grid>
-    </Box>
-  );
-  const FileInput = ({ field, form, ...props }) => {
-    const [_, meta, helpers] = useField(field.name);
-
-    const handleChange = (event) => {
-      const file = event.currentTarget.files[0];
-      helpers.setValue(file);
-    };
-
-    return (
-      <>
-        <input
-          accept="image/*,.pdf"
-          type="file"
-          onChange={handleChange}
-          style={{ display: "none" }}
-          id={props.id}
-        />
-        <label htmlFor={props.id}>
-          <Button variant="contained" color="primary" component="span">
-            {props.label}
-          </Button>
-        </label>
-        {meta.touched && meta.error && (
-          <div style={{ color: "red" }}>{meta.error}</div>
-        )}
-      </>
-    );
-  };
+ 
   return (
     <Container component="main" maxWidth="md">
       <Paper variant="outlined" sx={{ my: 3, p: 3 }}>
@@ -400,7 +287,7 @@ const Apply = () => {
                           style={{ color: "red" }}
                         />
                       </Grid>
-                     
+
                       <Grid item xs={12}>
                         <Field
                           name="fullName"
@@ -583,7 +470,6 @@ const Apply = () => {
                           style={{ color: "red" }}
                         />
                       </Grid>
-                     
                     </Grid>
                   </Box>
                 )}
@@ -639,7 +525,6 @@ const Apply = () => {
                           name="matricYearPassed"
                         />
                       </Grid>
-                     
                     </Grid>
                     <Grid container spacing={2}>
                       <Grid item xs={12} md={12} mt={5}>
@@ -688,7 +573,6 @@ const Apply = () => {
                           name="fscYearPassed"
                         />
                       </Grid>
-                      
                     </Grid>
                     <Box sx={{ mt: 4 }}>
                       <Typography variant="h6" gutterBottom>
@@ -879,7 +763,7 @@ const Apply = () => {
                           style={{ color: "red" }}
                         />
                       </Grid>
-                     
+
                       <Grid item xs={12}>
                         <Field
                           name="remarks"
