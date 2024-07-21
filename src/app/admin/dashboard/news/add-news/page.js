@@ -9,6 +9,7 @@ import { Grid } from '@mui/material';
 // project imports
 import StudentContactsTable from '@/app/components/ContactTableComponent/ContactTable';
 import BlogForm from './BlogForm';
+import { postRequest } from '@/app/RequestsAPI/RequestsApi';
 
 // meta export
 export const meta = () => ({
@@ -30,19 +31,13 @@ export default function Dashboard() {
   const handleSubmit = async (values) => {
     try {
       console.log("valoo",values);
-      // const response = await fetch('/api/blogs', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(values),
-      // });
+      const response = await postRequest("/api/blogs",values)
 
-      // if (response.ok) {
-      //   window.alert('/blogs');
-      // } else {
-      //   console.error('Failed to create the blog');
-      // }
+      if (response.success) {
+        window.alert('/blogs');
+      } else {
+        console.error('Failed to create the blog');
+      }
     } catch (error) {
       console.error('An unexpected error occurred:', error);
     }

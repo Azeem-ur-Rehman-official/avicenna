@@ -57,6 +57,8 @@ const useStyles = makeStyles(() => ({
   avatar: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(1),
+    width:"80px",
+    height:"80px",
   },
   cardContent: {
     textAlign: "center",

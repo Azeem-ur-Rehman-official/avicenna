@@ -85,8 +85,8 @@ export default function Footer() {
                 <Typography variant="body2" color="#ffffff" mb={2} mt={2}>
                   Avicenna International Medical University was established in
                   2019 and registered with the Ministry of Justice of the Kyrgyz
-                  Republic at the address: Avenue shabdan batir 74 Bishkek city Kyrgyz Republic
-                  S.Avicenna International Medical University is listed in World
+                  Republic at the address: Avenue shabdan batir 74 Bishkek city Kyrgyz Republic.
+                  Avicenna International Medical University is listed in World
                   Health Organization Directory (W.H.O), Avicenna Directory, and
                   FAIMER. Such students holding medical qualifications are
                   eligible for the screening tests in any country of the world

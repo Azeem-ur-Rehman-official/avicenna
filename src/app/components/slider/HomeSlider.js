@@ -85,7 +85,7 @@ const slides = [
   },
   {
     image: "/b9.jpg",
-    heading: "Top Medical Staf",
+    heading: "Top Medical Staff",
     content: "Content for Slide 4",
   },
 ];

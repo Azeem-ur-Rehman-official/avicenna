@@ -6,8 +6,7 @@ const PartnerComponet = () => {
     <div className={styles.logoItems}>
       <img src="/partners/logo1.jpg" alt="partners logo" />
       <img src="/partners/logo2.jpg" alt="partners logo" />
-      <img src="/partners/logo3.jpg" alt="partners logo" />
-      <img src="/partners/logo4.jpeg" alt="partners logo" />
+      
       <img src="/partners/logo5.png" alt="partners logo" />
       <img src="/partners/logo6.png" alt="partners logo" />
       <img src="/partners/logo7.jpg" alt="partners logo" />
@@ -18,8 +17,7 @@ const PartnerComponet = () => {
     <div className={styles.logoItems}>
     <img src="/partners/logo1.jpg" alt="partners logo" />
       <img src="/partners/logo2.jpg" alt="partners logo" />
-      <img src="/partners/logo3.jpg" alt="partners logo" />
-      <img src="/partners/logo4.jpeg" alt="partners logo" />
+      
       <img src="/partners/logo5.png" alt="partners logo" />
       <img src="/partners/logo6.png" alt="partners logo" />
       <img src="/partners/logo7.jpg" alt="partners logo" />

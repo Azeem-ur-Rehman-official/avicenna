@@ -107,10 +107,7 @@ const About = () => {
                       Directory (W.H.O), Avicenna Directory, and FAIMER. Such
                       students holding medical qualifications are eligible for
                       the screening tests in any country of the world and
-                      subsequent recognition of their degree. It has received
-                      a certificate of accreditation from independent agencies
-                      such as “EdNet”, “AAOPO”. Institute has applied for
-                      international accreditation from IAAR in April 2021.
+                      subsequent recognition of their degree.
                       <br></br>
                       <br></br>
                       The campus of Avicenna International Medical University is

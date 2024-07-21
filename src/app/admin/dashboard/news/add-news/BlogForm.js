@@ -1,8 +1,8 @@
 // src/components/BlogForm.js
 
-import React, { useState } from 'react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
+import React, { useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import {
   Box,
   Button,
@@ -18,20 +18,21 @@ import {
   Avatar,
   IconButton,
   Grid,
-} from '@mui/material';
+} from "@mui/material";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import MarkdownEditor from 'react-markdown-editor-lite';
+import MarkdownEditor from "react-markdown-editor-lite";
 import ReactMarkdown from "react-markdown";
-import 'react-markdown-editor-lite/lib/index.css';
-import Image from 'next/image';
+import "react-markdown-editor-lite/lib/index.css";
+import Image from "next/image";
 
 const validationSchema = Yup.object({
-  title: Yup.string().required('Title is required'),
-  slug: Yup.string().required('Slug is required'),
-  description: Yup.string().required('Description is required'),
-  blogCategory: Yup.string().required('Blog category is required'),
-  tags: Yup.array().min(1, 'At least one tag is required').required('Tags are required'),
-  status: Yup.string().required('Status is required'),
+  title: Yup.string().required("Title is required"),
+  slug: Yup.string().required("Slug is required"),
+  description: Yup.string().required("Description is required"),
+  blogCategory: Yup.array()
+    .min(1, "At least one tag is required")
+    .required("blogCategory are required"),
+  status: Yup.string().required("Status is required"),
 });
 
 const BlogForm = ({ onSubmit }) => {
@@ -39,21 +40,20 @@ const BlogForm = ({ onSubmit }) => {
   const [imageView, setImageView] = useState(null);
   const formik = useFormik({
     initialValues: {
-      bannerPhoto:null,
-      title: '',
-      slug: '',
-      description: '',
-      blogCategory: '',
-      tags: [],
-      status: 'draft',
-      content: '',
-      html: '',
+      bannerPhoto: null,
+      title: "",
+      slug: "",
+      description: "",
+      blogCategory: [],
+    
+      status: "draft",
+      content: "",
+      html: null,
     },
     validationSchema,
     onSubmit,
   });
-  console.log("v2",formik.initialValues.content);
- 
+
   const handleFileChange = (e, setFile) => {
     const file = e;
     const reader = new FileReader();
@@ -62,7 +62,6 @@ const BlogForm = ({ onSubmit }) => {
     };
     reader.readAsDataURL(file);
   };
- 
 
   return (
     <Container maxWidth="md">
@@ -71,20 +70,17 @@ const BlogForm = ({ onSubmit }) => {
           Create a New Blog
         </Typography>
         <form onSubmit={formik.handleSubmit}>
-     
-                      <Box>
-          <label>Upload banner :</label>
-          <input type="file" onChange={(event) => {
-                            setImageView(
-                             
-                              event.currentTarget.files[0]
-                            );
-                            handleFileChange(
-                              event.currentTarget.files[0],
-                              setImage
-                            );
-                          }} accept="image/*"  />
-        </Box>
+          <Box>
+            <label>Upload banner :</label>
+            <input
+              type="file"
+              onChange={(event) => {
+                setImageView(event.currentTarget.files[0]);
+                handleFileChange(event.currentTarget.files[0], setImage);
+              }}
+              accept="image/*"
+            />
+          </Box>
           <TextField
             fullWidth
             id="title"
@@ -117,7 +113,9 @@ const BlogForm = ({ onSubmit }) => {
             rows={4}
             value={formik.values.description}
             onChange={formik.handleChange}
-            error={formik.touched.description && Boolean(formik.errors.description)}
+            error={
+              formik.touched.description && Boolean(formik.errors.description)
+            }
             helperText={formik.touched.description && formik.errors.description}
           />
           <Box sx={{ mt: 2 }}>
@@ -125,33 +123,52 @@ const BlogForm = ({ onSubmit }) => {
               Content
             </Typography>
             <MarkdownEditor
-              style={{ height: '500px' }}
-              renderHTML={(text) => (<ReactMarkdown components={{
-                code:({ node, inline, className, children, ...props})=>{
-                  const match = /language-(\w+)/.exec(className || '');
-                  if(inline){
-                    return <code>{children}</code>
-                  }
-                  else if(match){
-                    return (
-                      <div style={{position:"relative"}}>
-                        <pre style={{padding:'0',borderRadius:"5px", overflow:"auto", whiteSpace:"pre-wrap"}}{...props}>
-                        <code>{children}</code>
-
-                        </pre>
-                        <button style={{position:"absolute",zIndex:"1",top:"0",right:"0"}}>copy code</button>
-                      </div>
-                    )
-                  }
-                  else{
-                    return <code {...props}>{children}</code>
-                  }
-                }
-              }}>
-{text}
-              </ReactMarkdown>)}
-              onChange={({ html, text }) => {formik.setFieldValue('content', text);
-                formik.setFieldValue('html', html)
+              style={{ height: "500px" }}
+              renderHTML={(text) => (
+                <ReactMarkdown
+                  components={{
+                    code: ({ node, inline, className, children, ...props }) => {
+                      const match = /language-(\w+)/.exec(className || "");
+                      if (inline) {
+                        return <code>{children}</code>;
+                      } else if (match) {
+                        return (
+                          <div style={{ position: "relative" }}>
+                            <pre
+                              style={{
+                                padding: "0",
+                                borderRadius: "5px",
+                                overflow: "auto",
+                                whiteSpace: "pre-wrap",
+                              }}
+                              {...props}
+                            >
+                              <code>{children}</code>
+                            </pre>
+                            <button
+                              style={{
+                                position: "absolute",
+                                zIndex: "1",
+                                top: "0",
+                                right: "0",
+                              }}
+                            >
+                              copy code
+                            </button>
+                          </div>
+                        );
+                      } else {
+                        return <code {...props}>{children}</code>;
+                      }
+                    },
+                  }}
+                >
+                  {text}
+                </ReactMarkdown>
+              )}
+              onChange={({ html, text }) => {
+                formik.setFieldValue("content", text);
+                formik.setFieldValue("html", html);
               }}
               value={formik.values.content}
             />
@@ -159,33 +176,35 @@ const BlogForm = ({ onSubmit }) => {
               <Typography color="error">{formik.errors.content}</Typography>
             )}
           </Box>
-         
+
           <FormControl fullWidth margin="normal">
-            <InputLabel id="tags-label">Tags</InputLabel>
+            <InputLabel id="blogCategory-label">blogCategory</InputLabel>
             <Select
               labelId="Blog Category"
-              id="tags"
-              name="tags"
+              id="blogCategory"
+              name="blogCategory"
               multiple
-              value={formik.values.tags}
+              value={formik.values.blogCategory}
               onChange={formik.handleChange}
-              input={<OutlinedInput id="select-multiple-chip" label="Tags" />}
+              input={<OutlinedInput id="select-multiple-chip" label="blogCategory" />}
               renderValue={(selected) => (
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
                   {selected.map((value) => (
                     <Chip key={value} label={value} />
                   ))}
                 </Box>
               )}
             >
-              {['Technology', 'Health', 'Science', 'Education', 'Travel'].map((tag) => (
-                <MenuItem key={tag} value={tag}>
-                  {tag}
-                </MenuItem>
-              ))}
+              {["Technology", "Health", "Science", "Education", "Travel"].map(
+                (tag) => (
+                  <MenuItem key={tag} value={tag}>
+                    {tag}
+                  </MenuItem>
+                )
+              )}
             </Select>
-            {formik.touched.tags && Boolean(formik.errors.tags) && (
-              <Typography color="error">{formik.errors.tags}</Typography>
+            {formik.touched.blogCategory && Boolean(formik.errors.blogCategory) && (
+              <Typography color="error">{formik.errors.blogCategory}</Typography>
             )}
           </FormControl>
           <FormControl fullWidth margin="normal">
@@ -202,8 +221,14 @@ const BlogForm = ({ onSubmit }) => {
               <MenuItem value="published">Published</MenuItem>
             </Select>
           </FormControl>
-          
-          <Button color="primary" variant="contained" fullWidth type="submit" sx={{ mt: 2 }}>
+
+          <Button
+            color="primary"
+            variant="contained"
+            fullWidth
+            type="submit"
+            sx={{ mt: 2 }}
+          >
             Submit
           </Button>
         </form>
