@@ -99,6 +99,24 @@ function Header(props) {
             </ListItem>
             <ListItem disablePadding>
             <ListItemButton  component={Link}
+                href='/student-life/avicenna-students-council' sx={{ textAlign: "left" }}>
+              <ListItemText primary="Avicenna students council" />
+            </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+            <ListItemButton  component={Link}
+                href='/student-life/our-publications' sx={{ textAlign: "left" }}>
+              <ListItemText primary="Our Publications" />
+            </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+            <ListItemButton  component={Link}
+                href='/student-life/oath-of-the-student-of-avicenna' sx={{ textAlign: "left" }}>
+              <ListItemText primary="Oath of the Student of Avicenna" />
+            </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding>
+            <ListItemButton  component={Link}
                 href='/university-photos' sx={{ textAlign: "left" }}>
               <ListItemText primary="Gallary" />
             </ListItemButton>
@@ -201,7 +219,7 @@ function Header(props) {
                 >
                   Home
                 </Button>
-                {/* <InstituteHandler /> */}
+                <InstituteHandler />
                 
                
                 <Button

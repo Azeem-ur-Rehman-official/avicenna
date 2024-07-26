@@ -3,82 +3,110 @@
 import connect from "@/lib/mongodb";
 import ApplicationFormSchema from "@/lib/models/ApplicationFormSchema";
 import { NextResponse } from "next/server";
-import { v2 as cloudinary } from 'cloudinary';
+import { v2 as cloudinary } from "cloudinary";
 cloudinary.config({
-  cloud_name: 'dlbwn1vnu',
-  api_key: '282398165396233',
-  api_secret: 'Gi2_J4XLQeULCubkXx57LJ4v2aE',
- });
-// export const config = {
-//   api: {
-//     bodyParser: false,
-//   },
-// };
+  cloud_name: "dlbwn1vnu",
+  api_key: "282398165396233",
+  api_secret: "Gi2_J4XLQeULCubkXx57LJ4v2aE",
+});
 
-export async function POST(req,res) {
- 
-  if(req.method=="POST"){
-    
- 
+//get data
+export async function GET(req, res) {
+  try {
+    await connect();
+    const data = await ApplicationFormSchema.find({ status: { $in: ['accept', 'reject','pending'] } });
+    if (data)
+      return NextResponse.json({ result: true, Data: data }, { status: 200 });
+    else
+      return NextResponse.json(
+        { success: false, message: "Not found" },
+        { status: 404 }
+      );
+  } catch (error) {
+    return NextResponse.json({ success: false, error: error }, { status: 500 });
+  }
+}
+//post data
+export async function POST(req, res) {
+  if (req.method == "POST") {
     try {
       console.log("payload");
+      const formData = await req.formData();
+
+      const formDataObj = {};
+      formData.forEach((value, key) => (formDataObj[key] = value));
+
+      await connect();
+      const profilePhoto = formData.get("profilePhoto");
+
+      console.log("formDataObj", formDataObj);
+
+      if (profilePhoto != null) {
+        console.log("enter");
+        const fileResult = await cloudinary.uploader.upload(profilePhoto, {
+          asset_folder: "news",
+          resource_type: "auto",
+        });
+
+        formDataObj.profilePhoto = {
+          public_id: fileResult.public_id,
+          url: fileResult.secure_url,
+        };
+      }
+
+      const aplicationForm = new ApplicationFormSchema(formDataObj);
+      await aplicationForm.save();
+
+      console.log("sucess");
+      if (aplicationForm)
+        return NextResponse.json(
+          {
+            success: true,
+            message: "Form created Successfully",
+            Data: aplicationForm,
+          },
+          { status: 201 }
+        );
+      else
+        return NextResponse.json(
+          { success: true, message: "Form not submitted" },
+          { status: 400 }
+        );
+    } catch (error) {
+      console.log("fail");
+      console.log("error.message", error.message);
+      return NextResponse.json(
+        { success: false, error: error.message },
+        { status: 500 }
+      );
+    }
+  }
+}
+
+//update data
+export async function PATCH(req, res) {
+  try {
+    await connect();
     const formData = await req.formData();
 
     const formDataObj = {};
     formData.forEach((value, key) => (formDataObj[key] = value));
-
-
-  await connect();
-    const profilePhoto = formData.get('profilePhoto');
-    const sscCertificatePath = formData.get('sscCertificate');
-    const hscCertificatePath = formData.get('hscCertificate');
-    const passportCopyPath = formData.get('passportCopy');
-    const otherFilesPath = formData.get('otherFiles');
-    console.log("ok1");
-    
-  
-    // const profileResult = await cloudinary.uploader.upload(profilePhoto, {
-    //   asset_folder: 'profileImage',
-    //   resource_type: 'image'})
-    //   console.log("result",result);
-    const fileResult = await cloudinary.uploader.upload(profilePhoto, {
-      asset_folder: 'documents',
-      resource_type: 'auto',
-     });
-     console.log("result",fileResult);
-  
-   
-    // const result = await cloudinary.uploader.upload(profilePhoto, {
-    //   resource_type: profilePhoto.type.includes('pdf') ? 'raw' : 'image',
-    // });
-    // console.log("data",uploadResponse);
-    // const profilePhoto = await uploadToCloudinary(profilePhotoPath, 'profile_photos');
-    // const sscCertificate = await uploadToCloudinary(sscCertificatePath, 'ssc_certificates');
-    // const hscCertificate = await uploadToCloudinary(hscCertificatePath, 'hsc_certificates');
-    // const passportCopy =passportCopyPath? await uploadToCloudinary(passportCopyPath, 'passport_files'):null;
-    // const otherFiles =otherFilesPath? await uploadToCloudinary(otherFilesPath, 'Other_files'):null;
-    
-    // formDataObj.profilePhoto=profilePhoto;
-    // formDataObj.sscCertificate=sscCertificate;
-    // formDataObj.hscCertificate=hscCertificate;
-    // formDataObj.passportCopy=passportCopy;
-    // formDataObj.otherFiles=otherFiles;
-    // console.log("ok3");
-    // const aplicationForm = new ApplicationFormSchema(formDataObj)
-    // await aplicationForm.save()
-      
-      console.log("sucess")
-  
-      return NextResponse.json({ success: true, message: "Form created Successfully", });
-    } catch (error) {
-      console.log("fail")
-      console.log("error.message",error.message)
-      return NextResponse.json({ success: false, error: error.message });
-    }
+    console.log("payload2", formDataObj);
+    const data = await ApplicationFormSchema.findById({ _id: formDataObj.id });
+    if (data) {
+      data.status = formDataObj.status;
+      await data.save();
+      const data2 = await ApplicationFormSchema.find();
+      return NextResponse.json({ result: true, Data: data2 }, { status: 201 });
+    } else
+      return NextResponse.json(
+        { success: false, message: "Not found" },
+        { status: 404 }
+      );
+  } catch (error) {
+    return NextResponse.json({ success: false, error: error }, { status: 500 });
   }
- 
 }
-
 // const handler = createRouter();
 
 // handler.use(upload.fields([

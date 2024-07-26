@@ -78,7 +78,7 @@ const InstituteHandler = () => {
        
         sx={{ color: "#000000",...(location=="intitute"&&{color:"#213b75",fontWeight:800}) }}
       >
-        Institute
+        Student Life
       </Button>
       <StyledMenu
         id="demo-customized-menu"
@@ -91,52 +91,22 @@ const InstituteHandler = () => {
       >
         <MenuItem onClick={handleClose} disableRipple>
           
-          <Link href="/annoucements">Avicenna History</Link>
+          <Link href="/student-life/avicenna-students-council">Avicenna students council</Link>
           
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
           
-          <Link href="/faq">FAQ</Link>
+          <Link href="/student-life/our-publications">Our Publications</Link>
           
         </MenuItem>
 
         <MenuItem onClick={handleClose} disableRipple>
           
-          <Link href="/documents-us">Documents</Link>
+          <Link href="/student-life/oath-of-the-student-of-avicenna">Oath of the Student of Avicenna</Link>
           
         </MenuItem>
 
-        <MenuItem onClick={handleClose} disableRipple>
-         
-          <Link href="/education">Education</Link>
-          
-        </MenuItem>
-        
-        <MenuItem onClick={handleClose} disableRipple>
-        
-          <Link href="/structure">Structure</Link>
-          
-        </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
-        
-          <Link href="/structure">Campus</Link>
-          
-        </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
-        
-          <Link href="/structure">Gallary</Link>
-          
-        </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
-        
-          <Link href="/structure">Missions</Link>
-          
-        </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
-        
-          <Link href="/structure">Departments</Link>
-          
-        </MenuItem>
+       
       </StyledMenu>
     </Box>
   );

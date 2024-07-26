@@ -9,32 +9,64 @@ cloudinary.config({
 });
 export async function GET(req, res) {
   // await dbConnect();
-  await connect();
-  const data = Blog.find();
-
-  return NextResponse.json({ result: true, Data: data });
-}
-export async function POST(req, res) {
-  // await dbConnect();
-
   try {
     await connect();
-    const formData = await req.formData();
-    const formDataObj = {};
-    formData.forEach((value, key) => (formDataObj[key] = value));
-    const bannerPhoto = formData.get("bannerPhoto");
-    if (bannerPhoto != null) {
-      const fileResult = await cloudinary.uploader.upload(bannerPhoto, {
+    const data = await Blog.find();
+    return NextResponse.json({ result: true, Data: data }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ success: false, error: error }, { status: 500 });
+  }
+}
+export async function POST(req, res) {
+  try {
+    await connect();
+    let data = await req.json();
+    console.log("result", data);
+
+    if (data.bannerPhoto != null) {
+      console.log("enter");
+      const fileResult = await cloudinary.uploader.upload(data.bannerPhoto, {
         asset_folder: "news",
         resource_type: "auto",
       });
-      console.log("result", fileResult);
+
+      data.bannerPhoto = {
+        public_id: fileResult.public_id,
+        url: fileResult.secure_url,
+      };
     }
-    console.log("bidy", formDataObj);
-    NextResponse.json({ success: true });
-    // const blog = await Blog.create(req.body);
+    const blog = await Blog.create(data);
+    return NextResponse.json({ success: true, Data: blog }, { status: 201 });
+
     // NextResponse.json({ success: true, data: blog });
   } catch (error) {
-    NextResponse.json({ success: false });
+    return NextResponse.json({ success: false, error: error }, { status: 500 });
+  }
+}
+
+//delete
+export async function DELETE(req, res) {
+  try {
+    await connect();
+    const formData = await req.formData();
+
+    const formDataObj = {};
+    formData.forEach((value, key) => (formDataObj[key] = value));
+    console.log("formDataObj", formDataObj);
+    // if (formDataObj.url != null) {
+    //   await cloudinary.uploader.destroy(formDataObj.url);
+    // }
+    // const deleteRes = await Blog.deleteOne({ _id: formDataObj.id });
+    // if (!deleteRes) {
+    //   return NextResponse.json({ success: false }, { status: 404 });
+    // }
+    return NextResponse.json(
+      { success: true, message: "Data deleted successfully" },
+      { status: 200 }
+    );
+
+    // NextResponse.json({ success: true, data: blog });
+  } catch (error) {
+    return NextResponse.json({ success: false, error: error }, { status: 500 });
   }
 }

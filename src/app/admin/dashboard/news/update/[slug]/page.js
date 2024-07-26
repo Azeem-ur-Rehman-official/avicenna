@@ -2,14 +2,14 @@
 import * as React from "react";
 
 import { useEffect, useState } from "react";
-import Layout from "../../../Layout";
+import Layout from "../../../../Layout";
 // material-ui
 import { Grid } from "@mui/material";
 // project imports
-import StudentContactsTable from "@/app/components/ContactTableComponent/ContactTable";
+import { usePathname } from 'next/navigation';
 import BlogForm from "./BlogForm";
-import { postRequest } from "@/app/RequestsAPI/RequestsApi";
-import { useRouter } from 'next/navigation';
+import { getRequest, postRequest } from "@/app/RequestsAPI/RequestsApi";
+
 // meta export
 export const meta = () => ({
   title: "Dashboard | Berry - React Material Admin Dashboard Template",
@@ -18,18 +18,36 @@ export const meta = () => ({
 });
 
 export default function Dashboard() {
+  const pathname = usePathname();
+  const slug = pathname.split('/').pop();
+const [data, setData] = useState({
+      bannerPhoto: null,
+      title: "",
+      slug: "",
+      description: "",
+      blogCategory: "",
+    
+      status: "draft",
+      content: "",
+      html: null,
+});
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
-    setLoading(false);
+   
+    getData();
   }, []);
-  const router = useRouter();
+const getData = async ()=>{
+  const response = await getRequest(`/api/blogs/data?id=${slug}`);
+  if(response.status==200 && response.data?.Data){
+    setData(response.data.Data);
+  }
+  console.log("response",response);
+}
   const handleSubmit = async (values) => {
     try {
       console.log("valoo", values);
       const response = await postRequest("/api/blogs", values);
       console.log("response", response);
-      if(response.status==201)
-        router.push('/admin/dashboard/news');
       // if (response.success) {
       //   window.alert('/blogs');
       // } else {
@@ -43,7 +61,7 @@ export default function Dashboard() {
   return (
     <Layout>
       <Grid container spacing={3} mt={5}>
-        <BlogForm onSubmit={handleSubmit} />
+        <BlogForm onSubmit={handleSubmit} data={data}/>
       </Grid>
     </Layout>
   );

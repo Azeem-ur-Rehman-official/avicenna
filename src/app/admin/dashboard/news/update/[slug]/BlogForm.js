@@ -1,6 +1,6 @@
 // src/components/BlogForm.js
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
@@ -34,13 +34,13 @@ const validationSchema = Yup.object({
   status: Yup.string().required("Status is required"),
 });
 
-const BlogForm = ({ onSubmit }) => {
+const BlogForm = ({ onSubmit,data }) => {
   const [image, setImage] = useState(null);
   const [imageView, setImageView] = useState(null);
   const formik = useFormik({
     initialValues: {
       bannerPhoto: null,
-      title: "",
+      title: '',
       slug: "",
       description: "",
       blogCategory: "",
@@ -62,6 +62,15 @@ const BlogForm = ({ onSubmit }) => {
     };
     reader.readAsDataURL(file);
   };
+useEffect(() => {
+  formik.setFieldValue("title",data.title);
+  formik.setFieldValue("slug",data.slug);
+  formik.setFieldValue("status",data.status);
+  formik.setFieldValue("html",data.html);
+  formik.setFieldValue("content",data.content);
+  formik.setFieldValue("blogCategory",data.blogCategory);
+  formik.setFieldValue("description",data.description);
+}, [data])
 
   return (
     <Container maxWidth="md">

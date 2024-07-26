@@ -228,7 +228,7 @@ export default function Admin({ children }) {
               <ListItemText primary="Students" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding sx={{ display: "block" }}
+          {/* <ListItem disablePadding sx={{ display: "block" }}
           onClick={() => handleClick("/admin/dashboard/teachers")}>
             <ListItemButton
               sx={{
@@ -255,7 +255,7 @@ export default function Admin({ children }) {
               </ListItemIcon>
               <ListItemText primary="Teachers" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
-          </ListItem>
+          </ListItem> */}
           <ListItem disablePadding sx={{ display: "block" }}
           onClick={() => handleClick("/admin/dashboard/applications")}>
             <ListItemButton

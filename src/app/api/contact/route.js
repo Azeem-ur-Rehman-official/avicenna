@@ -24,3 +24,21 @@ export async function POST(request) {
     return NextResponse.json({ success: false, error: error.message });
   }
 }
+export async function DELETE(request,content) {
+ 
+
+  try {
+    console.log("payload",content.params);
+    await connect();
+    
+   
+    
+    const newContact = await Contact.deleteOne({_id:"093b"});
+   if(!newContact){
+    return NextResponse.json({ success: false,},{status:404});
+   }
+    return NextResponse.json({ success: true, message:"Data deleted successfully" },{status:200});
+  } catch (error) {
+    return NextResponse.json({ success: false, error: error.message });
+  }
+}

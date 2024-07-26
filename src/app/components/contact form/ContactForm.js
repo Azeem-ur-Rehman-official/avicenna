@@ -52,14 +52,12 @@ const ContactForm = () => {
           setSubmitting(true);
           resetForm();
 
-          // const data = await postRequest("/api/contact", values);
-          setLoading(false);
-            setSuccess(true);
+          const data = await postRequest("/api/contact", values);
 
-          // if (data.status == 200) {
-          //   setLoading(false);
-          //   setSuccess(true);
-          // } else setLoading(false);
+          if (data.status == 200) {
+            setLoading(false);
+            setSuccess(true);
+          } else setLoading(false);
         } catch (err) {
           console.error(err);
           setStatus({ success: false });
@@ -241,21 +239,20 @@ const ContactForm = () => {
                 <FormHelperText error>{errors.submit}</FormHelperText>
               </Grid>
             )}
-            {success==true &&(
+            {success == true && (
               <Grid item xs={12}>
-            <Typography padding={5} sx={{backgroundColor:"#e9fc7c"}}>
-              <b>Thank you for getting in touch!</b><br></br>
-              We appreciate you contacting us. One of our customer happiness
-              members will be getting back to you within a few hours.
-              <br></br>
-              In the meantime, you can check out the following resources:
-              <br></br>
-              Have a great day ahead!
-            </Typography>
-            </Grid>
+                <Typography padding={5} sx={{ backgroundColor: "#e9fc7c" }}>
+                  <b>Thank you for getting in touch!</b>
+                  <br></br>
+                  We appreciate you contacting us. One of our customer happiness
+                  members will be getting back to you within a few hours.
+                  <br></br>
+                  In the meantime, you can check out the following resources:
+                  <br></br>
+                  Have a great day ahead!
+                </Typography>
+              </Grid>
             )}
-            
-            
           </Grid>
         </form>
       )}
