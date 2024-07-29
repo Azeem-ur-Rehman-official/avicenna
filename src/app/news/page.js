@@ -1,11 +1,12 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NewsFilter from '../components/news/NewsFilter';
 import NewsList from '../components/news/NewsList';
 import NewsHeroSection from '../components/news/NewsHeroSection';
-
-import { CssBaseline, Container, ThemeProvider, createTheme, Grid, Box } from '@mui/material';
+import Skeleton from '@mui/material/Skeleton';
+import { CssBaseline, Container, ThemeProvider, createTheme, Grid, Box, Typography } from '@mui/material';
 import Pagination from '@mui/material/Pagination';
+import { getRequest } from '../RequestsAPI/RequestsApi';
 
 const theme = createTheme({
   palette: {
@@ -24,13 +25,24 @@ const NewsPage = () => {
   const [selectedTag, setSelectedTag] = useState('All Tags');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-  const newsData = [
-    // Add your news items here
-  ];
-  const filteredNews = newsData.filter((news) => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const getData = async () => {
+    const data = await getRequest("/api/blogs");
+    if (data.status == 200) {
+      setData(data.data.Data);
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    setLoading(true);
+    getData();
+  }, [])
+
+  const filteredNews = data.filter((news) => {
     return (
-      (selectedTopic === 'All Topics' || news.topic === selectedTopic) &&
-      (selectedTag === 'All Tags' || news.tags.includes(selectedTag)) &&
+     
+      (selectedTag === 'All Tags' || news.blogCategory.includes(selectedTag)) &&
       (searchQuery === '' || news.title.toLowerCase().includes(searchQuery.toLowerCase()))
     );
   });
@@ -41,13 +53,30 @@ const NewsPage = () => {
       <Container>
         <Grid container spacing={4}>
           <Grid item xs={12} md={8}>
-            <NewsList
+          {loading==false?<NewsList
               searchQuery={searchQuery}
               selectedTopic={selectedTopic}
               selectedTag={selectedTag}
               currentPage={currentPage}
               itemsPerPage={itemsPerPage}
-            />
+              data={data}
+              loading={loading}
+            />:<Box sx={{mt:5}}>
+            <Box sx={{display:"flex",flexDirection:"row",gap:2,}}>
+            <Skeleton variant="rounded" width="30%" height={60} />
+            <Skeleton variant="rounded" width="70%" height={60} />
+            </Box>
+            <Box sx={{display:"flex",flexDirection:"row",gap:2,mt:2}}>
+            <Skeleton variant="rounded" width="30%" height={60} />
+            <Skeleton variant="rounded" width="70%" height={60} />
+            </Box>
+            <Box sx={{display:"flex",flexDirection:"row",gap:2,mt:2}}>
+            <Skeleton variant="rounded" width="30%" height={60} />
+            <Skeleton variant="rounded" width="70%" height={60} />
+            </Box>
+              
+            </Box>}
+            
             <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}>
               <Pagination
                 count={Math.ceil(filteredNews.length / itemsPerPage)}
@@ -65,6 +94,7 @@ const NewsPage = () => {
               setSelectedTopic={setSelectedTopic}
               selectedTag={selectedTag}
               setSelectedTag={setSelectedTag}
+              data={data}
             />
           </Grid>
         </Grid>

@@ -51,7 +51,7 @@ const newsData = [
   // Add more news items here...
 ];
 
-const NewsList = ({ searchQuery, selectedTopic, selectedTag, currentPage, itemsPerPage }) => {
+const NewsList = ({ searchQuery, selectedTopic, selectedTag, currentPage, itemsPerPage,data,loading }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [shareUrl, setShareUrl] = useState('');
 
@@ -67,10 +67,10 @@ const NewsList = ({ searchQuery, selectedTopic, selectedTag, currentPage, itemsP
   const open = Boolean(anchorEl);
   const id = open ? 'share-popover' : undefined;
 
-  const filteredNews = newsData.filter((news) => {
+  const filteredNews = data.filter((news) => {
     return (
-      (selectedTopic === 'All Topics' || news.topic === selectedTopic) &&
-      (selectedTag === 'All Tags' || news.tags.includes(selectedTag)) &&
+      
+      (selectedTag === 'All Tags' || news.blogCategory.includes(selectedTag)) &&
       (searchQuery === '' || news.title.toLowerCase().includes(searchQuery.toLowerCase()))
     );
   });
@@ -80,23 +80,26 @@ const NewsList = ({ searchQuery, selectedTopic, selectedTag, currentPage, itemsP
   return (
     <Box sx={{ mt: 4 }}>
       <Grid container spacing={4}>
+
         {paginatedNews.map((news, index) => (
           <Grid item xs={12} key={index}>
             <Card sx={{ display: 'flex' }}>
-              <CardMedia
+            {news.bannerPhoto!=null?<CardMedia
                 component="img"
                 sx={{ width: 150 }}
-                image={news.image}
+                image={news.bannerPhoto.url}
                 alt={news.title}
-              />
+              />:null}
+              
               <CardContent sx={{ flex: 1 }}>
-                <Link href={`/news/feed/${news.slug}`} underline="none">
+                <Link href={`/news/feed/${news._id}`} underline="none">
                   <Typography variant="h6" component="div">
                     {news.title}
                   </Typography>
                 </Link>
                 <Typography variant="body2" color="text.secondary">
-                  {news.shortDis}
+               
+                  {news.description.substring(0, 260) + '...'}
                 </Typography>
                 <Typography variant="caption" color="text.secondary">
                   Posted on {news.postedDate} by {news.postedBy}

@@ -349,6 +349,34 @@ export default function Admin({ children }) {
               <ListItemText primary="News" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
+          <ListItem disablePadding sx={{ display: "block" }}
+          onClick={() => handleClick("/admin/dashboard/publication")}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+                ...(pathname == "/admin/dashboard/publication" && {
+                  color: "white",
+                  backgroundColor: "#382153",
+                }),
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                  ...(pathname == "/admin/dashboard/publication" && {
+                    color: "white",
+                  }),
+                }}
+              >
+                <RssFeedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Publication" sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
           <ListItem
             disablePadding
             sx={{ display: "block" }}

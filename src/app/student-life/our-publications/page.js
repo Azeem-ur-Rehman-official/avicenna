@@ -1,16 +1,22 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import {
   Box,
   Container,
   CssBaseline,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
   ThemeProvider,
   Typography,
   createTheme,
 } from "@mui/material";
 import HeroSection from "../../components/hero section/HeroSection";
-
+import { getRequest } from "@/app/RequestsAPI/RequestsApi";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import Link from "next/link";
 const theme = createTheme({
   palette: {
     primary: {
@@ -23,6 +29,17 @@ const theme = createTheme({
 });
 
 export default function StaffPage() {
+  const [data, setData] = useState(null);
+  const getData = async () => {
+    const data = await getRequest("/api/publication");
+    if (data.status == 200) {
+      setData(data.data.Data);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, [])
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -71,6 +88,19 @@ export default function StaffPage() {
         >
           SCIENTIFIC JOURNALS
         </Typography>
+        <Box sx={{ mt: 2 }}>
+        
+        <List sx={{ bgcolor: 'background.paper', borderRadius: '8px', boxShadow: 1 }}>
+          {data!=null && data.map((item, index) => (
+            <ListItem component={Link} href={item.link} key={index} sx={{ borderBottom: '1px solid #e0e0e0' }}>
+              <ListItemIcon>
+                <CheckCircleIcon color="primary" />
+              </ListItemIcon>
+              <ListItemText primary={item.title} sx={{textDecoration:"underline"}}/>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
         
       </Container>
     </ThemeProvider>

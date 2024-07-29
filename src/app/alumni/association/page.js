@@ -80,7 +80,7 @@ export default function StaffPage() {
             <img
               
               width="80%"
-              src="/assets/alumni-logo.png"
+              src="/assets/alumni-assoiciation.jpg"
               alt="Rector"
             />
             </Grid>

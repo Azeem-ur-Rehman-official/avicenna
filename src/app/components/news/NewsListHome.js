@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Grid, Card, CardContent, CardMedia, Typography, Link, IconButton, Popover, List, ListItem, Container } from '@mui/material';
-import { ThumbUp, Share } from '@mui/icons-material';
-import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share';
+
+import { getRequest } from '@/app/RequestsAPI/RequestsApi';
 
 const newsData = [
   {
@@ -42,6 +42,20 @@ const newsData = [
 ];
 
 const NewsListHome = () => {
+  const [data, setData] = useState([]);
+  
+  const [loading, setLoading] = useState(true);
+  const getData = async () => {
+    const data = await getRequest("/api/blogs/latest-blogs");
+    if (data.status == 200) {
+      setData(data.data.Data);
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    setLoading(true);
+    getData();
+  }, [])
   const [anchorEl, setAnchorEl] = useState(null);
   const [shareUrl, setShareUrl] = useState('');
 
@@ -62,15 +76,16 @@ const NewsListHome = () => {
   return (
     <Box sx={{ mt: 4,p:4 }}>
       <Grid container spacing={4}>
-        {newsData.map((news, index) => (
+        {data.map((news, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card >
-              <CardMedia
+            {news.bannerPhoto!=null?<CardMedia
                 component="img"
-                sx={{ width: "100%",height:"200px" }}
-                image={news.image}
+                sx={{ width: 150 }}
+                image={news.bannerPhoto.url}
                 alt={news.title}
-              />
+              />:null}
+              
               <CardContent sx={{ flex: 1 }}>
                 <Link href={`/news/feed/${news.slug}`} underline="none">
                   <Typography variant="h6" component="div">
@@ -78,10 +93,10 @@ const NewsListHome = () => {
                   </Typography>
                 </Link>
                 <Typography variant="body2" color="text.secondary">
-                  {news.shortDis}
+                {news.description.substring(0, 260) + '...'}
                 </Typography>
                 <Typography variant="caption" color="text.secondary">
-                  Posted on {news.postedDate} by {news.postedBy}
+                  Posted on {new Date(news.createdAt).toDateString()} by admin
                 </Typography>
                 <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
                   {/* <IconButton aria-label="like">

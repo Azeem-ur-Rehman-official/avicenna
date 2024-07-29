@@ -100,7 +100,7 @@ const testimonials = [
   {
     content:
       "he DBA was an opportunity for me to grow and to challenge myself. I learned through this experience that growth and comfort don’t coexist and that If we want to grow we have to be comfortable with being uncomfortable. IUL helped me to build confidence, to take risks, to welcome challenges and though me that as a leader you have to base your decisions on who you truly are and your core values. I am very proud to be an IUL DBA Alumni“.",
-    userName: "Shahmeen shah Talpu",
+    userName: "Shahmeen shah Talpur",
     avatar: "/testimonials/lailpur.JPG",
   },
   {

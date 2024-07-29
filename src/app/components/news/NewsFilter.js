@@ -17,7 +17,7 @@ const tags = [
   'Science',
 ];
 
-const NewsFilter = ({ searchQuery, setSearchQuery, selectedTopic, setSelectedTopic, selectedTag, setSelectedTag }) => {
+const NewsFilter = ({ searchQuery, setSearchQuery, selectedTopic, setSelectedTopic, selectedTag, setSelectedTag,data }) => {
   return (
     <Box sx={{ my: 4 }}>
       <Grid container spacing={2}>
@@ -30,7 +30,7 @@ const NewsFilter = ({ searchQuery, setSearchQuery, selectedTopic, setSelectedTop
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </Grid>
-        <Grid item xs={12} >
+        {/* <Grid item xs={12} >
           <TextField
             select
             fullWidth
@@ -45,12 +45,12 @@ const NewsFilter = ({ searchQuery, setSearchQuery, selectedTopic, setSelectedTop
               </MenuItem>
             ))}
           </TextField>
-        </Grid>
+        </Grid> */}
         <Grid item xs={12} >
           <TextField
             select
             fullWidth
-            label="Filter by Tag"
+            label="Filter by Category"
             variant="outlined"
             value={selectedTag}
             onChange={(e) => setSelectedTag(e.target.value)}

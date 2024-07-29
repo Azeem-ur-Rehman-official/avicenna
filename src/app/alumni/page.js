@@ -14,7 +14,7 @@ import { Fade } from "@mui/material";
 import { useEffect, useState } from "react";
 import CheckList from "../components/checklist/CheckList";
 import Link from "next/link";
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 const HeroSection = styled(Box)(({ theme }) => ({
   backgroundColor: "#001e60",
   color: "#fff",
@@ -56,23 +56,60 @@ const Alumni = () => {
         </Typography>
       </HeroSection>
       <Container sx={{ marginBottom: "50px" }}>
-      <Fade in={checked} timeout={1000}>
-            <Box container mt={5} sx={{display:"flex",flexDirection:{md:"row",xs:"column"},justifyContent:"center",gap:8,alignItems:"center"}}>
-              <Box component={Link} href="/alumni/association"  item p={3} sx={{background: "linear-gradient(90deg, rgba(36,0,22,1) 0%, rgba(121,9,60,1) 35%, rgba(255,0,121,1) 100%)", cursor:"pointer",borderRadius:"15px", display:"flex",flexDirection:"row",alignItems:"center"}}>
-              <Typography  variant="h5"  textAlign="center" color="white" >
-              Alumni Association
-             
-                    </Typography>
-                    <KeyboardArrowRightIcon style={{ color: '#ffffff' }}/>
-              </Box>
-              <Box component={Link} href="/alumni/graduate-oath"  item p={3} sx={{background: "linear-gradient(90deg, rgba(36,0,22,1) 0%, rgba(121,9,60,1) 35%, rgba(255,0,121,1) 100%)", cursor:"pointer",borderRadius:"15px", display:"flex",flexDirection:"row",alignItems:"center"}}>
-             <Typography  variant="h5" textAlign="center" color="white">
-                    Avicenna Graduate Oath
-                    </Typography>
-                    <KeyboardArrowRightIcon style={{ color: '#ffffff' }}/>
-              </Box>
+        <Fade in={checked} timeout={1000}>
+          <Box
+            container
+            mt={5}
+            sx={{
+              display: "flex",
+              flexDirection: { md: "row", xs: "column" },
+              justifyContent: "center",
+              gap: 8,
+              alignItems: "center",
+            }}
+          >
+            <Box
+              component={Link}
+              href="/alumni/association"
+              item
+              p={3}
+              sx={{
+                background:
+                  "linear-gradient(90deg, rgba(36,0,22,1) 0%, rgba(121,9,60,1) 35%, rgba(255,0,121,1) 100%)",
+                cursor: "pointer",
+                borderRadius: "15px",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Typography variant="h5" textAlign="center" color="white">
+                Alumni Association
+              </Typography>
+              <KeyboardArrowRightIcon style={{ color: "#ffffff" }} />
             </Box>
-          </Fade>
+            <Box
+              component={Link}
+              href="/alumni/graduate-oath"
+              item
+              p={3}
+              sx={{
+                background:
+                  "linear-gradient(90deg, rgba(36,0,22,1) 0%, rgba(121,9,60,1) 35%, rgba(255,0,121,1) 100%)",
+                cursor: "pointer",
+                borderRadius: "15px",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Typography variant="h5" textAlign="center" color="white">
+                Avicenna Graduate Oath
+              </Typography>
+              <KeyboardArrowRightIcon style={{ color: "#ffffff" }} />
+            </Box>
+          </Box>
+        </Fade>
         <HistorySection>
           <Fade in={checked} timeout={1000}>
             <Grid container spacing={4}>
@@ -165,9 +202,6 @@ const Alumni = () => {
         </HistorySection>
 
         <CheckList />
-      
-         
-      
       </Container>
     </div>
   );

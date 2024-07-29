@@ -57,10 +57,7 @@ export default function StaffPage() {
           name: "Nasirova Svetlana Akbarovna",
           image: "/aoth/03.JPG",
         },
-        {
-          name: "Kogaartbai Kyzy Akylai",
-          image: "/aoth/04.JPG",
-        },
+        
         {
           name: "Erik Kyzy Aizat",
           image: "/aoth/05.JPG",

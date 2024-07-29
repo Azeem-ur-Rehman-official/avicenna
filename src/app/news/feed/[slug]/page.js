@@ -1,18 +1,28 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Box, Container, Typography, Card, CardMedia, CardContent, IconButton, Popover, List, ListItem } from '@mui/material';
 import { ThumbUp, Share } from '@mui/icons-material';
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share';
-import { newsData } from '../../../components/news/NewsList';
+import { getRequest } from '@/app/RequestsAPI/RequestsApi';
 
 const NewsDetailPage = () => {
   const pathname = usePathname();
   const slug = pathname.split('/').pop(); // Get the last part of the path as the slug
   const [anchorEl, setAnchorEl] = useState(null);
+const [data, setData] = useState(null);
+ console.log("data",data);
+ useEffect(() => {
 
-  const newsItem = newsData.find((news) => news.slug === slug);
-
+  getData();
+}, []);
+const getData = async ()=>{
+  const response = await getRequest(`/api/blogs/data?id=${slug}`);
+  if(response.status==200 && response.data?.Data){
+    setData(response.data.Data);
+  }
+  console.log("response",response);
+}
   const handleShareClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -24,29 +34,32 @@ const NewsDetailPage = () => {
   const open = Boolean(anchorEl);
   const id = open ? 'share-popover' : undefined;
 
-  if (!newsItem) {
-    return <Typography variant="h4">News not found</Typography>;
+  if (!data) {
+    return <Typography variant="h4">News not found {slug}</Typography>;
   }
+ 
+ 
 
   return (
     <Container>
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom>
-          {newsItem.title}
+          {data.title}
         </Typography>
         <Card>
-          <CardMedia
+        {DataTransfer.bannerPhoto!=null?<CardMedia
             component="img"
             height="400"
-            image={newsItem.image}
-            alt={newsItem.title}
-          />
+            image={data.bannerPhoto.url}
+            alt={data.title}
+          />:null}
+          
           <CardContent>
             <Typography variant="body1">
-              {newsItem.description}
+              {data.description}
             </Typography>
             <Typography variant="caption" color="text.secondary">
-              Posted on {newsItem.postedDate} by {newsItem.postedBy}
+              Posted on {data.postedDate} by {data.postedBy}
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
               {/* <IconButton aria-label="like">
@@ -78,7 +91,7 @@ const NewsDetailPage = () => {
       >
         <List>
           <ListItem>
-            <FacebookShareButton url={`https://yourwebsite.com/news/${newsItem.slug}`} style={{ marginRight: '10px' }}>
+            <FacebookShareButton url={`https://yourwebsite.com/news/${data.slug}`} style={{ marginRight: '10px' }}>
               <IconButton aria-label="share">
                 <Share />
               </IconButton>
@@ -86,7 +99,7 @@ const NewsDetailPage = () => {
             <Typography>Facebook</Typography>
           </ListItem>
           <ListItem>
-            <TwitterShareButton url={`https://yourwebsite.com/news/${newsItem.slug}`} style={{ marginRight: '10px' }}>
+            <TwitterShareButton url={`https://yourwebsite.com/news/${data.slug}`} style={{ marginRight: '10px' }}>
               <IconButton aria-label="share">
                 <Share />
               </IconButton>
@@ -94,7 +107,7 @@ const NewsDetailPage = () => {
             <Typography>Twitter</Typography>
           </ListItem>
           <ListItem>
-            <WhatsappShareButton url={`https://yourwebsite.com/news/${newsItem.slug}`} style={{ marginRight: '10px' }}>
+            <WhatsappShareButton url={`https://yourwebsite.com/news/${data.slug}`} style={{ marginRight: '10px' }}>
               <IconButton aria-label="share">
                 <Share />
               </IconButton>

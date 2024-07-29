@@ -25,6 +25,8 @@ const HomeSlider = dynamic(() => import('./components/slider/HomeSlider'), { ssr
 import TestimonialSection from "./components/testimonial/Testimonial";
 import Fade from "react-reveal/Fade";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { getRequest } from "./RequestsAPI/RequestsApi";
 const useStyles = makeStyles({
   hero: {
     backgroundColor: theme.palette.primary.main,
@@ -72,6 +74,7 @@ const useStyles = makeStyles({
   },
 });
 export default function Home() {
+ 
   const classes = useStyles();
   return (
     <Box>
