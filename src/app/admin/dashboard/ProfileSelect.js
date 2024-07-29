@@ -112,15 +112,7 @@ const ProfileSelect = () => {
           <ArrowForwardIosSharpIcon sx={{ ml: 2 }} />
         </MenuItem></Zoom>
         
-        <MenuItem onClick={handleClose} disableRipple>
-          <Image src={p2} alt="icon" className="profileDropIcons" />
-          Profile
-        </MenuItem>
-
-        <MenuItem onClick={handleClose} disableRipple>
-          <Image src={p3} alt="icon" className="profileDropIcons" />
-          Security
-        </MenuItem>
+      
 
         
         <Divider sx={{ my: 0.5 }} />
