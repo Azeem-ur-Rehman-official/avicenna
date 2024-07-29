@@ -10,6 +10,7 @@ import {
   Typography,
   CardActionArea,
   CardActions,
+  CardMedia,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import theme from "./theme";
@@ -228,11 +229,17 @@ export default function Home() {
             <Grid container className={classes.imageContentSection}>
               <Grid item xs={12} md={6}>
                 <Fade left>
-                  <img
+                <CardMedia
+                component="img"
+                height="auto"
+                image="/assets/vision.jpg"
+                alt="jkhsj"
+              />
+                  {/* <img
                     src="/assets/vision.jpg"
                     alt="Left Section"
                     className={classes.image}
-                  />
+                  /> */}
                 </Fade>
               </Grid>
               <Grid item xs={12} md={6} className={classes.content}>
@@ -290,11 +297,13 @@ export default function Home() {
               </Grid>
               <Grid item xs={12} md={6}>
                 <Fade right>
-                  <img
-                    src="/assets/mission.jpg"
-                    alt="Right Section"
-                    className={classes.image}
-                  />
+                <CardMedia
+                component="img"
+                height="auto"
+                image="/assets/mission.jpg"
+                alt="jkhsj"
+              />
+                 
                 </Fade>
               </Grid>
             </Grid>
