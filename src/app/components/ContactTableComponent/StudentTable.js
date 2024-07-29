@@ -28,124 +28,16 @@ import {
 } from "@mui/material";
 import { Delete, Edit, Visibility } from "@mui/icons-material";
 import {
-  deleteRequest,
   getRequest,
   patchRequest,
   postRequest,
 } from "@/app/RequestsAPI/RequestsApi";
-import Base64Downloader from "common-base64-downloader-react";
+// import Base64Downloader from "common-base64-downloader-react";
 
 import LoadingButton from "@mui/lab/LoadingButton";
-const createData = (fullName, email, status, dateTime) => {
-  return { fullName, email, status, dateTime };
-};
 
-// Example student contact data
-const rows = [
-  createData(
-    "John Doe",
-    "john@example.com",
-    "This is a sample message from John.",
-    "2024-05-25 14:30"
-  ),
-  createData(
-    "Jane Smith",
-    "jane@example.com",
-    "This is a sample message from Jane.",
-    "2024-05-24 10:00"
-  ),
-  createData(
-    "Alan Brown",
-    "alan@example.com",
-    "This is a sample message from Alan.",
-    "2024-05-23 08:15"
-  ),
-  createData(
-    "Emily White",
-    "emily@example.com",
-    "This is a sample message from Emily.",
-    "2024-05-22 16:45"
-  ),
-  // Add more data to exceed 15 rows for testing pagination
-  createData(
-    "Chris Green",
-    "chris@example.com",
-    "This is a sample message from Chris.",
-    "2024-05-21 11:00"
-  ),
-  createData(
-    "Linda Black",
-    "linda@example.com",
-    "This is a sample message from Linda.",
-    "2024-05-20 09:30"
-  ),
-  createData(
-    "Sarah Blue",
-    "sarah@example.com",
-    "This is a sample message from Sarah.",
-    "2024-05-19 13:45"
-  ),
-  createData(
-    "Michael Red",
-    "michael@example.com",
-    "This is a sample message from Michael.",
-    "2024-05-18 14:00"
-  ),
-  createData(
-    "David Orange",
-    "david@example.com",
-    "This is a sample message from David.",
-    "2024-05-17 15:30"
-  ),
-  createData(
-    "Jessica Purple",
-    "jessica@example.com",
-    "This is a sample message from Jessica.",
-    "2024-05-16 10:15"
-  ),
-  createData(
-    "James Yellow",
-    "james@example.com",
-    "This is a sample message from James.",
-    "2024-05-15 08:45"
-  ),
-  createData(
-    "Emily Grey",
-    "emilyg@example.com",
-    "This is a sample message from Emily Grey.",
-    "2024-05-14 11:30"
-  ),
-  createData(
-    "Sophia Pink",
-    "sophia@example.com",
-    "This is a sample message from Sophia.",
-    "2024-05-13 12:45"
-  ),
-  createData(
-    "Lucas Brown",
-    "lucas@example.com",
-    "This is a sample message from Lucas.",
-    "2024-05-12 10:00"
-  ),
-  createData(
-    "Mia White",
-    "mia@example.com",
-    "This is a sample message from Mia.",
-    "2024-05-11 13:30"
-  ),
-  createData(
-    "Elijah Blue",
-    "elijah@example.com",
-    "This is a sample message from Elijah.",
-    "2024-05-10 09:15"
-  ),
-  createData(
-    "Oliver Black",
-    "oliver@example.com",
-    "This is a sample message from Oliver.",
-    "2024-05-09 16:00"
-  ),
-];
+
+
 
 const StudentTable = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -377,34 +269,7 @@ const StudentTable = (props) => {
             <Typography>program: {selectedRow.program}</Typography>
             <Typography>session: {selectedRow.session}</Typography>
             <Typography>status: {selectedRow.status}</Typography>
-            <Base64Downloader
-              base64={selectedRow.sscCertificate}
-              downloadName="matric"
-            >
-              Download Matric/ssc
-            </Base64Downloader>
-            <br></br>
-            
-            <Base64Downloader
-              base64={selectedRow.hscCertificate}
-              downloadName="hsc"
-            >
-              Download Fsc/hsc
-            </Base64Downloader>
-            <br></br>
-            {selectedRow.otherFiles!="null"? <Base64Downloader
-              base64={selectedRow.otherFiles}
-              downloadName="other files"
-            >
-              Other Files
-            </Base64Downloader>:null}
-            <br></br>
-            {selectedRow.passportCopy!="null" && <Base64Downloader
-              base64={selectedRow.passportCopy}
-              downloadName="passport"
-            >
-              Passport Copy
-            </Base64Downloader>}
+         
             <Typography>Date & Time: {selectedRow.createdAt}</Typography>
           </DialogContent>
         )}

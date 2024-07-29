@@ -1,18 +1,11 @@
 "use client";
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
-import MuiAppBar from "@mui/material/AppBar";
 
-import { useEffect, useState } from "react";
 import Layout from "../../Layout";
 // material-ui
 import { Grid } from "@mui/material";
 
-// project imports
 
-import StudentContactsTable from "@/app/components/ContactTableComponent/ContactTable";
-import { getRequest } from "@/app/RequestsAPI/RequestsApi";
-import ApplicationTable from "@/app/components/ContactTableComponent/ApplicationTable";
 import StudentTable from "@/app/components/ContactTableComponent/StudentTable";
 
 // meta export
