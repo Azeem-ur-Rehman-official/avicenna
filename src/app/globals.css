@@ -126,6 +126,9 @@ a {
 .scroll-container::-webkit-scrollbar {
   display: none;
 }
+.conselImg{
+  width: 100%;
+}
 a{
   min-width: fit-content;
 }

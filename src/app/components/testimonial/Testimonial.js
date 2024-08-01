@@ -104,9 +104,8 @@ const testimonials = [
     avatar: "/testimonials/lailpur.JPG",
   },
   {
-    content:
-      "It is with great pleasure that I write this testimonial for the American University of Leadership (IUL). I am grateful to the administration, faculty, and staff for their unwavering support and guidance throughout my academic journey. The BCS degree I earned from IUL has been instrumental in shaping my career and personal growth. My experience at AUL has been nothing short of amazing. The university's commitment to providing a conducive learning environment has enabled me.",
-    userName: "MD Farhan",
+    content:"It is with great pleasure that I write this testimonial for Avicenna University. I am grateful to the administration, faculty, and staff for their unwavering support and guidance throughout my academic journey. The education I received at Avicenna University has been instrumental in shaping my career and personal growth. My experience at Avicenna University has been nothing short of amazing. The university's commitment to providing a conducive learning environment has enabled me to thrive academically and personally.",
+      userName: "MD Farhan",
     avatar: "/testimonials/md farhan.JPG",
   },
   {

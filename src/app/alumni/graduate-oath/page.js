@@ -47,49 +47,23 @@ export default function StaffPage() {
       const staffData = [
         {
           name: "Dr. Temir Arapov",
-          image: "/aoth/01.JPG",
+          image: "/aoth/oth1.JPG",
         },
         {
           name: "Builashev talaibek Sabralievich",
-          image: "/aoth/02.JPG",
+          image: "/aoth/oth2.JPG",
         },
         {
           name: "Nasirova Svetlana Akbarovna",
-          image: "/aoth/03.JPG",
+          image: "/aoth/oth4.JPG",
         },
         
         {
           name: "Erik Kyzy Aizat",
-          image: "/aoth/05.JPG",
+          image: "/aoth/oth5.JPG",
         },
-        {
-          name: "Asanova Aizada",
-          image: "/aoth/06.JPG",
-        },
-        {
-          name: "Nurzhan Osmonalieva",
-          image: "/aoth/07.JPG",
-        },
-        {
-          name: "Nazarbekova Elvira",
-          image: "/aoth/08.JPG",
-        },
-        {
-          name: "Tarielova Bermet Tarielovna",
-          image: "/aoth/09.JPG",
-        },
-        {
-          name: "Tarielova Bermet Tarielovna",
-          image: "/aoth/10.JPG",
-        },
-        {
-          name: "Tarielova Bermet Tarielovna",
-          image: "/aoth/11.JPG",
-        },
-        {
-          name: "Tarielova Bermet Tarielovna",
-          image: "/aoth/12.JPG",
-        },
+      
+       
         // Add more staff members as needed
       ];
       

@@ -1,16 +1,20 @@
 "use client";
 import React from "react";
-import dynamic from "next/dynamic";
+import Zoom from "react-reveal/Zoom";
 import {
   Box,
   Container,
   CssBaseline,
+  Grid,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
   ThemeProvider,
   Typography,
   createTheme,
 } from "@mui/material";
-import HeroSection from "../../components/hero section/HeroSection";
-
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 const theme = createTheme({
   palette: {
     primary: {
@@ -20,9 +24,35 @@ const theme = createTheme({
   typography: {
     fontFamily: "Arial, sans-serif",
   },
+ 
 });
 
 export default function StaffPage() {
+  const items = [
+    "President",
+    "vice president",
+    "General secretary",
+    "semester Representative",
+    "Head of social media team",
+    "Head of sports committee",
+    "Head of academic affaires",
+    "Head of Search council",
+    "Head of event organization team",
+  ];
+  const list = [
+    { src: "/councel/IMG-20240801-WA0010.jpg", alt: "counsel" },
+    { src: "/councel/IMG-20240801-WA0011.jpg", alt: "counsel" },
+    { src: "/councel/IMG-20240801-WA0012.jpg", alt: "counsel" },
+    { src: "/councel/IMG-20240801-WA0013.jpg", alt: "counsel" },
+    { src: "/councel/IMG-20240801-WA0014.jpg", alt: "counsel" },
+    { src: "/councel/IMG-20240801-WA0015.jpg", alt: "counsel" },
+    { src: "/councel/IMG-20240801-WA0016.jpg", alt: "counsel" },
+    { src: "/councel/IMG-20240801-WA0017.jpg", alt: "counsel" },
+    { src: "/councel/IMG-20240801-WA0018.jpg", alt: "counsel" },
+    { src: "/councel/IMG-20240801-WA0019.jpg", alt: "counsel" },
+    { src: "/councel/IMG-20240801-WA0020.jpg", alt: "counsel" },
+    { src: "/councel/IMG-20240801-WA0021.jpg", alt: "counsel" },
+  ];
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -69,7 +99,7 @@ export default function StaffPage() {
           pt={5}
           pb={5}
         >
-          ASMI STUDENT PARLIAMENT
+          AVICENNA STUDENT PARLIAMENT
         </Typography>
         <Typography
           variant="h4"
@@ -137,6 +167,46 @@ export default function StaffPage() {
           effectively operates within them. To provide a viable means for
           student expression and an increasing amount of self-direction.
         </Typography>
+        <Typography
+          variant="h4"
+          component="h2"
+          mt={5}
+          gutterBottom
+          sx={{
+            fontWeight: 800,
+            borderLeft: "5px solid red",
+            paddingLeft: "8px",
+            borderRadius: "15px",
+          }}
+        >
+          Our Avicenna students council Structure
+        </Typography>
+
+        <List
+          sx={{
+            bgcolor: "background.paper",
+            borderRadius: "8px",
+            boxShadow: 1,
+          }}
+        >
+          {items.map((item, index) => (
+            <ListItem key={index} sx={{ borderBottom: "1px solid #e0e0e0" }}>
+              <ListItemIcon>
+                <CheckCircleIcon color="primary" />
+              </ListItemIcon>
+              <ListItemText primary={item} />
+            </ListItem>
+          ))}
+        </List>
+        <Grid container spacing={4} mt={3}>
+          {list.map((item, index) => (
+            <Grid item xs={12} sm={4} md={3} key={index}>
+              <Zoom>
+                <img src={item.src} alt={item.alt} className="conselImg" />
+              </Zoom>
+            </Grid>
+          ))}
+        </Grid>
       </Container>
     </ThemeProvider>
   );

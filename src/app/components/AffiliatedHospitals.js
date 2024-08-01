@@ -16,6 +16,8 @@ import HospitalIcon from "@mui/icons-material/LocalHospital";
 import { makeStyles } from "@mui/styles";
 import Fade from "react-reveal/Fade";
 import theme from "../theme";
+import Link from "next/link";
+import AddLocationSharpIcon from '@mui/icons-material/AddLocationSharp';
 const useStyles = makeStyles(() => ({
   section: {
     backgroundColor: "#E6EFF8",
@@ -107,11 +109,70 @@ const AffiliatedHospitals = () => {
           <Grid item xs={12} md={6}>
             <List className={classes.list}>
             <Fade bottom >
-              <ListItem className={classes.listItem2}>
+              <ListItem  className={classes.listItem2}>
                 <ListItemIcon className={classes.listItemIcon2}>
                   <HospitalIcon />
                 </ListItemIcon>
-                <ListItemText primary="Medical Clinic of the 'Avicenna' International Medical University 'Avicenna.kg' (Bishkek, Moscow Street, 136)" />
+                <ListItemText primary="Medical Clinic of the 'Avicenna' International Medical University 'Avicenna.kg'">
+               
+                </ListItemText>
+              
+              </ListItem>
+            </Fade>
+            <Fade bottom >
+              <ListItem  className={classes.listItem2}>
+                <ListItemIcon className={classes.listItemIcon2}>
+                  <AddLocationSharpIcon />
+                </ListItemIcon>
+                <ListItemText primary="Bakaeva 106">            
+                </ListItemText>              
+              </ListItem>
+            </Fade>
+            <Fade bottom >
+              <ListItem  className={classes.listItem2}>
+                <ListItemIcon className={classes.listItemIcon2}>
+                  <AddLocationSharpIcon />
+                </ListItemIcon>
+                <ListItemText primary="Dzhunusalieva 83">            
+                </ListItemText>              
+              </ListItem>
+            </Fade>
+            <Fade bottom >
+              <ListItem  className={classes.listItem2}>
+                <ListItemIcon className={classes.listItemIcon2}>
+                  <AddLocationSharpIcon />
+                </ListItemIcon>
+                <ListItemText primary="Zhukeeva Pudovkina 124">            
+                </ListItemText>              
+              </ListItem>
+            </Fade>
+            <Fade bottom >
+              <ListItem  className={classes.listItem2}>
+                <ListItemIcon className={classes.listItemIcon2}>
+                  <AddLocationSharpIcon />
+                </ListItemIcon>
+                <ListItemText primary="Tokombaeva 23/1
+">            
+                </ListItemText>              
+              </ListItem>
+            </Fade>
+            <Fade bottom >
+              <ListItem  className={classes.listItem2}>
+                <ListItemIcon className={classes.listItemIcon2}>
+                  <AddLocationSharpIcon />
+                </ListItemIcon>
+                <ListItemText primary="Moskovskaya 136
+">            
+                </ListItemText>              
+              </ListItem>
+            </Fade>
+            <Fade bottom >
+              <ListItem  className={classes.listItem2}>
+                <ListItemIcon className={classes.listItemIcon2}>
+                  <AddLocationSharpIcon />
+                </ListItemIcon>
+                <ListItemText primary="Bakaeva 106">            
+                </ListItemText>              
               </ListItem>
             </Fade>
               {hospitals
@@ -136,7 +197,7 @@ const AffiliatedHospitals = () => {
                 <ListItemIcon className={classes.listItemIcon2}>
                   <HospitalIcon />
                 </ListItemIcon>
-                <ListItemText primary="Medical Clinic of the 'Avicenna' International Medical University 'MEDI' (Bishkek, Suerkulova Street, 5/3)" />
+                <ListItemText primary="Medical Clinic of the 'Avicenna' International Medical University 'MEDI' " />
               </ListItem>
             </Fade>
               {hospitals

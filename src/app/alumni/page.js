@@ -193,7 +193,7 @@ const Alumni = () => {
               <Grid item xs={12} md={6}>
                 <CardMedia
                   component="img"
-                  image="/assets/aboutus.jpg" // Replace with your image path
+                  image="/cap.JPG" // Replace with your image path
                   alt="University History"
                 />
               </Grid>

@@ -194,7 +194,6 @@ export default function Home() {
         <OurPrograms />
         <StatsSection />
         <WhyChooseUs />
-
         <TestimonialSection />
         <Container>
           <Typography

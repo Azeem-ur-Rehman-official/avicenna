@@ -2,10 +2,20 @@
 "use client";
 
 import React from "react";
-import { Container, Grid, Typography, Box } from "@mui/material";
+import {
+  Container,
+  Grid,
+  Typography,
+  Box,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import Zoom from "react-reveal/Zoom";
 import theme from "../theme";
+import AddLocationSharpIcon from "@mui/icons-material/AddLocationSharp";
 const useStyles = makeStyles(() => ({
   section: {
     padding: theme.spacing(8, 0),
@@ -47,32 +57,39 @@ const licensesCertifications = [
   { src: "/certificate/certificate0002.jpg", alt: "Certification 2" },
   { src: "/certificate/certificate0003.jpg", alt: "Certification 2" },
   { src: "/certificate/certificate0004.jpg", alt: "Certification 2" },
-  
-  
+
   // Add more images as needed
+];
+const links = [
+  "https://search.wdoms.org/home/SchoolDetail/F0006354",
+  "https://www.ecfmg.org/certification-pathways/pathway-schools.php?country=KYRGYZSTAN&next=Submit",
+  "https://aaopo.kg/en/international-accreditation-of-medical-universities/topic/262",
+  "https://www.amc.org.au/check-eligible-medical-school-medical-degrees-and-graduation-years/",
+  "https://www.ecfmg.org/certification-pathways/pathway-schools.php?country=KYRGYZSTAN&next=Submit",
+  "https://whed.net/results_institutions.php",
+  "https://whed.net/detail_institution.php?KDo2MF0sQ0RXLSMsYApgCg",
+  "https://amse-med.eu/members-and-membership/members/",
 ];
 
 const LicensesCertifications = () => {
   const classes = useStyles();
 
   return (
-    <Box >
-    <Box
-      sx={{
-        backgroundColor: '#001e60',
-        color: 'white',
-        py: 12,
-      }}
-    >
-      <Container maxWidth="lg">
-        <Typography variant="h2" component="h1" gutterBottom>
-        Licenses & Certifications
-        </Typography>
-        
-      </Container>
-    </Box>
-      <Container sx={{py:6}}>
-        
+    <Box>
+      <Box
+        sx={{
+          backgroundColor: "#001e60",
+          color: "white",
+          py: 12,
+        }}
+      >
+        <Container maxWidth="lg">
+          <Typography variant="h2" component="h1" gutterBottom>
+            Licenses & Certifications
+          </Typography>
+        </Container>
+      </Box>
+      <Container sx={{ py: 6 }}>
         <Grid container spacing={4}>
           {licensesCertifications.map((item, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
@@ -82,6 +99,37 @@ const LicensesCertifications = () => {
             </Grid>
           ))}
         </Grid>
+        <Typography
+          variant="h4"
+          component="h2"
+          mt={5}
+          gutterBottom
+          sx={{
+            fontWeight: 800,
+            borderLeft: "5px solid red",
+            paddingLeft: "8px",
+            borderRadius: "15px",
+          }}
+        >
+          Our Licenses & Certifications Links
+        </Typography>
+
+        <List
+          sx={{
+            bgcolor: "background.paper",
+            borderRadius: "8px",
+            boxShadow: 1,
+          }}
+        >
+          {links.map((item, index) => (
+            <ListItem key={index} sx={{ borderBottom: "1px solid #e0e0e0" }}>
+              <ListItemIcon>
+                <AddLocationSharpIcon color="primary" />
+              </ListItemIcon>
+              <ListItemText primary={item} />
+            </ListItem>
+          ))}
+        </List>
       </Container>
     </Box>
   );
