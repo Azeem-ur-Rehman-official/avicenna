@@ -57,8 +57,8 @@ const useStyles = makeStyles(() => ({
   avatar: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(1),
-    width:"80px",
-    height:"80px",
+    width: "80px",
+    height: "80px",
   },
   cardContent: {
     textAlign: "center",
@@ -87,46 +87,46 @@ const useStyles = makeStyles(() => ({
 const testimonials = [
   {
     content:
-      "My three years at International University of Leadership for my Bachelor's in Computer Science were transformative. The vibrant academic community and dedicated faculty shaped my understanding of computer science. Practical projects enhanced my technical skills and instilled creativity and problem-solving aptitude. As I near completion, IUL’s reputation and cutting-edge research initiatives drive my determination to apply for the Master's program in Computer Science. ",
+      "I am DR. Farhan Ahmad from Pakistan, 1st year student pursing from AVICENNA university medical faculty, I came here in 2022. my experience with my university has been quite positive overall. The faculty members are knowledgeable and experienced in their respective fields, and they are always willing to help students who need guidance or clarification on a particular topic. The curriculum is well-structured, with a good balance between theoretical knowledge and practical skills training.",
     userName: "Farhan Ahmad",
     avatar: "/testimonials/farhan.JPG",
   },
   {
     content:
-      "My journey at IUL Everything started on October 2016, when I was admitted as a student at IUL. I still remember the first day just like it was yesterday when I was warmly welcomed by the administration and the professors as the first visually impaired student, a person with disability. While I was waiting at the administration completing my admission file, a gentleman put his hand on my shoulder and introduced himself kindly, he was Mr. president Anass Lahlou.",
+      "I am DR. Muhammad Abdullah from Pakistan, 3rd year student pursing from AVICENNA university medical faculty, I came here in 2020. I appreciate the rigorous curriculum and the high standards of education provided. The faculty members are knowledgeable and experienced in their respective fields, and they make an e",
     userName: "Muhammad Abdullah",
     avatar: "/testimonials/abdullah.JPG",
   },
   {
     content:
-      "he DBA was an opportunity for me to grow and to challenge myself. I learned through this experience that growth and comfort don’t coexist and that If we want to grow we have to be comfortable with being uncomfortable. IUL helped me to build confidence, to take risks, to welcome challenges and though me that as a leader you have to base your decisions on who you truly are and your core values. I am very proud to be an IUL DBA Alumni“.",
+      "I am DR. Shahmeen shah Talpur, 3rd year student pursing from AVICENNA university medical faculty, I came here in 2020. I am grateful for the opportunity to pursue my dream of becoming a doctor and for the quality education I receive. The university has a reputable medical program with knowledgeable professors who are experts in their respective fields. The curriculum is comprehensive and covers all the necessary subjects and clinical rotations to develop a well-rounded understanding of medicine.",
     userName: "Shahmeen shah Talpur",
     avatar: "/testimonials/lailpur.JPG",
   },
   {
-    content:"It is with great pleasure that I write this testimonial for Avicenna University. I am grateful to the administration, faculty, and staff for their unwavering support and guidance throughout my academic journey. The education I received at Avicenna University has been instrumental in shaping my career and personal growth. My experience at Avicenna University has been nothing short of amazing. The university's commitment to providing a conducive learning environment has enabled me to thrive academically and personally.",
-      userName: "MD Farhan",
+    content:
+      "It is with great pleasure that I write this testimonial for Avicenna University. I am grateful to the administration, faculty, and staff for their unwavering support and guidance throughout my academic journey. The education I received at Avicenna University has been instrumental in shaping my career and personal growth. My experience at Avicenna University has been nothing short of amazing. The university's commitment to providing a conducive learning environment has enabled me to thrive academically and personally.",
+    userName: "MD Farhan",
     avatar: "/testimonials/md farhan.JPG",
   },
   {
     content:
-      "Hello, my name is Amina Zriouilat and I'm an IUL alumna. I have spent great times in IUL and have a lot of great memories. In IUL not only we have interesting courses with skilled professors, but we are also encouraged to apply what we learned in real life experiences. I had the opportunity to work on many extracurricular activities such as conferences, debates, trips etc. To be part of the IUL family is one of the greatest things that had ever happened to me.",
+      "Hello, my name is Amina Zriouilat and I'm an Avicenna university alumna. I have spent great times in Avicenna university and have a lot of great memories. In Avicenna university not only we have interesting courses with skilled professors, but we are also encouraged to apply what we learned in real life experiences. I had the opportunity to work on many extracurricular activities such as conferences, debates, trips etc. To be part of the Avicenna university family is one of the greatest things that had ever happened to me.",
     userName: "Udham Singh",
     avatar: "/testimonials/udhan.JPG",
   },
   {
     content:
-      "IUL is not only a university where I had classes, it is more like a home; where I spent 80% of my time. Fun, knowledge and leadership are the most important pillars that make our community very special. I have honestly been very satisfied with the results of my courses. I am a BBA graduate and now an MBA student and God willing I will be a DBA graduate in the next 5 years. I want to thank every person that has marked my path, every person that has pushed me. ",
+      "I am DR.mohin singh from 4th year student pursing from AVICENNA university medical faculty. I came here in 2019, AVICENNA provides a golden opportunity for the brilliant students by providing scholarship to them. Mine and my parents’ dream was to become doctor. In my childhood I saw many people in pain that they were su",
     userName: "mohin singh",
     avatar: "/testimonials/singh.JPG",
   },
   {
     content:
-      "Here is my experience at IUL University. I had amazing professors, colleagues, and staff that were always helping us be a better version of ourselves. We changed during the years and upgraded to satisfying stages of our lives not only professionally but as students. we became friendlier to each other and treated each other as family members. I’m very proud of the choice I made and this feeling is what brings joy to my life and to all my surrounding.",
+      "I am DR. Kashish Singh from India, 2nd year student pursing from AVICENNA university medical faculty, I came here in 2022. the university has excellent infrastructure and resources, including well-equipped laboratories and libraries, which contribute to a conducive learning environment. The opportunities for research and clinical exposure are also abundant, allowing us to gain practical experience and develop our skills.",
     userName: "kashish singh",
     avatar: "/testimonials/kashish singh.JPG",
   },
-  
 ];
 
 const TestimonialSection = () => {
