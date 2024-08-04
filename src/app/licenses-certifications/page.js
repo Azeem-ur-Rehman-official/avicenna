@@ -16,6 +16,7 @@ import { makeStyles } from "@mui/styles";
 import Zoom from "react-reveal/Zoom";
 import theme from "../theme";
 import AddLocationSharpIcon from "@mui/icons-material/AddLocationSharp";
+import Link from "next/link";
 const useStyles = makeStyles(() => ({
   section: {
     padding: theme.spacing(8, 0),
@@ -122,7 +123,7 @@ const LicensesCertifications = () => {
           }}
         >
           {links.map((item, index) => (
-            <ListItem key={index} sx={{ borderBottom: "1px solid #e0e0e0" }}>
+            <ListItem component={Link} href={item} key={index} sx={{ borderBottom: "1px solid #e0e0e0" }}>
               <ListItemIcon>
                 <AddLocationSharpIcon color="primary" />
               </ListItemIcon>

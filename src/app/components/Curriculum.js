@@ -1,10 +1,35 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
+import { useState } from "react";
+import { pdfjs } from 'react-pdf';
 
+
+import { Document, Page } from "react-pdf";
+const mypdf = "/credithours.pdf";
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.mjs',
+  import.meta.url,
+).toString();
 const Curriculum = () => {
+  const [numPages, setNumPages] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
   return (
-    <Box color="#000000">
-      <Typography variant="h4" backgroundColor="#001e60" p={2} color="#ffffff" fontWeight={700} mb={3} mt={3}>Curriculum</Typography>
+    <Box color="#000000" sx={{backgroundColor:"#D3D3D3", padding:"10px",borderRadius:"10px"}}>
+    <Typography variant="body2" color="#ffffff">
+        Page {pageNumber} of {numPages}
+      </Typography>
+      <Document file={mypdf} onLoadSuccess={onDocumentLoadSuccess}>
+      {Array.apply(null,Array(numPages)).map((x,i)=>i+1).map((page)=>
+        <Page pageNumber={page} renderTextLayer={false} renderAnnotationLayer={false}/>
+      )}
+        
+      </Document>
+      
+      {/* <Typography variant="h4" backgroundColor="#001e60" p={2} color="#ffffff" fontWeight={700} mb={3} mt={3}>Curriculum</Typography>
       <Typography>
         The curriculum encompasses a wide range of subjects, including anatomy,
         physiology, biochemistry, pharmacology, pathology, microbiology, and
@@ -128,7 +153,7 @@ const Curriculum = () => {
           
         </Grid>
     
-      </Grid>
+      </Grid> */}
     </Box>
   );
 };

@@ -27,17 +27,11 @@ const theme = createTheme({
 
 export default function StaffPage() {
   const items = [
-    "follow the ideology of the institute, make every effort to expand your horizons, study hard and deepen your knowledge to improve the quality of the education received.",
-    "show respect and courtesy to all employees, teachers, visitors and students of the institute",
+    "follow the ideology of the university, make every effort to expand your horizons, study hard and deepen your knowledge to improve the quality of the education received.",
+    "show respect and courtesy to all employees, teachers, visitors and students of the university",
     "grow and develop as a person, and be a punctual, responsible and disciplined student, and later a doctor.",
   ];
-  const items2 = [
-    "институттун идеологиясын ээрчип, өзүмдүн масштабымды кеңейтүү жана тереңдетүү үчүн бардыгын жасоо",
-    "алынган билим сапатын жогорулатуу үчүн билим",
-    "бардык кызматкерлерге, мугалимдерге, келген конокторго жана студенттерге сылык жана сылык мамиле кылуу",
-    "институт",
-    "жогорку деңгээлдеги тактык жана өзүн-өзү тартиптүү адам катары өсүү жана өнүктүрүү"
-  ];
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -101,39 +95,7 @@ export default function StaffPage() {
           ))}
         </List>
         <Box pt={5}></Box>
-        <Typography
-          variant="h4"
-          component="h2"
-          gutterBottom
-          sx={{
-            fontWeight: 800,
-            borderLeft: "5px solid red",
-            paddingLeft: "8px",
-            borderRadius: "15px",
-          }}
-        >
-          In Kyrgyz
-        </Typography>
-        <List
-          sx={{
-            bgcolor: "background.paper",
-            borderRadius: "8px",
-            boxShadow: 1,
-          }}
-        >
-          {items2.map((item, index) => (
-            <ListItem key={index} sx={{ borderBottom: "1px solid #e0e0e0" }}>
-              <ListItemIcon>
-                <CheckCircleIcon color="primary" />
-              </ListItemIcon>
-              <ListItemText primary={item} />
-            </ListItem>
-          ))}
-        </List>
-        <Box pt={5}></Box>
-        <Typography sx={{ color: "grey", fontWeight: 700 }}>
-        МЕН АНТ БЕРЕМ! МЕН АНТ БЕРЕМ! МЕН АНТ БЕРЕМ!
-        </Typography>
+      
       </Container>
     </ThemeProvider>
   );

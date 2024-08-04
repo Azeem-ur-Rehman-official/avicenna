@@ -3,6 +3,7 @@ import React from "react";
 import Zoom from "react-reveal/Zoom";
 import {
   Box,
+  CardMedia,
   Container,
   CssBaseline,
   Grid,
@@ -24,7 +25,6 @@ const theme = createTheme({
   typography: {
     fontFamily: "Arial, sans-serif",
   },
- 
 });
 
 export default function StaffPage() {
@@ -84,23 +84,19 @@ export default function StaffPage() {
           borderRadius: "30px",
         }}
       >
-        <Typography
-          variant="h4"
-          component="h2"
-          gutterBottom
-          sx={{
-            fontWeight: 800,
-            color: "#382153",
-            paddingLeft: "8px",
-            borderRadius: "15px",
-            textDecoration: "underline",
-            textAlign: "center",
-          }}
-          pt={5}
-          pb={5}
-        >
-          AVICENNA STUDENT PARLIAMENT
-        </Typography>
+        <Box pt={5} sx={{display:"flex", flexDirection:"row", justifyContent:"center"}}>
+        <Box sx={{width:"200px"}}>
+        <CardMedia
+          component="img"
+          height="200"
+          width="200"
+          image="/councel-logo.png"
+          alt="councel-logo"
+        />
+        </Box>
+        </Box>
+        
+        
         <Typography
           variant="h4"
           component="h2"
