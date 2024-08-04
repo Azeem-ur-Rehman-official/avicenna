@@ -111,7 +111,7 @@ const testimonials = [
   },
   {
     content:
-      "Hello, my name is Amina Zriouilat and I'm an Avicenna university alumna. I have spent great times in Avicenna university and have a lot of great memories. In Avicenna university not only we have interesting courses with skilled professors, but we are also encouraged to apply what we learned in real life experiences. I had the opportunity to work on many extracurricular activities such as conferences, debates, trips etc. To be part of the Avicenna university family is one of the greatest things that had ever happened to me.",
+      "Hello, I'm Dr Udham Singh and have spent great times in Avicenna university and have a lot of great memories. In Avicenna university not only we have interesting courses with skilled professors, but we are also encouraged to apply what we learned in real life experiences. I had the opportunity to work on many extracurricular activities such as conferences, debates, trips etc. To be part of the Avicenna university family is one of the greatest things that had ever happened to me.",
     userName: "Udham Singh",
     avatar: "/testimonials/udhan.JPG",
   },
