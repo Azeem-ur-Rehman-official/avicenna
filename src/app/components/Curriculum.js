@@ -1,33 +1,48 @@
 import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useState } from "react";
-import { pdfjs } from 'react-pdf';
-
-
-import { Document, Page } from "react-pdf";
+import Link from "next/link";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 const mypdf = "/credithours.pdf";
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url,
-).toString();
-const Curriculum = () => {
-  const [numPages, setNumPages] = useState(0);
-  const [pageNumber, setPageNumber] = useState(1);
 
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-  }
+const Curriculum = () => {
+  
   return (
-    <Box color="#000000" sx={{backgroundColor:"#D3D3D3", padding:"10px",borderRadius:"10px"}}>
-    <Typography variant="body2" color="#ffffff">
-        Page {pageNumber} of {numPages}
-      </Typography>
-      <Document file={mypdf} onLoadSuccess={onDocumentLoadSuccess}>
-      {Array.apply(null,Array(numPages)).map((x,i)=>i+1).map((page)=>
-        <Page pageNumber={page} renderTextLayer={false} renderAnnotationLayer={false}/>
-      )}
-        
-      </Document>
+    <Box color="#000000" >
+   <Box
+            container
+            mt={5}
+            sx={{
+              display: "flex",
+              flexDirection: { md: "row", xs: "column" },
+              justifyContent: "center",
+              gap: 8,
+              alignItems: "center",
+            }}
+          >
+            <Box
+              component={Link}
+              href="/credithours.pdf"
+              item
+              p={3}
+              sx={{
+                background:
+                  "linear-gradient(90deg, rgba(36,0,22,1) 0%, rgba(121,9,60,1) 35%, rgba(255,0,121,1) 100%)",
+                cursor: "pointer",
+                borderRadius: "15px",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Typography variant="h5" textAlign="center" color="white">
+                Check our Credit Hours
+              </Typography>
+              <KeyboardArrowRightIcon style={{ color: "#ffffff" }} />
+            </Box>
+           
+          </Box>
+     
       
       {/* <Typography variant="h4" backgroundColor="#001e60" p={2} color="#ffffff" fontWeight={700} mb={3} mt={3}>Curriculum</Typography>
       <Typography>
