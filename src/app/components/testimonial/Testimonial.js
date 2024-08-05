@@ -160,7 +160,7 @@ const TestimonialSection = () => {
               What Our Students Say
             </Typography>
             <Typography variant="body1" sx={{ color: "#fff" }}>
-              We value our clients' feedback and continuously strive to improve
+              We value our Students' feedback and continuously strive to improve
               our services.
             </Typography>
           </Fade>

@@ -28,6 +28,7 @@ import Fade from "react-reveal/Fade";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getRequest } from "./RequestsAPI/RequestsApi";
+import Curriculum from "./components/Curriculum";
 const useStyles = makeStyles({
   hero: {
     backgroundColor: theme.palette.primary.main,
@@ -191,7 +192,9 @@ export default function Home() {
         </Box>
 
         {/* our programs */}
+        
         <OurPrograms />
+        <Curriculum/>
         <StatsSection />
         <WhyChooseUs />
         <TestimonialSection />

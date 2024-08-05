@@ -39,11 +39,15 @@ const useStyles = makeStyles(() => ({
 
 export default function StaffPage() {
     const items = [
-        'To maintain the honor, dignity and to uphold the prestige and to foster cordial relationship with administration, teachers, students and authorities.',
-        'To cultivate and promote medical and allied sciences including improvement of public health and medical education nationally & internationally.',
-        'To strengthen the bonds of co-operation and fellowship amongst all the graduates of the medical institute.',
-        'To look after the interests of the ex-students of the Institution and to maintain and strengthen the fraternal relationship amongst them.'
-      ];
+    'I do solemnly swear by that which I will be loyal to the profession of medicine and just generous to it’s members.',
+    "That I will lead my life and practice my art in uprightness and honor.",
+    "That into whatsoever house I shall enter, it shall  before the good of side to the utmost of my power.",
+    "I holding myself aloof from wrong ,from corruption and from the temptation of others to vice.",
+    "That I will exercise my art solely for the cure of my patients, and will give no drug , perform no operation for a criminal purpose even if solicited , for less suggest.",
+    "That whatsoever , I shall see or hear of the lives of men which is not fitting to be spoken  , I will keep secret.",
+    "These things I do promise , and in proportion as I am faithful to this my oath may happiness and good repute be ever."    
+    ];
+      
       const staffData = [
         {
           name: "Dr. Temir Arapov",
@@ -58,10 +62,7 @@ export default function StaffPage() {
           image: "/aoth/oth4.JPG",
         },
         
-        {
-          name: "Erik Kyzy Aizat",
-          image: "/aoth/oth5.JPG",
-        },
+      
       
        
         // Add more staff members as needed
@@ -79,7 +80,7 @@ export default function StaffPage() {
       }}
     >
       <Container maxWidth="lg">
-        <Typography variant="h2" component="h1" gutterBottom textAlign="center">
+        <Typography variant="h2" component="h1" gutterBottom textAlign="center" sx={{ fontWeight: 800, color: "#fff" }}>
           Avicenna Graduate Oath
         </Typography>
         
@@ -102,9 +103,12 @@ export default function StaffPage() {
         ))}
       </Grid>
         <Fade bottom>
+        <Typography variant='h4' pt={5} pb={3} sx={{ fontWeight: 800,  }}>
+          Pre-Graduation Hippocratic Oath 
+          </Typography>
        
-       
-          {/* <Card className={classes.card}>
+          <Card className={classes.card}>
+          
           
             <CardContent className={classes.cardContent}>
             <List sx={{ bgcolor: 'background.paper', borderRadius: '8px', boxShadow: 1 }}>
@@ -118,7 +122,7 @@ export default function StaffPage() {
           ))}
         </List>
             </CardContent>
-          </Card> */}
+          </Card>
         </Fade>
       </Container>
      
