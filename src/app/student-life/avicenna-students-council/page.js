@@ -111,7 +111,7 @@ export default function StaffPage() {
           Introduction:
         </Typography>
         <Typography sx={{ color: "grey", fontWeight: 700 }}>
-          Student Parliament is a group of elected and volunteer students who
+          Student Council is a group of elected and volunteer students who
           work with an adult advisor within the framework of bylaws to provide a
           means for student expression and assistance in school affairs and
           activities, provide opportunities for student leadership experience,
@@ -131,9 +131,9 @@ export default function StaffPage() {
           What we do:
         </Typography>
         <Typography sx={{ color: "grey", fontWeight: 700 }}>
-          Student Parliament demonstrates the importance of representation and
+          Student Council demonstrates the importance of representation and
           active involvement in the student community. We develop leadership and
-          communication skills. The student parliament acts as a bridge that
+          communication skills. The student council acts as a bridge that
           connects students with the administration of the institute. We provide
           a forum for the presentation of student ideas and opinions on
           institute policies that directly impact students. We improve the
