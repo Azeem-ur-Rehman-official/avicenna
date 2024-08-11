@@ -21,7 +21,7 @@ const StatsSection = dynamic(() => import('./components/programs/StatsSection'),
 const NewsListHome = dynamic(() => import('./components/news/NewsListHome'), { ssr: false });
 const WhyChooseUs = dynamic(() => import('./components/whyChoooseUs/WhyChooseUs'), { ssr: false });
 import PartnerComponet from "./community&partners/PartnerComponet";
-const HomeSlider = dynamic(() => import('./components/slider/HomeSlider'), { ssr: false });
+
 
 import TestimonialSection from "./components/testimonial/Testimonial";
 import Fade from "react-reveal/Fade";
@@ -29,6 +29,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getRequest } from "./RequestsAPI/RequestsApi";
 import Curriculum from "./components/Curriculum";
+import HomepageSlider from "./components/slider/HomeSlider";
 const useStyles = makeStyles({
   hero: {
     backgroundColor: theme.palette.primary.main,
@@ -81,7 +82,7 @@ export default function Home() {
   return (
     <Box>
     <Box sx={{maxHeight:"100vh"}}>
-    <HomeSlider />
+    <HomepageSlider/>
     </Box>
      
 
@@ -197,7 +198,10 @@ export default function Home() {
         <Curriculum/>
         <StatsSection />
         <WhyChooseUs />
+        <Box pt={1} position="relative">
         <TestimonialSection />
+        </Box>
+        
         <Container>
           <Typography
             variant="h3"

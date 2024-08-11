@@ -1,44 +1,64 @@
-"use client"
-import React, { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
-import { Box, Container, Typography, Card, CardMedia, CardContent, IconButton, Popover, List, ListItem } from '@mui/material';
-import { ThumbUp, Share } from '@mui/icons-material';
-import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share';
-import { getRequest } from '@/app/RequestsAPI/RequestsApi';
+import React from "react";
+import {
+  Box,
+  Container,
+  Typography,
+  Card,
+  CardMedia,
+  CardContent,
 
-const NewsDetailPage = () => {
-  const pathname = usePathname();
-  const slug = pathname.split('/').pop(); // Get the last part of the path as the slug
-  const [anchorEl, setAnchorEl] = useState(null);
-const [data, setData] = useState(null);
- console.log("data",data);
- useEffect(() => {
+} from "@mui/material";
 
-  getData();
-}, []);
-const getData = async ()=>{
-  const response = await getRequest(`/api/blogs/data?id=${slug}`);
-  if(response.status==200 && response.data?.Data){
-    setData(response.data.Data);
+import Blog from "@/lib/models/Blog";
+import connect from "@/lib/mongodb";
+
+const getData2 = async () => {
+  try {
+    await connect();
+    const data = await Blog.find();
+
+    if (data) return data;
+    else return [];
+  } catch (error) {
+    return [];
   }
-  console.log("response",response);
+};
+export async function generateStaticParams() {
+  const data = await getData2();
+ 
+  return data.map((post) => ({ slug: post._id.toString()}));
 }
-  const handleShareClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+const getData = async (id) => {
+  try {
+    await connect();
+    const data = await Blog.findById(id);
+    console.log("mmm", data);
+    if (data) return data;
+    else return [];
+  } catch (error) {
+    return [];
+  }
+};
+const NewsDetailPage = async ({ params }) => {
+  const data = await getData(params.slug);
+  console.log("abxcc", data.bannerPhoto);
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const [anchorEl, setAnchorEl] = useState(null);
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'share-popover' : undefined;
+  // const handleShareClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
+
+  // const open = Boolean(anchorEl);
+  // const id = open ? "share-popover" : undefined;
 
   if (!data) {
-    return <Typography variant="h4">News not found {slug}</Typography>;
+    return <Typography variant="h4">News not found {params.slug}</Typography>;
   }
- 
- 
 
   return (
     <Container>
@@ -47,51 +67,56 @@ const getData = async ()=>{
           {data.title}
         </Typography>
         <Card>
-        {DataTransfer.bannerPhoto!=null?<CardMedia
-            component="img"
-            height="400"
-            image={data.bannerPhoto.url}
-            alt={data.title}
-          />:null}
-          
+          {data.bannerPhoto?.url ? (
+            <CardMedia
+              component="img"
+              height="400"
+              image={data.bannerPhoto.url}
+              alt={data.title}
+            />
+          ) : null}
+
           <CardContent>
-            <Typography variant="body1">
-              {data.description}
-            </Typography>
+            <Typography variant="body1">{data.description}</Typography>
+            {data.html &&  <div className="p-2" dangerouslySetInnerHTML={{ __html: data.html }} />}
+           
             <Typography variant="caption" color="text.secondary">
               Posted on {data.postedDate} by {data.postedBy}
             </Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
+            <Box sx={{ display: "flex", alignItems: "center", mt: 2 }}>
               {/* <IconButton aria-label="like">
                 <ThumbUp />
               </IconButton>
               <Typography variant="body2" color="text.secondary" sx={{ ml: 1 }}>
                 Like
               </Typography> */}
-              <IconButton aria-label="share" onClick={handleShareClick}>
+              {/* <IconButton aria-label="share" onClick={handleShareClick}>
                 <Share />
-              </IconButton>
+              </IconButton> */}
             </Box>
           </CardContent>
         </Card>
       </Box>
-      <Popover
+      {/* <Popover
         id={id}
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
+          vertical: "bottom",
+          horizontal: "center",
         }}
         transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
+          vertical: "top",
+          horizontal: "center",
         }}
       >
         <List>
           <ListItem>
-            <FacebookShareButton url={`https://yourwebsite.com/news/${data.slug}`} style={{ marginRight: '10px' }}>
+            <FacebookShareButton
+              url={`https://yourwebsite.com/news/${data.slug}`}
+              style={{ marginRight: "10px" }}
+            >
               <IconButton aria-label="share">
                 <Share />
               </IconButton>
@@ -99,7 +124,10 @@ const getData = async ()=>{
             <Typography>Facebook</Typography>
           </ListItem>
           <ListItem>
-            <TwitterShareButton url={`https://yourwebsite.com/news/${data.slug}`} style={{ marginRight: '10px' }}>
+            <TwitterShareButton
+              url={`https://yourwebsite.com/news/${data.slug}`}
+              style={{ marginRight: "10px" }}
+            >
               <IconButton aria-label="share">
                 <Share />
               </IconButton>
@@ -107,7 +135,10 @@ const getData = async ()=>{
             <Typography>Twitter</Typography>
           </ListItem>
           <ListItem>
-            <WhatsappShareButton url={`https://yourwebsite.com/news/${data.slug}`} style={{ marginRight: '10px' }}>
+            <WhatsappShareButton
+              url={`https://yourwebsite.com/news/${data.slug}`}
+              style={{ marginRight: "10px" }}
+            >
               <IconButton aria-label="share">
                 <Share />
               </IconButton>
@@ -115,7 +146,7 @@ const getData = async ()=>{
             <Typography>Whatsapp</Typography>
           </ListItem>
         </List>
-      </Popover>
+      </Popover> */}
     </Container>
   );
 };

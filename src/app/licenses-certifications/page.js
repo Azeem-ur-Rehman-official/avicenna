@@ -11,6 +11,7 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
+  CardMedia,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import Zoom from "react-reveal/Zoom";
@@ -95,7 +96,13 @@ const LicensesCertifications = () => {
           {licensesCertifications.map((item, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <Zoom>
-                <img src={item.src} alt={item.alt} className={classes.image} />
+              <CardMedia
+                  component="img"
+                  image={item.src} // Replace with your image path
+                  alt="University History"
+                  className={classes.image} 
+                />
+             
               </Zoom>
             </Grid>
           ))}

@@ -37,8 +37,11 @@ const NewsPage = () => {
   const [loading, setLoading] = useState(true);
   const getData = async () => {
     const data = await getRequest("/api/blogs");
+    console.log("avc",data)
     if (data.status == 200) {
       setData(data.data.Data);
+      const mdata= JSON.stringify(data.data.Data);
+      localStorage.setItem("news", mdata)
       setLoading(false);
     }
   };
