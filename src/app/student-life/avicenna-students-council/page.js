@@ -70,6 +70,7 @@ export default function StaffPage() {
             gutterBottom
             textAlign="center"
             textTransform="uppercase"
+            sx={{fontSize: { xs: "40px", md: "60px" },}}
           >
             Avicenna Students Council
           </Typography>

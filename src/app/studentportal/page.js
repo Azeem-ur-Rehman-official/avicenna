@@ -213,8 +213,8 @@ const Apply = () => {
       formData.append("program", values.program);
       formData.append("session", values.session);
       formData.append("passportCopy", passportPdf);
-      formData.append("sscCertificate", pdf);
-      formData.append("hscCertificate", colloegecertificatePdf);
+      formData.append("sscCertificate", values.sscCertificate);
+      formData.append("hscCertificate", values.hscCertificate);
       formData.append("otherFiles", otherFile);
       formData.append("remarks", values.remarks);
       setLoading(true);

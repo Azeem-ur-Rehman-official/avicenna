@@ -86,7 +86,7 @@ const LicensesCertifications = () => {
         }}
       >
         <Container maxWidth="lg">
-          <Typography variant="h2" component="h1" gutterBottom>
+          <Typography variant="h2" component="h1" gutterBottom sx={{fontSize: { xs: "40px", md: "80px" },}}>
             Licenses & Certifications
           </Typography>
         </Container>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import {
   Table,
@@ -34,14 +34,14 @@ import {
   postRequest,
 } from "@/app/RequestsAPI/RequestsApi";
 // import Base64Downloader from "common-base64-downloader-react";
-
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import LoadingButton from "@mui/lab/LoadingButton";
+import Link from "next/link";
 const createData = (fullName, email, status, dateTime) => {
   return { fullName, email, status, dateTime };
 };
 
 // Example student contact data
-
 
 const ApplicationTable = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -131,15 +131,17 @@ const ApplicationTable = (props) => {
     }
   };
   const deleteData = async (payload) => {
-    console.log("payload",payload);
-    let url=null;
-    if(payload.bannerPhoto!=undefined)
-      url=payload.bannerPhoto
+    console.log("payload", payload);
+    let url = null;
+    if (payload.bannerPhoto != undefined) url = payload.bannerPhoto;
     const formData = new FormData();
-    formData.append("id",payload._id);
-    formData.append("url",url);
-    const data = await postRequest(`/api/application/delete`,formData);
-  
+    formData.append("id", payload._id);
+    formData.append("url", url);
+    formData.append("pasport", payload.passportCopy);
+    formData.append("ssc", payload.sscCertificate);
+    formData.append("hsc", payload.hscCertificate);
+    formData.append("other", payload.otherFiles);
+    const data = await postRequest(`/api/application/delete`, formData);
   };
   useEffect(() => {
     getData();
@@ -169,6 +171,7 @@ const ApplicationTable = (props) => {
               <TableCell style={{ color: "white" }}>Name</TableCell>
               <TableCell style={{ color: "white" }}>Email</TableCell>
               <TableCell style={{ color: "white" }}>Country</TableCell>
+              <TableCell style={{ color: "white" }}>Date</TableCell>
               <TableCell style={{ color: "white" }}>Status</TableCell>
               <TableCell align="right" style={{ color: "white" }}>
                 Actions
@@ -186,9 +189,22 @@ const ApplicationTable = (props) => {
 
                   <TableCell>{row.email}</TableCell>
                   <TableCell>{row.country}</TableCell>
-                  {row.status=="accept" && <TableCell sx={{color:"#00FF00", fontWeight:700}}>{row.status} </TableCell>}
-                  {row.status=="pending" && <TableCell sx={{color:"grey", fontWeight:700}}>{row.status} </TableCell>}
-                  {row.status=="reject" && <TableCell sx={{color:"#FF0000", fontWeight:700}}>{row.status} </TableCell>}
+                  <TableCell>{row.createdAt}</TableCell>
+                  {row.status == "accept" && (
+                    <TableCell sx={{ color: "#00FF00", fontWeight: 700 }}>
+                      {row.status}{" "}
+                    </TableCell>
+                  )}
+                  {row.status == "pending" && (
+                    <TableCell sx={{ color: "grey", fontWeight: 700 }}>
+                      {row.status}{" "}
+                    </TableCell>
+                  )}
+                  {row.status == "reject" && (
+                    <TableCell sx={{ color: "#FF0000", fontWeight: 700 }}>
+                      {row.status}{" "}
+                    </TableCell>
+                  )}
                   <TableCell align="right">
                     <IconButton onClick={() => handleView(row)}>
                       <Visibility style={{ color: "blue" }} />
@@ -242,9 +258,7 @@ const ApplicationTable = (props) => {
                 mb: 5,
               }}
             />
-            <Typography>
-              ID:  {selectedRow._id}
-            </Typography>
+            <Typography>ID: {selectedRow._id}</Typography>
             <Typography>
               Full Name: {selectedRow.fullName} {selectedRow.lastName}
             </Typography>
@@ -274,6 +288,39 @@ const ApplicationTable = (props) => {
             <Typography>program: {selectedRow.program}</Typography>
             <Typography>session: {selectedRow.session}</Typography>
             <Typography>status: {selectedRow.status}</Typography>
+            <Typography>Date & Time: {selectedRow.createdAt}</Typography>
+            <br></br> 
+            {selectedRow.sscCertificate != "null" && (
+              <Link href={selectedRow.sscCertificate} target="_blank">
+                <Button sx={{ backgroundColor: "#ffffff" }}>
+                Download Matric/ssc
+                </Button>
+              </Link>
+            )}
+            <br></br>  <br></br>  
+            {selectedRow.hscCertificate != "null" && (
+              <Link href={selectedRow.hscCertificate} target="_blank">
+                <Button sx={{ backgroundColor: "#ffffff" }}>
+                  Download Fsc/hsc
+                </Button>
+              </Link>
+            )}
+            <br></br>  <br></br> 
+            {selectedRow.passportCopy != "null" && (
+              <Link href={selectedRow.passportCopy} target="_blank" >
+                <Button sx={{ backgroundColor: "#ffffff" }}>
+                  Passport
+                </Button>
+              </Link>
+            )}
+            <br></br>  <br></br> 
+            {selectedRow.otherFiles != "null" && (
+              <Link href={selectedRow.otherFiles} target="_blank">
+                <Button sx={{ backgroundColor: "#ffffff" }}>
+                  Other Files
+                </Button>
+              </Link>
+            )}
             {/* <Base64Downloader
               base64={selectedRow.sscCertificate}
               downloadName="matric"
@@ -302,7 +349,7 @@ const ApplicationTable = (props) => {
             >
               Passport Copy
             </Base64Downloader>} */}
-            <Typography>Date & Time: {selectedRow.createdAt}</Typography>
+           
           </DialogContent>
         )}
         <DialogActions>

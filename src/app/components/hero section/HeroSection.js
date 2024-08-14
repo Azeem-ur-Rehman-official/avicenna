@@ -11,7 +11,7 @@ const HeroSection = () => {
       }}
     >
       <Container maxWidth="lg">
-        <Typography variant="h2" component="h1" gutterBottom textAlign="center">
+        <Typography variant="h2" component="h1" gutterBottom textAlign="center" sx={{fontSize: { xs: "40px", md: "60px" },}}>
           ADMINISTRATION
         </Typography>
         

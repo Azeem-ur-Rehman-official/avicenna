@@ -29,7 +29,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
 import AssistantIcon from "@mui/icons-material/Assistant";
 import { usePathname, useRouter } from "next/navigation";
-
+import CollectionsIcon from '@mui/icons-material/Collections';
 // meta export
 export const meta = () => ({
   title: "Dashboard | Berry - React Material Admin Dashboard Template",
@@ -375,6 +375,37 @@ export default function Admin({ children }) {
                 <RssFeedIcon />
               </ListItemIcon>
               <ListItemText primary="Publication" sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            disablePadding
+            sx={{ display: "block" }}
+            onClick={() => handleClick("/admin/dashboard/gallary")}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+                ...(pathname == "/admin/dashboard/gallary" && {
+                  color: "white",
+                  backgroundColor: "#382153",
+                }),
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                  ...(pathname == "/admin/dashboard/gallary" && {
+                    color: "white",
+                  }),
+                }}
+              >
+                <CollectionsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Gallary" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
           <ListItem
