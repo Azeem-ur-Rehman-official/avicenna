@@ -57,8 +57,9 @@ export default function StaffPage() {
             gutterBottom
             textAlign="center"
             textTransform="uppercase"
+            sx={{fontSize: { xs: "40px", md: "60px" },}}
           >
-           OUr publications
+           Our publications
           </Typography>
         </Container>
       </Box>
