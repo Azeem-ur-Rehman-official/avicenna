@@ -80,14 +80,7 @@ export default function ForgotPasword() {
             <LockOutlinedIcon />
           </Avatar>
 
-          <Link href="login" sx={{ cursor: "pointer" }}>
-            <Stack direction="row" alignItems="center" gap={1} mb={1}>
-              <KeyboardArrowLeftIcon />
-              <Typography variant="body1" sx={{ textDecoration: "none" }}>
-                Back to login
-              </Typography>
-            </Stack>
-          </Link>
+        
 
           <Typography
             variant="h6"
