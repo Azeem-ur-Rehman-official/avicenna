@@ -119,7 +119,7 @@ export default function Admin({ children }) {
 
     if (!isLoggedIn) {
       // Redirect to the home page if not logged in
-      router.push('/');
+      router.push('/users/auth');
     }
     setLoading(false);
   }, []);

@@ -75,7 +75,7 @@ const ProfileSelect = () => {
     if(val=="logout")
      {}
     Logout();
-    router.push('/', { scroll: false });
+    router.push('/users/auth', { scroll: false });
   };
   return (
     <Box sx={{ marginLeft: "auto" }}>

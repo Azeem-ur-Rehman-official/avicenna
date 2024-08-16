@@ -46,7 +46,8 @@ function Header(props) {
   const [admin, setAdmin] = React.useState(false);
   const pathname = usePathname();
   const application=()=>{
-    router.push('/studentportal');
+   
+    router.push('studentportal');
   }
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);

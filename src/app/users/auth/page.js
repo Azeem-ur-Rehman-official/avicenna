@@ -13,6 +13,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Stack } from "@mui/material";
 import Link from "next/link";
 import CheckLoginStatus from "./CheckLoginStatus";
+import { useRouter } from "next/navigation";
+import { postRequest } from "@/app/RequestsAPI/RequestsApi";
 
 function Copyright(props) {
   return (
@@ -37,17 +39,30 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function ForgotPasword() {
-    function setLoginStatus() {
-        // Set the login status to true
-        localStorage.setItem('login', true);
-      
-        // Set the expiration time to 24 hours from now
-        const expiryTime = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours in milliseconds
-        localStorage.setItem('expir', expiryTime);
-      }
-     
-      
-    
+  const [first, setfirst] = React.useState(false);
+  const router = useRouter();
+  function setLoginStatus() {
+    // Set the login status to true
+    localStorage.setItem("login", true);
+
+    // Set the expiration time to 24 hours from now
+    const expiryTime = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+    localStorage.setItem("expir", expiryTime);
+    router.push("/admin/dashboard");
+  }
+
+  const login = async (email, password) => {
+    const data = await postRequest("/api/admin", {
+      email: email,
+      password: password,
+    });
+    console.log("abc",data);
+    if (data.status == 200) {
+      setLoginStatus();
+    } else {
+      setfirst(true);
+    }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -56,12 +71,7 @@ export default function ForgotPasword() {
       email: data.get("email"),
       password: data.get("password"),
     });
-    // Store data for 24 hours (24 * 60 * 60 * 1000 milliseconds)
-    setLoginStatus()
-    // Retrieve data
-     CheckLoginStatus();
-  
-  
+    login(data.get("email"), data.get("password"));
   };
 
   return (
@@ -80,8 +90,6 @@ export default function ForgotPasword() {
             <LockOutlinedIcon />
           </Avatar>
 
-        
-
           <Typography
             variant="h6"
             sx={{
@@ -91,6 +99,7 @@ export default function ForgotPasword() {
           >
             Login to dashboard
           </Typography>
+
           <Box
             component="form"
             onSubmit={handleSubmit}
@@ -125,6 +134,17 @@ export default function ForgotPasword() {
             >
               Login
             </Button>
+            {first == true ? (
+              <Typography
+                variant="h6"
+                sx={{
+                  color: "#FF0000",
+                  fontWeight: 700,
+                }}
+              >
+                Email or password is wrong
+              </Typography>
+            ) : null}
           </Box>
         </Box>
       </Container>
