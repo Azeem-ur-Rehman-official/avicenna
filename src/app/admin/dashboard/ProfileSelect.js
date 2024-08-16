@@ -18,6 +18,7 @@ import p4 from "../../assets/setting2.svg";
 import p5 from "../../assets/p2.svg";
 import { Box } from "@mui/material";
 import Image from "next/image";
+import Logout from "@/app/users/auth/Logout";
 const StyledMenu = styled((props) => (
   <Menu
     elevation={0}
@@ -72,6 +73,8 @@ const ProfileSelect = () => {
   const handleClose = (val) => {
     setAnchorEl(null);
     if(val=="logout")
+     {}
+    Logout();
     router.push('/', { scroll: false });
   };
   return (

@@ -5,6 +5,7 @@ import ApplicationFormSchema from "@/lib/models/ApplicationFormSchema";
 import { NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 import { writeFile } from "fs/promises";
+import { supabase } from "@/lib/supabase";
 
 // Set up Multer storage configuration
 
@@ -19,7 +20,7 @@ export async function GET(req, res) {
   try {
     await connect();
     const data = await ApplicationFormSchema.find({
-      status: { $in: ["accept", "reject", "pending"] },
+      status: { $in: ["accept", "reject", "pending","student"] },
     });
     if (data)
       return NextResponse.json({ result: true, Data: data }, { status: 200 });
@@ -33,20 +34,17 @@ export async function GET(req, res) {
   }
 }
 //post data
-export async function saveFile(fileData) {
-  try {
-    console.log("data",fileData);
-    const bytData = await fileData.arrayBuffer();
-    const bufer = Buffer.from(bytData);
-    const path = `./public/uploads/${Date.now()}-${fileData.name}`;
-    const storePath= `/uploads/${Date.now()}-${fileData.name}`;
-    await writeFile(path, bufer);
-    return storePath;
-  } catch (err) {
-    console.log(err);
-    return null;
+
+const uploadFile= async(file)=>{
+  const {data,error} = await supabase.storage.from("documents").upload('public/'+`${Date.now()}-${file.name}`,file)
+  if(data){
+    return data
+    
   }
-}
+  else{
+    return error
+  }
+  }
 export async function POST(req, res) {
   if (req.method == "POST") {
     try {
@@ -62,20 +60,32 @@ export async function POST(req, res) {
 
       await connect();
       if (formDataObj.passportCopy != "null") {
-        const passportCopy = await saveFile(formDataObj.passportCopy);
-        formDataObj.passportCopy = passportCopy;
+        const passportCopy = await uploadFile(formDataObj.passportCopy);
+        formDataObj.passportCopy = {
+          public_id: passportCopy.id,
+          url: passportCopy.path,
+        };
       }
       if (formDataObj.sscCertificate != "null") {
-        const sscCertificate = await saveFile(formDataObj.sscCertificate);
-        formDataObj.sscCertificate = sscCertificate;
+        const sscCertificate = await uploadFile(formDataObj.sscCertificate);
+        formDataObj.sscCertificate = {
+         public_id: sscCertificate.id,
+          url: sscCertificate.path,
+        };
       }
       if (formDataObj.hscCertificate != "null") {
-        const hscCertificate = await saveFile(formDataObj.hscCertificate);
-        formDataObj.hscCertificate = hscCertificate;
+        const hscCertificate = await uploadFile(formDataObj.hscCertificate);
+        formDataObj.hscCertificate = {
+         public_id: hscCertificate.id,
+          url: hscCertificate.path,
+        };
       }
       if (formDataObj.otherFiles != "null") {
-        const otherFiles = await saveFile(formDataObj.otherFiles);
-        formDataObj.otherFiles = otherFiles;
+        const otherFiles = await uploadFile(formDataObj.otherFiles);
+        formDataObj.otherFiles = {
+         public_id: otherFiles.id,
+          url: otherFiles.path,
+        };
       }
       const profilePhoto = formData.get("profilePhoto");
 

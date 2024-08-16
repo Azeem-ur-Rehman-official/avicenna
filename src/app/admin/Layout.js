@@ -30,6 +30,7 @@ import RssFeedIcon from "@mui/icons-material/RssFeed";
 import AssistantIcon from "@mui/icons-material/Assistant";
 import { usePathname, useRouter } from "next/navigation";
 import CollectionsIcon from '@mui/icons-material/Collections';
+import CheckLoginStatus from "../users/auth/CheckLoginStatus";
 // meta export
 export const meta = () => ({
   title: "Dashboard | Berry - React Material Admin Dashboard Template",
@@ -114,6 +115,12 @@ export default function Admin({ children }) {
     router.push(val);
   };
   useEffect(() => {
+    const isLoggedIn = CheckLoginStatus();
+
+    if (!isLoggedIn) {
+      // Redirect to the home page if not logged in
+      router.push('/');
+    }
     setLoading(false);
   }, []);
   const handleDrawerOpen = () => {
@@ -200,34 +207,7 @@ export default function Admin({ children }) {
               />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding sx={{ display: "block" }}
-          onClick={() => handleClick("/admin/dashboard/students")}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                ...(pathname == "/admin/dashboard/students" && {
-                  color: "white",
-                  backgroundColor: "#382153",
-                }),
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                  ...(pathname == "/admin/dashboard/students" && {
-                    color: "white",
-                  }),
-                }}
-              >
-                <LocalLibraryIcon />
-              </ListItemIcon>
-              <ListItemText primary="Students" sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
+          
           {/* <ListItem disablePadding sx={{ display: "block" }}
           onClick={() => handleClick("/admin/dashboard/teachers")}>
             <ListItemButton

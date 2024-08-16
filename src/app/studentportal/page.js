@@ -35,6 +35,7 @@ import axios from "axios";
 import countries from "../utils/countriesList.json"; // Import countries from the JSON file
 import LoadingButton from "@mui/lab/LoadingButton";
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
 async function postRequest(param, data) {
   try {
     const response = await axios.post(param, data);
@@ -123,8 +124,7 @@ const Apply = () => {
   const [id, setId] = useState("669e3aa08fa2b695c5973dc4");
   const [copySuccess, setCopySuccess] = useState('');
   const [open, setOpen] = useState(false);
-  console.log("image", image);
-  console.log("pdf", pdf);
+  
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   // copy id
@@ -218,6 +218,7 @@ const Apply = () => {
       formData.append("otherFiles", otherFile);
       formData.append("remarks", values.remarks);
       setLoading(true);
+     
       const data = await postRequest("/api/application", formData);
 
       if (data.status == 201) {

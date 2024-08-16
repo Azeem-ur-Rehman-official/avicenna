@@ -18,7 +18,7 @@ import Button from "@mui/material/Button";
 import Link from "next/link";
 import Image from "next/image";
 import { Fab, Stack } from "@mui/material";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import SearchIcon from '@mui/icons-material/Search';
 import InstituteHandler from "./InstituteHandler";
 import SearchAppBar from "./SearchAppBar";
@@ -40,10 +40,14 @@ const navItems = [
 ];
 
 function Header(props) {
+  const router = useRouter();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [admin, setAdmin] = React.useState(false);
   const pathname = usePathname();
+  const application=()=>{
+    router.push('/studentportal');
+  }
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -66,8 +70,7 @@ function Header(props) {
       <Button
                 variant="contained"
                 color="primary"
-                component={Link}
-                href="studentportal"
+                onClick={()=>application()}
                 sx={{
                  marginLeft:"5px",
                   borderRadius: "30px",
@@ -279,8 +282,7 @@ function Header(props) {
               <Button
                 variant="contained"
                 color="primary"
-                component={Link}
-                href="studentportal"
+                onClick={()=>application()}
                 sx={{
                   ml: { xs: "auto", sm: "auto" },
                   borderRadius: "30px",

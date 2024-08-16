@@ -71,6 +71,7 @@ const ApplicationTable = (props) => {
       (row) =>
         row.fullName.toLowerCase().includes(query) ||
         row.email.toLowerCase().includes(query) ||
+        row.country.toLowerCase().includes(query) ||
         row.status.toLowerCase().includes(query) ||
         row.createdAt.toLowerCase().includes(query)
     );
@@ -137,10 +138,14 @@ const ApplicationTable = (props) => {
     const formData = new FormData();
     formData.append("id", payload._id);
     formData.append("url", url);
-    formData.append("pasport", payload.passportCopy);
-    formData.append("ssc", payload.sscCertificate);
-    formData.append("hsc", payload.hscCertificate);
-    formData.append("other", payload.otherFiles);
+    if (payload.passportCopy && payload.passportCopy.url != "null")
+      formData.append("pasport", payload.passportCopy.url);
+    else formData.append("pasport", "null");
+    formData.append("ssc", payload.sscCertificate.url);
+    formData.append("hsc", payload.hscCertificate.url);
+    if (payload.otherFiles && payload.otherFiles.url != "null")
+      formData.append("other", payload.otherFiles.url);
+    else formData.append("other", "null");
     const data = await postRequest(`/api/application/delete`, formData);
   };
   useEffect(() => {
@@ -289,36 +294,46 @@ const ApplicationTable = (props) => {
             <Typography>session: {selectedRow.session}</Typography>
             <Typography>status: {selectedRow.status}</Typography>
             <Typography>Date & Time: {selectedRow.createdAt}</Typography>
-            <br></br> 
-            {selectedRow.sscCertificate != "null" && (
-              <Link href={selectedRow.sscCertificate} target="_blank">
-                <Button sx={{ backgroundColor: "#ffffff" }}>
-                Download Matric/ssc
-                </Button>
+            <br></br>
+            {selectedRow.sscCertificate &&
+              selectedRow.sscCertificate.url != "null" && (
+                <Link
+                  href={
+                    "https://cmjydyjfpsjslzablqld.supabase.co/storage/v1/object/public/documents/" +
+                    selectedRow.sscCertificate.url
+                  }
+                  target="_blank"
+                >
+                  <Button sx={{ backgroundColor: "#ffffff" }}>
+                    Download Matric/ssc
+                  </Button>
+                </Link>
+              )}
+            <br></br> <br></br>
+            {selectedRow.hscCertificate &&
+              selectedRow.hscCertificate.url != "null" && (
+                <Link
+                  href={
+                    "https://cmjydyjfpsjslzablqld.supabase.co/storage/v1/object/public/documents/" +
+                    selectedRow.hscCertificate.url
+                  }
+                  target="_blank"
+                >
+                  <Button sx={{ backgroundColor: "#ffffff" }}>
+                    Download Fsc/hsc
+                  </Button>
+                </Link>
+              )}
+            <br></br> <br></br>
+            {selectedRow.passportCopy && selectedRow.passportCopy != "null" && (
+              <Link href={selectedRow.passportCopy} target="_blank">
+                <Button sx={{ backgroundColor: "#ffffff" }}>Passport</Button>
               </Link>
             )}
-            <br></br>  <br></br>  
-            {selectedRow.hscCertificate != "null" && (
-              <Link href={selectedRow.hscCertificate} target="_blank">
-                <Button sx={{ backgroundColor: "#ffffff" }}>
-                  Download Fsc/hsc
-                </Button>
-              </Link>
-            )}
-            <br></br>  <br></br> 
-            {selectedRow.passportCopy != "null" && (
-              <Link href={selectedRow.passportCopy} target="_blank" >
-                <Button sx={{ backgroundColor: "#ffffff" }}>
-                  Passport
-                </Button>
-              </Link>
-            )}
-            <br></br>  <br></br> 
-            {selectedRow.otherFiles != "null" && (
+            <br></br> <br></br>
+            {selectedRow.otherFiles && selectedRow.otherFiles != "null" && (
               <Link href={selectedRow.otherFiles} target="_blank">
-                <Button sx={{ backgroundColor: "#ffffff" }}>
-                  Other Files
-                </Button>
+                <Button sx={{ backgroundColor: "#ffffff" }}>Other Files</Button>
               </Link>
             )}
             {/* <Base64Downloader
@@ -349,7 +364,6 @@ const ApplicationTable = (props) => {
             >
               Passport Copy
             </Base64Downloader>} */}
-           
           </DialogContent>
         )}
         <DialogActions>
