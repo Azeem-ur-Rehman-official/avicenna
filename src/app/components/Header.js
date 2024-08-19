@@ -47,7 +47,7 @@ function Header(props) {
   const pathname = usePathname();
   const application=()=>{
    
-    router.push('studentportal');
+    router.push('/studentportal');
   }
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
