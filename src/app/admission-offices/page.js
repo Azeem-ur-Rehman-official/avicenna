@@ -1,10 +1,11 @@
 // src/pages/admission-offices.js
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Fade from "react-reveal/Fade";
 import { Container, Grid, Typography, Box } from "@mui/material";
 
 import AdmissionOffice from "../components/AdmissionOffice";
+import { getRequest } from "../RequestsAPI/RequestsApi";
 
 const indiaNepalBangladeshOffices = [
   {
@@ -43,6 +44,18 @@ const pakistanUAEOffices = [
 ];
 
 const AdmissionOffices = () => {
+  const [data, setdata] = useState([]);
+  console.log("data",data);
+  const getData = async () => {
+    const data = await getRequest("/api/offices");
+    if (data.status == 200) {
+      setdata(data.data.Data);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, [])
+  
   return (
     <>
       <Box
@@ -98,9 +111,10 @@ const AdmissionOffices = () => {
                 }}>
               Pakistan and UAE
             </Typography>
-            {pakistanUAEOffices.map((office, index) => (
+            {data.map((office, index) => (
                 <Fade up key={index} >
-              <AdmissionOffice office={office} />
+                {office.type=="row1" && <AdmissionOffice office={office} />}
+              
               </Fade>
             ))}
           </Grid>
@@ -116,9 +130,10 @@ const AdmissionOffices = () => {
                 }}>
               India, Nepal, and Bangladesh
             </Typography>
-            {indiaNepalBangladeshOffices.map((office, index) => (
+            {data.map((office, index) => (
                 <Fade up key={index}>
-                <AdmissionOffice  office={office} />
+                {office.type=="row2" && <AdmissionOffice  office={office} />}
+                
                 </Fade>
               
             ))}

@@ -14,7 +14,7 @@ const AdmissionOffice = ({ office }) => {
         color: "#ffffff",
       }}
     >
-      <Typography variant="h6">{office.city}</Typography>
+      <Typography variant="h6">{office.heading}</Typography>
       <Typography>{office.address}</Typography>
       <Typography>Email: {office.email}</Typography>
       <Typography>Phone: {office.phone}</Typography>

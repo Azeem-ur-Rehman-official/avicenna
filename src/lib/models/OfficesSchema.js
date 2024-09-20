@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const OfficesSchema = new mongoose.Schema({
-  country: {
+  heading: {
     type: String,
     required: true,
   },
-  city: {
+  email: {
     type: String,
     required: true,
   },
@@ -16,9 +16,12 @@ const OfficesSchema = new mongoose.Schema({
   address: {
     type: String,
     required: true,
+  },
+  type: {
+    type: String,
   }
 
 });
 
-export default mongoose.models.Contact ||
-  mongoose.model("Office", OfficesSchema);
+export default mongoose.models.Offices ||
+  mongoose.model("Offices", OfficesSchema);

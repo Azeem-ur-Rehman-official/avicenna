@@ -119,7 +119,7 @@ export default function Admin({ children }) {
 
     if (!isLoggedIn) {
       // Redirect to the home page if not logged in
-      router.push('/users/auth');
+      // router.push('/users/auth');
     }
     setLoading(false);
   }, []);
@@ -417,6 +417,37 @@ export default function Admin({ children }) {
                 <MailIcon />
               </ListItemIcon>
               <ListItemText primary="Contacts" sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem
+            disablePadding
+            sx={{ display: "block" }}
+            onClick={() => handleClick("/admin/dashboard/offices")}
+          >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+                ...(pathname == "/admin/dashboard/offices" && {
+                  color: "white",
+                  backgroundColor: "#382153",
+                }),
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                  ...(pathname == "/admin/dashboard/offices" && {
+                    color: "white",
+                  }),
+                }}
+              >
+                <ArticleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Offices" sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
         </List>
